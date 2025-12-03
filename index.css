@@ -1,0 +1,182 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ===== HEADER ===== */
+header {
+  height: 60px;
+  background-color: #b71c1c; /* đỏ Tết */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* ===== MAIN ===== */
+.main {
+  flex: 1;
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Bên trái: hình giải thưởng */
+.prizes {
+  flex: 1;
+  background-color: #ffe0e0;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.prizes img {
+  max-width: 100%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* ===== BÊN PHẢI DANH SÁCH TRÚNG GIẢI ===== */
+.winners {
+  flex: 1;
+  background-color: #fff3e0;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: hidden; /* quan trọng */
+  display: flex;
+  flex-direction: column;
+  /* height: 100%; */
+  max-height: 100vh;
+}
+
+.winners-title {
+  margin-top: 0;
+  text-align: center;
+  color: #d84315;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Danh sách người trúng */
+.winner-list {
+  flex: 1;
+  overflow: auto;
+  padding-right: 5px; /* tránh đè scrollbar */
+}
+
+/* Một ô người trúng giải */
+.winner-item {
+  display: flex;
+  height: calc(100% / 5); /* mỗi item cao = 1/5 khung winners */
+  background: #ffffff;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  padding: 10px;
+}
+
+/* Ảnh */
+.winner-avatar {
+  width: 70px;
+  height: 90px;
+  border-radius: 8px;
+  background-color: #ddd;
+  background-size: cover;
+  background-position: center;
+  margin-right: 15px;
+}
+
+/* Text thông tin */
+.winner-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.winner-info .name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.winner-info .code {
+  font-size: 14px;
+  color: #555;
+}
+
+.winner-info .dept {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Giữa: máy gacha 6 số */
+.gacha {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.numbers {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.number {
+  width: 50px;
+  height: 50px;
+  background-color: #ffd54f;
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-spin {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-spin:hover {
+  background-color: #b71c1c;
+}
+/* Nút Import Excel góc phải */
+.import-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: #00c4ff;
+  padding: 12px 25px;
+  border-radius: 8px;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 0 10px #00c4ff;
+  transition: 0.2s;
+}
+.import-btn:hover {
+  background: #4de3ff;
+  transform: scale(1.05);
+}
