@@ -4033,8 +4033,8 @@
     "Section": "SOFTWARE MAINTENANCE SEC.",
     "Team": "SOFTWARE MAINTENANCE",
     "JobTitle": "Software Maintenance Vice Chief / Phó Phòng Bảo Trì Phần Mềm",
-    "isJoin": "0",
-    "IsReward": "0"
+    "isJoin": "1",
+    "IsReward": "2"
   },
   {
     "AttendanceCard": "0003753581",
@@ -16815,8 +16815,8 @@
     "Section": "SOFTWARE DEVELOPMENT SEC.",
     "Team": "SOFTWARE",
     "JobTitle": "Software Development Vice Chief / Phó Phòng Phát Triển Phần Mềm",
-    "isJoin": "0",
-    "IsReward": "0"
+    "isJoin": "1",
+    "IsReward": "3"
   },
   {
     "AttendanceCard": "0000802645",
@@ -22502,8 +22502,8 @@
     "Section": "SOFTWARE DEVELOPMENT SEC.",
     "Team": "SOFTWARE",
     "JobTitle": "Software Development Supervisor / Giám Sát Phát Triển Phần Mềm",
-    "isJoin": "0",
-    "IsReward": "0"
+    "isJoin": "1",
+    "IsReward": "8"
   },
   {
     "AttendanceCard": "0015716037",
@@ -23701,8 +23701,8 @@
     "Section": "SOFTWARE MAINTENANCE SEC.",
     "Team": "SOFTWARE MAINTENANCE",
     "JobTitle": "Software Maintenance Engineer / Nhân Viên Bảo Trì Phần Mềm",
-    "isJoin": "0",
-    "IsReward": "0"
+    "isJoin": "1",
+    "IsReward": "1"
   },
   {
     "AttendanceCard": "0012848129",

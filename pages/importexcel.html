@@ -37,6 +37,8 @@
 
     <script>
       let jsonData = [];
+      let jsonPrize = [];
+      let jsonUserData = [];
 
       const COLUMN_HEADERS = [
         "Số thẻ từ",
@@ -45,24 +47,62 @@
         "Bộ phận",
         "Phòng ban",
         "Tổ",
-        "Chức vụ",
+        // "Chức vụ",
         "Chuyên môn",
         "Thắng giải",
+        "Hình ảnh",
       ];
 
       // ===========================
       // 1) AUTO LOAD LOCALSTORAGE
       // ===========================
-      window.onload = function () {
+      window.onload = async function () {
         let stored = localStorage.getItem("rewardUsers");
 
-        if (stored) {
-          jsonData = JSON.parse(stored);
-          renderTableFromJSON(jsonData);
+        // Load prizes và users đồng thời
+        const [prizes, users] = await Promise.all([loadPrizes(), loadUser()]);
 
+        jsonPrize = prizes;
+        jsonUserData = users.filter((u) => u.isJoin == 1);
+        if (stored) {
+          jsonData = mapUserWithPrize(jsonUserData, jsonPrize);
+          renderTableFromJSON(jsonData);
+          console.log(jsonPrize, "prizes loaded");
           console.log("Đã load dữ liệu từ localStorage!");
         }
       };
+
+      async function loadPrizes() {
+        try {
+          const response = await fetch("../json/gift.json"); // đường dẫn tới file JSON
+          if (!response.ok) throw new Error("Không thể đọc file JSON");
+          const prizes = await response.json();
+          return prizes; // trả về mảng prize
+        } catch (err) {
+          console.error(err);
+          return [];
+        }
+      }
+      async function loadUser() {
+        try {
+          // const users = await getUsersFromDB();
+          const users = await getUsersFromDB();
+          return users; // trả về mảng user
+        } catch (err) {
+          console.error(err);
+          return [];
+        }
+      }
+      function mapUserWithPrize(users, prizes) {
+        return users.map((user) => {
+          // Tìm prize tương ứng với user.isReward
+          const prize = prizes.find((p) => p.id == user.IsReward);
+          return {
+            ...user,
+            prizeName: prize ? prize.name : "",
+          };
+        });
+      }
 
       // ===========================
       // 2) HANDLE FILE IMPORT
@@ -125,20 +165,31 @@
           let tr = document.createElement("tr");
 
           let cols = [
-            item.RFIDCard,
+            item.AttendanceCard,
             item.UserCode,
             item.UserName,
             item.Department,
             item.Section,
             item.Team,
-            item.Position,
+            // item.Position,
             item.JobTitle,
-            item.isReward,
+            item.prizeName,
+            "../assets/users/" + item.UserCode + ".JPG",
           ];
 
-          cols.forEach((c) => {
+          cols.forEach((c, index) => {
             let td = document.createElement("td");
-            td.textContent = c;
+            // Nếu là cột cuối cùng (ảnh) → tạo img
+            if (index === cols.length - 1) {
+              let img = document.createElement("img");
+              img.src = c;
+              img.alt = item.UserName;
+              img.style.width = "50px";
+              img.style.height = "60px";
+              td.appendChild(img);
+            } else {
+              td.textContent = c;
+            }
             tr.appendChild(td);
           });
 
@@ -153,6 +204,52 @@
         localStorage.setItem("rewardUsers", JSON.stringify(jsonData));
         alert("Đã lưu dữ liệu vào LocalStorage!");
       };
+
+      // ===========================
+      // DB Area
+      // ===========================
+      function openDB() {
+        return new Promise((resolve, reject) => {
+          const request = indexedDB.open("FERewardDB", 1);
+
+          request.onupgradeneeded = function (e) {
+            const db = e.target.result;
+            if (!db.objectStoreNames.contains("Users")) {
+              const store = db.createObjectStore("Users", {
+                keyPath: "UserCode",
+              });
+            }
+          };
+
+          request.onsuccess = function (e) {
+            resolve(e.target.result);
+          };
+
+          request.onerror = function () {
+            reject("Không thể mở DB");
+          };
+        });
+      }
+      ///// get all User
+      function getUsersFromDB() {
+        return new Promise(async (resolve) => {
+          const db = await openDB(); // Hàm openDB từ trước
+          const tx = db.transaction("Users", "readonly");
+          const store = tx.objectStore("Users");
+          console.log(store);
+
+          const users = [];
+          store.openCursor().onsuccess = function (e) {
+            const cursor = e.target.result;
+            if (cursor) {
+              users.push(cursor.value);
+              cursor.continue();
+            } else {
+              resolve(users);
+            }
+          };
+        });
+      }
     </script>
   </body>
 </html>

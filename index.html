@@ -85,7 +85,9 @@
         const users = await getUsersFromDB();
 
         // 2. Lọc danh sách user chưa trúng
-        const availableUsers = users.filter((u) => u.IsReward == 0);
+        const availableUsers = users.filter(
+          (u) => u.isReward == 0 && u.IsJoin == 1
+        );
         if (availableUsers.length === 0) {
           alert("Tất cả người chơi đã trúng thưởng!");
           return;
