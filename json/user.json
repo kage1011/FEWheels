@@ -22458,7 +22458,7 @@
     "Section": "CUTTING 1 SEC.",
     "Team": "CUTTING 2",
     "JobTitle": "Piping Cutting Worker / Công Nhân Cắt Viền",
-    "isJoin": "0",
+    "isJoin": "1",
     "IsReward": "0"
   },
   {
@@ -22469,7 +22469,7 @@
     "Section": "TECHNICIAN SEC.",
     "Team": "TECHNICIAN 1",
     "JobTitle": "Technician / Nhân Viên Kỹ Thuật",
-    "isJoin": "0",
+    "isJoin": "1",
     "IsReward": "0"
   },
   {
@@ -22480,7 +22480,7 @@
     "Section": "PPA SEC.",
     "Team": "LINE 09",
     "JobTitle": "Sewer / Thợ May",
-    "isJoin": "0",
+    "isJoin": "1",
     "IsReward": "0"
   },
   {
@@ -22491,7 +22491,7 @@
     "Section": "PPA SEC.",
     "Team": "LINE 09A",
     "JobTitle": "Sewer / Thợ May",
-    "isJoin": "0",
+    "isJoin": "1",
     "IsReward": "0"
   },
   {
