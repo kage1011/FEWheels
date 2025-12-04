@@ -219,3 +219,22 @@ header label:hover {
   margin-right: 10px;
   width: 20px;
 }
+
+/* ===== TABLE ===== */
+#excelTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#excelTable th,
+#excelTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#excelTable thead th {
+  position: sticky;
+  top: 0;
+  background: #ffcccc; /* hoặc màu bạn muốn */
+  z-index: 10;
+}

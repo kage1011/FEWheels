@@ -2,9 +2,9 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <title>Import Excel</title>
+    <title>Người tham dự</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <link rel="stylesheet" href="./importexcel.css" />
+    <link rel="stylesheet" href="./css/importexcel.css" />
   </head>
 
   <body>
@@ -31,7 +31,19 @@
       </button>
     </header>
 
-    <table id="excelTable"></table>
+    <div style="margin-bottom: 10px">
+      <input
+        type="text"
+        id="filterInput"
+        placeholder="Tìm kiếm nhân viên..."
+        style="width: 300px; padding: 6px"
+      />
+    </div>
+    <!-- <table id="excelTable"></table> -->
+    <table id="excelTable">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
 
     <div id="saveArea"></div>
 
@@ -71,6 +83,23 @@
           console.log("Đã load dữ liệu từ localStorage!");
         }
       };
+
+      document
+        .getElementById("filterInput")
+        .addEventListener("input", function () {
+          let keyword = this.value.toLowerCase();
+
+          let filtered = jsonData.filter(
+            (user) =>
+              (user.UserName &&
+                user.UserName.toLowerCase().includes(keyword)) ||
+              (user.UserCode &&
+                user.UserCode.toLowerCase().includes(keyword)) ||
+              (user.prizeName && user.prizeName.toLowerCase().includes(keyword))
+          );
+
+          renderTableFromJSON(filtered);
+        });
 
       async function loadPrizes() {
         try {
@@ -147,9 +176,62 @@
       // ===========================
       // 3) RENDER TABLE
       // ===========================
+      // function renderTableFromJSON(data) {
+      //   let table = document.getElementById("excelTable");
+      //   table.innerHTML = "";
+
+      //   // Header
+      //   let headerRow = document.createElement("tr");
+      //   COLUMN_HEADERS.forEach((h) => {
+      //     let th = document.createElement("th");
+      //     th.textContent = h;
+      //     headerRow.appendChild(th);
+      //   });
+      //   table.appendChild(headerRow);
+
+      //   // Body
+      //   data.forEach((item) => {
+      //     let tr = document.createElement("tr");
+
+      //     let cols = [
+      //       item.AttendanceCard,
+      //       item.UserCode,
+      //       item.UserName,
+      //       item.Department,
+      //       item.Section,
+      //       item.Team,
+      //       // item.Position,
+      //       item.JobTitle,
+      //       item.prizeName,
+      //       "../assets/users/" + item.UserCode + ".JPG",
+      //     ];
+
+      //     cols.forEach((c, index) => {
+      //       let td = document.createElement("td");
+      //       // Nếu là cột cuối cùng (ảnh) → tạo img
+      //       if (index === cols.length - 1) {
+      //         let img = document.createElement("img");
+      //         img.src = c;
+      //         img.alt = item.UserName;
+      //         img.style.width = "50px";
+      //         img.style.height = "60px";
+      //         td.appendChild(img);
+      //       } else {
+      //         td.textContent = c;
+      //       }
+      //       tr.appendChild(td);
+      //     });
+
+      //     table.appendChild(tr);
+      //   });
+      // }
+
       function renderTableFromJSON(data) {
-        let table = document.getElementById("excelTable");
-        table.innerHTML = "";
+        let tableHead = document.querySelector("#excelTable thead");
+        let tableBody = document.querySelector("#excelTable tbody");
+
+        tableHead.innerHTML = "";
+        tableBody.innerHTML = "";
 
         // Header
         let headerRow = document.createElement("tr");
@@ -158,7 +240,7 @@
           th.textContent = h;
           headerRow.appendChild(th);
         });
-        table.appendChild(headerRow);
+        tableHead.appendChild(headerRow);
 
         // Body
         data.forEach((item) => {
@@ -171,7 +253,6 @@
             item.Department,
             item.Section,
             item.Team,
-            // item.Position,
             item.JobTitle,
             item.prizeName,
             "../assets/users/" + item.UserCode + ".JPG",
@@ -179,7 +260,7 @@
 
           cols.forEach((c, index) => {
             let td = document.createElement("td");
-            // Nếu là cột cuối cùng (ảnh) → tạo img
+
             if (index === cols.length - 1) {
               let img = document.createElement("img");
               img.src = c;
@@ -193,7 +274,7 @@
             tr.appendChild(td);
           });
 
-          table.appendChild(tr);
+          tableBody.appendChild(tr);
         });
       }
 
