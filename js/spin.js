@@ -8,12 +8,13 @@ let selectedPrize = null;
 let winners = JSON.parse(localStorage.getItem("rewardUsers") || "[]");
 const winnerList = document.getElementById("winnerList");
 
-function renderWinners() {
+async function renderWinners() {
+    const users = await getUsersFromDB();
     const container = document.getElementById("winnerList");
     container.innerHTML = "";
 
-    winners
-        .filter((u) => u.isReward === 0)
+    users
+        .filter((u) => u.IsReward != 1 && u.isJoin == 1)
         .forEach((u) => {
             const item = document.createElement("div");
             item.className = "winner-item";
@@ -196,42 +197,91 @@ function onPrizeChange() {
 
     renderGachaRows(selectedPrize.slot == 10 ? 5 : selectedPrize.slot);
 }
+// async function spinGacha() {
+//     const slotCount = selectedPrize.slot == 10 ? 5 : selectedPrize.slot;
+//     if (!selectedPrize) {
+//         alert("Vui lòng chọn giải thưởng trước!");
+//         return;
+//     }
+//     const users = await getUsersFromDB();
+//     // Lọc user hợp lệ
+//     const availableUsers = users.filter(
+//         (u) => u.IsReward == 0 && u.isJoin == 1
+//     );
+
+//     if (availableUsers.length === 0) {
+//         alert("Không còn người nào đủ điều kiện quay!");
+//         return;
+//     }
+
+//     // Random 1 user
+//     const winner = availableUsers[Math.floor(Math.random() * availableUsers.length)];
+//     // → Hiển thị code cho tất cả hàng
+//     for (let row = 0; row < slotCount; row++) {
+//         for (let i = 1; i <= 6; i++) {
+//             const digit = winner.UserCode[i - 1] ?? "0";
+//             document.getElementById(`num_${row}_${i}`).textContent = digit;
+//         }
+//     }
+
+//     // Cập nhật trạng thái trúng
+//     // winner.isReward = 1;
+//     // await updateUserInDB(winner);
+//     playJackpotAnimation(winner.UserCode, slotCount);
+
+//     console.log("Winner:", winner);
+// }
+
+// Load prize.json
+
 async function spinGacha() {
-    const slotCount = selectedPrize.slot == 10 ? 5 : selectedPrize.slot;
     if (!selectedPrize) {
         alert("Vui lòng chọn giải thưởng trước!");
         return;
     }
+
+    // Số người cần tìm theo slot
+    const slotCount = selectedPrize.slot == 10 ? 5 : selectedPrize.slot;
+
     const users = await getUsersFromDB();
+
     // Lọc user hợp lệ
-    const availableUsers = users.filter(
+    let availableUsers = users.filter(
         (u) => u.IsReward == 0 && u.isJoin == 1
     );
 
-    if (availableUsers.length === 0) {
-        alert("Không còn người nào đủ điều kiện quay!");
+    if (availableUsers.length < slotCount) {
+        alert("Không đủ người để quay!");
         return;
     }
 
-    // Random 1 user
-    const winner = availableUsers[Math.floor(Math.random() * availableUsers.length)];
-    // → Hiển thị code cho tất cả hàng
-    for (let row = 0; row < slotCount; row++) {
+    // 🔥 Chọn N người khác nhau
+    const winners = [];
+    for (let i = 0; i < slotCount; i++) {
+        const idx = Math.floor(Math.random() * availableUsers.length);
+        winners.push(availableUsers[idx]);
+        availableUsers.splice(idx, 1); // Xóa để không trùng
+    }
+
+    console.log("Winners:", winners);
+
+    // Render từng người theo từng hàng
+    winners.forEach((winner, row) => {
         for (let i = 1; i <= 6; i++) {
             const digit = winner.UserCode[i - 1] ?? "0";
             document.getElementById(`num_${row}_${i}`).textContent = digit;
         }
-    }
+    });
+
+    // Gọi animation
+    playJackpotAnimationMulti(winners, slotCount);
 
     // Cập nhật trạng thái trúng
-    // winner.isReward = 1;
-    // await updateUserInDB(winner);
-    playJackpotAnimation(winner.UserCode, slotCount);
-
-    console.log("Winner:", winner);
+    // winners.forEach(async w => {
+    //     w.IsReward = 1;
+    //     await updateUserInDB(w);
+    // });
 }
-
-// Load prize.json
 async function loadPrizeJson() {
     const res = await fetch("../json/gift.json");
     return await res.json();
@@ -336,4 +386,22 @@ function renderPrizeMenu(prizes) {
 
         menu.appendChild(div);
     });
+}
+
+
+function playJackpotAnimationMulti(winners, slotCount) {
+    for (let r = 0; r < slotCount; r++) {
+        const userCode = winners[r].UserCode.split("");
+        animateRow(r, userCode);
+    }
+}
+
+function animateRow(rowIndex, digits) {
+    for (let i = 1; i <= 6; i++) {
+        const cell = document.getElementById(`num_${rowIndex}_${i}`);
+        const digit = digits[i - 1] ?? "0";
+
+        // mỗi số dừng lệch nhau 200ms → hiệu ứng rất thật
+        animateDigit(cell, digit, 1600 + i * 2000);
+    }
 }
