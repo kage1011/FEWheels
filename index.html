@@ -8,282 +8,62 @@
 </head>
 
 <body>
-  <!-- Nút Import Excel -->
-  <a class="import-btn" href="pages/importexcel.html">Import Excel</a>
-  <!-- Bạn bỏ phần vòng quay của bạn ở đây -->
-
-  <header>Quay Thưởng Cuối Năm</header>
-  <div class="prize-select-box">
+  <!-- <a class="import-btn" href="pages/importexcel.html">Import Excel</a> -->
+  <!-- <header>Quay Thưởng Cuối Năm</header> -->
+  <!-- <div class="prize-select-box">
     <label>Chọn giải thưởng:</label>
     <select id="prizeSelect" onchange="onPrizeChange()">
       <option value="">-- Chọn giải --</option>
     </select>
-  </div>
+  </div> -->
   <div class="main">
+    <div class="left-flower-top"></div>
+
     <!-- Bên trái: Hình giải thưởng -->
     <div class="prizes">
-      <img src="prize1.jpg" alt="Giải thưởng 1" />
-      <img src="prize2.jpg" alt="Giải thưởng 2" />
-      <img src="prize3.jpg" alt="Giải thưởng 3" />
-      <!-- Thêm hình khác nếu muốn -->
-    </div>
-
-    <!-- Giữa: Máy gacha 6 số -->
-    <!-- <div class="gacha">
-      <div class="numbers">
-        <div class="number" id="num1">0</div>
-        <div class="number" id="num2">0</div>
-        <div class="number" id="num3">0</div>
-        <div class="number" id="num4">0</div>
-        <div class="number" id="num5">0</div>
-        <div class="number" id="num6">0</div>
+      <div class="prizes-box">
+        <img src="prize1.jpg" alt="Giải thưởng 1" />
+        <img src="prize2.jpg" alt="Giải thưởng 2" />
+        <img src="prize3.jpg" alt="Giải thưởng 3" />
       </div>
-      <button class="btn-spin" onclick="spinGacha()">🎰 Quay</button>
-    </div> -->
-    <div class="gacha">
-      <div id="gachaRows"></div>
-
-      <button class="btn-spin" onclick="spinGacha()">🎰 Quay</button>
     </div>
-
+    <div class="gacha">
+      <div class="gacha-machine">
+        <div class="machine-frame">
+          <div class="machine-display">
+            <div id="gachaRows"></div>
+          </div>
+        </div>
+      </div>
+      <div class="jackpot-match-area"></div>
+      <div class="jackpot-button-area">
+        <div class="left-bg">
+          <div class="left-bg-top">FENV</div>
+          <div class="left-bg-bottom"></div>
+        </div>
+        <button class="spin-btn" onclick="spinGacha()">SPIN</button>
+      </div>
+    </div>
     <!-- Bên phải: Danh sách người trúng -->
     <div class="winners">
-      <div class="winners-title">Người Trúng Giải</div>
-      <div class="winner-list" id="winnerList"></div>
+      <button class="image-button" onclick="window.location.href='pages/importexcel.html'">
+        <img src="./assets/basics/lantern.png" alt="User Button">
+      </button>
+      <div class="winner-box">
+        <div class="winners-title">Người Trúng Giải</div>
+        <div class="winner-list" id="winnerList"></div>
+      </div>
+    </div>
+    <div class="fab-container">
+      <div class="fab-menu" id="fabMenu">
+        <!-- Các giải thưởng load từ JS -->
+      </div>
+
+      <button class="fab-btn" onclick="toggleFabMenu()">
+        🎁
+      </button>
     </div>
   </div>
-
-  <script>
-    // =========================
-    // Load danh sách người từ localStorage
-    // =========================
-    let winners = JSON.parse(localStorage.getItem("rewardUsers") || "[]");
-    const winnerList = document.getElementById("winnerList");
-
-    function renderWinners() {
-      const container = document.getElementById("winnerList");
-      container.innerHTML = "";
-
-      winners
-        .filter((u) => u.isReward === 0)
-        .forEach((u) => {
-          const item = document.createElement("div");
-          item.className = "winner-item";
-
-          item.innerHTML = `
-        <div class="winner-avatar" style="background-image:url('../assets/users/${u.UserCode + ".JPG" || "020439.JPG"
-            }')"></div>
-
-        <div class="winner-info">
-          <div class="name">${u.UserName}</div>
-          <div class="code">Mã NV: ${u.UserCode}</div>
-          <div class="dept">Phòng ban: ${u.Department}</div>
-        </div>
-      `;
-
-          container.appendChild(item);
-        });
-    }
-
-    renderWinners();
-
-    // =========================
-    // Quay Gacha 6 số từ 0-6
-    // =========================
-    async function spinGacha() {
-      // 1. Lấy danh sách tất cả user
-      const users = await getUsersFromDB();
-
-      // 2. Lọc danh sách user chưa trúng
-      const availableUsers = users.filter(
-        (u) => u.IsReward == 0 && u.isJoin == 1
-      );
-      if (availableUsers.length === 0) {
-        alert("Tất cả người chơi đã trúng thưởng!");
-        return;
-      }
-
-      // 3. Chọn ngẫu nhiên 1 user
-      const randomIndex = Math.floor(Math.random() * availableUsers.length);
-      const winner = availableUsers[randomIndex];
-
-      for (let i = 0; i < 6; i++) {
-        const num = charAtSafe(winner.UserCode, i);
-        console.log(num.toString());
-        document.getElementById("num" + (i + 1)).textContent = num.toString();
-      }
-
-      // 5. Update isReward = 1 trong DB
-      // winner.IsReward = 1;
-      // await updateUserInDB(winner);
-
-      console.log("User đã trúng:", winner);
-    }
-    function charAtSafe(str, i) {
-      if (!str) return "";
-      if (i < 0 || i >= str.length) return "";
-      return str.charAt(i);
-    }
-    // =========================
-    // INDEX BD -------------------------------
-    // =========================
-
-    function openDB() {
-      return new Promise((resolve, reject) => {
-        const request = indexedDB.open("FERewardDB", 1);
-
-        request.onupgradeneeded = function (e) {
-          const db = e.target.result;
-          if (!db.objectStoreNames.contains("Users")) {
-            const store = db.createObjectStore("Users", {
-              keyPath: "UserCode",
-            });
-          }
-        };
-
-        request.onsuccess = function (e) {
-          resolve(e.target.result);
-        };
-
-        request.onerror = function () {
-          reject("Không thể mở DB");
-        };
-      });
-    }
-    // Check User have data or not
-    function checkUserCount(db) {
-      return new Promise((resolve) => {
-        const tx = db.transaction("Users", "readonly");
-        const store = tx.objectStore("Users");
-        const req = store.count();
-
-        req.onsuccess = () => resolve(req.result);
-        req.onerror = () => resolve(0);
-      });
-    }
-    //read json file
-    async function loadUserJson() {
-      const res = await fetch("../json/user.json");
-      return await res.json();
-    }
-    // Save user data to DB
-    function saveUsersToDB(db, users) {
-      return new Promise((resolve) => {
-        const tx = db.transaction("Users", "readwrite");
-        const store = tx.objectStore("Users");
-
-        users.forEach((user) => store.put(user));
-
-        tx.oncomplete = () => resolve(true);
-      });
-    }
-    async function initializeUsers() {
-      const db = await openDB();
-      const count = await checkUserCount(db);
-      if (count > 0) {
-        console.log("DB đã có dữ liệu, không import từ JSON");
-        return;
-      }
-      console.log("DB chưa có dữ liệu → Đọc user.json...");
-      const users = await loadUserJson();
-      await saveUsersToDB(db, users);
-      console.log("Đã import JSON vào IndexedDB thành công!");
-    }
-    window.onload = function () {
-      initializeUsers();
-    };
-
-    // Update,Delete,get
-    ///// get all User
-    function getUsersFromDB() {
-      return new Promise(async (resolve) => {
-        const db = await openDB(); // Hàm openDB từ trước
-        const tx = db.transaction("Users", "readonly");
-        const store = tx.objectStore("Users");
-
-        const users = [];
-        store.openCursor().onsuccess = function (e) {
-          const cursor = e.target.result;
-          if (cursor) {
-            users.push(cursor.value);
-            cursor.continue();
-          } else {
-            resolve(users);
-          }
-        };
-      });
-    }
-    ///// update User
-    function updateUserInDB(user) {
-      return new Promise(async (resolve) => {
-        const db = await openDB();
-        const tx = db.transaction("Users", "readwrite");
-        const store = tx.objectStore("Users");
-        store.put(user); // put sẽ insert hoặc update
-        tx.oncomplete = () => resolve(true);
-      });
-    }
-    function renderGachaRows(slotCount) {
-      const container = document.getElementById("gachaRows");
-      container.innerHTML = "";
-
-      for (let row = 0; row < slotCount; row++) {
-        const div = document.createElement("div");
-        div.className = "numbers-row";
-
-        let html = "";
-        for (let i = 1; i <= 6; i++) {
-          html += `<div class="number" id="num_${row}_${i}">0</div>`;
-        }
-
-        div.innerHTML = html;
-        container.appendChild(div);
-      }
-    }
-    function onPrizeChange() {
-      const id = document.getElementById("prizeSelect").value;
-      selectedPrize = prizeList.find((p) => p.id == id);
-
-      if (!selectedPrize) return;
-
-      renderGachaRows(selectedPrize.slot);
-    }
-    async function spinGacha() {
-      if (!selectedPrize) {
-        alert("Vui lòng chọn giải thưởng trước!");
-        return;
-      }
-
-      const users = await getUsersFromDB();
-      console.log(users);
-      // Lọc user hợp lệ
-      const availableUsers = users.filter(
-        (u) => u.IsReward == 0 && u.isJoin == 1
-      );
-
-      if (availableUsers.length === 0) {
-        alert("Không còn người nào đủ điều kiện quay!");
-        return;
-      }
-
-      // Random 1 user
-      const winner = availableUsers[Math.floor(Math.random() * availableUsers.length)];
-
-      // → Hiển thị code cho tất cả hàng
-      for (let row = 0; row < selectedPrize.slot; row++) {
-        for (let i = 1; i <= 6; i++) {
-          const digit = winner.UserCode[i - 1] ?? "0";
-          document.getElementById(`num_${row}_${i}`).textContent = digit;
-        }
-      }
-
-      // Cập nhật trạng thái trúng
-      // winner.isReward = 1;
-      // await updateUserInDB(winner);
-
-      console.log("Winner:", winner);
-    }
-  </script>
   <script src="./js/spin.js"></script>
 </body>
 
