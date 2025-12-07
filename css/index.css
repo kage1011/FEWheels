@@ -209,6 +209,8 @@ header {
   display: flex;
   justify-content: center;
   margin: 4px 0;
+  /* border: black 1px solid; */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -271,13 +273,14 @@ header {
   background: linear-gradient(180deg, #c60000, #7a0000);
   padding: 20px;
   border-radius: 10px;
+  /* border: linear-gradient(180deg, #c60000, #7a0000) 4px solid; */
   /* border-top: 6px solid #fff2cc; */
   box-shadow: 0 0 25px rgba(255, 230, 0, 0.8);
 }
 
 /* ====== MÀN HÌNH HIỂN THỊ ====== */
 .machine-display {
-  background: #111;
+  background: transparent;
   border-radius: 10px;
   border: 4px solid #ffd966;
   padding: 15px;
@@ -321,14 +324,14 @@ header {
 .jackpot-match-area {
   width: 270px;
   height: 12px;
-  background: radial-gradient(circle, #ff6666, #b30000);
+  background: linear-gradient(180deg, #c60000, #7a0000);
   box-shadow: 0 0 25px rgba(255, 230, 0, 0.8);
 }
 
 .jackpot-button-area {
   width: 400px;
   height: 150px;
-  background: radial-gradient(circle, #ff6666, #b30000);
+  background: linear-gradient(180deg, #c60000, #7a0000);
   border-radius: 6px;
   display: flex;
   justify-content: space-between;
@@ -366,14 +369,11 @@ header {
   color: white;
   font-size: 26px;
   font-weight: 900;
-
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   box-shadow: 0 6px 0 #7a0000;
 }
 
