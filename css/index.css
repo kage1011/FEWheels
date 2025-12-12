@@ -44,7 +44,6 @@ header {
 
 /* Bên trái: hình giải thưởng */
 .prizes {
-  /* margin-left: 10px; */
   width: 25%;
   min-width: 250px;
   overflow-y: auto;
@@ -57,20 +56,41 @@ header {
   width: 100%;
   height: 100%;
   border-radius: 12px;
-
   padding: 12px;
   box-sizing: border-box;
-
-  /* Bóng đổ mượt */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.prizes-box::-webkit-scrollbar {
+  display: none;
+}
 
 .prizes img {
   max-width: 100%;
   margin-bottom: 10px;
   border-radius: 5px;
+}
+
+/* Prize box */
+
+.prize-item {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  opacity: 0;
+}
+
+.prize-item::-webkit-scrollbar {
+  display: none;
+}
+
+.prize-item.show {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* ===== BÊN PHẢI DANH SÁCH TRÚNG GIẢI ===== */
@@ -129,6 +149,9 @@ header {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   align-items: center;
   padding: 10px;
+  opacity: 0;
+  transform: translateX(40px);
+  animation: slideIn 0.6s ease-out forwards;
 }
 
 /* Ảnh */
@@ -511,5 +534,85 @@ header {
 
   100% {
     transform: translateX(1px);
+  }
+}
+
+@keyframes shakeTree {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(1.5deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(-1.5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+@keyframes slideUpBlur {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.soft-bounce {
+  opacity: 0;
+  transform: scale(0.7);
+  animation: softBounce 0.7s cubic-bezier(.26, .05, .43, 1.48) forwards;
+}
+
+@keyframes softBounce {
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.question-rain {
+  position: fixed;
+  inset: 0;
+  /* full màn hình */
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 99999;
+}
+
+.question {
+  position: absolute;
+  top: -60px;
+  font-size: 40px;
+  opacity: 1;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
   }
 }

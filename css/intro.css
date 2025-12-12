@@ -1,0 +1,468 @@
+body {
+    background-color: rgb(116, 0, 6);
+}
+
+.layout {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-area {
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.cloud {
+    position: absolute;
+    width: 360px;
+    height: auto;
+    opacity: 0.9;
+}
+
+.cloud-img {
+    width: 100%;
+    height: auto;
+    animation: cloudFloat 4s ease-in-out infinite;
+}
+
+/* LEFT → CENTER ANIMATION */
+.cloud-left {
+    top: 15%;
+    left: -200px;
+    transform: translateY(-50%);
+    animation: flyLeft 2.5s ease-out forwards
+}
+
+/* CENTER DROP DOWN */
+.cloud-center {
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flyDown 2.0s ease-out forwards
+}
+
+/* RIGHT → CENTER ANIMATION */
+.cloud-right {
+    top: 15%;
+    right: -200px;
+    transform: translateY(-50%);
+    animation: flyRight 2.5s ease-out forwards
+}
+
+
+.body-area {
+    flex: 1;
+    display: flex;
+}
+
+.col {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-center {
+    display: block;
+}
+
+
+.horse {
+    position: absolute;
+    top: 0px;
+    height: 450px;
+    pointer-events: none;
+    object-fit: cover;
+
+}
+
+.horse-left {
+    left: 0px;
+}
+
+.horse-right {
+    right: 0px;
+}
+
+.horse-grow {
+    animation: growHorse 1.5s ease-out forwards;
+}
+
+
+
+.col-left {
+    display: flex;
+    align-items: center;
+}
+
+.left-inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: start;
+}
+
+.left-horse-wrap {
+    width: 66.66%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.horse-left {
+    max-width: 90%;
+    height: auto;
+}
+
+.left-text-wrap {
+    width: 33.33%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    padding-right: 25px;
+    margin-top: 10px;
+}
+
+.left-text-wrap p {
+    margin: 0;
+    font-size: 60px;
+    /* line-height: 30px; */
+    font-weight: 700;
+    color: rgb(204, 119, 34);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+
+
+.col-right {
+    display: flex;
+    align-items: center;
+}
+
+.right-inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: start;
+}
+
+.right-horse-wrap {
+    width: 66.66%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.horse-right {
+    max-width: 90%;
+    height: auto;
+}
+
+.right-text-wrap {
+    width: 33.33%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    padding-left: 25px;
+    margin-top: 10px;
+}
+
+.right-text-wrap p {
+    margin: 0;
+    font-size: 60px;
+    font-weight: 700;
+    color: rgb(204, 119, 34);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.fade-num {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeUpNum 0.5s ease-out forwards;
+    animation-delay: var(--delay);
+}
+
+/* Hộp nằm trong column 2 */
+.inner-box {
+    width: 460px;
+    height: 360px;
+    top: 0;
+    background: rgb(204, 119, 34);
+    border: 4px solid rgb(85, 0, 0);
+    border-radius: 60px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.8);
+    animation: zoomIn 0.6s ease-out forwards;
+}
+
+.inner-content {
+    width: 430px;
+    height: 330px;
+    background: rgb(139 1 8);
+    border: 4px solid rgb(85, 0, 0);
+    border-radius: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------------
+   2 đèn lồng phía trên
+------------------*/
+.lantern-top {
+    position: absolute;
+    top: 0px;
+    width: 120px;
+    height: 120px;
+}
+
+.lantern-top.left {
+    left: 100px;
+}
+
+.lantern-top.right {
+    right: 0px;
+}
+
+.lantern-small {
+    width: 100%;
+    height: auto;
+    animation: swing 3s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+.lantern-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.lantern {
+    width: 120px;
+    animation: swing 3s ease-in-out infinite;
+    transform-origin: top center;
+}
+
+.text-center {
+    text-align: center;
+    line-height: 5px;
+    font-size: 60px;
+    font-weight: 700;
+    color: rgb(204, 119, 34);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.text-center-bottom {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    align-items: end;
+    line-height: 5px;
+    font-size: 20px;
+    font-weight: 300;
+    color: rgb(204, 119, 34);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.text-center P {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.text-center-bottom p {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.fade-letters .line {
+    display: inline-block;
+    font-size: 60px;
+    font-weight: 700;
+    margin: 35px 0;
+}
+
+.fade-letters .line-2 {
+    display: inline-block;
+    font-size: 60px;
+    font-weight: 700;
+    margin: 30px 0;
+}
+
+.fade-letters .line-3 {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 30px 0;
+}
+
+
+.fade-letters .line span {
+    opacity: 0;
+    transform: translateY(20px);
+    display: inline-block;
+    animation: fadeUp 0.6s forwards;
+}
+
+.fade-letters .line-2 span {
+    opacity: 0;
+    transform: translateY(20px);
+    display: inline-block;
+    animation: fadeUp 0.6s forwards;
+}
+
+.fade-letters .line-3 span {
+    opacity: 0;
+    transform: translateY(20px);
+    display: inline-block;
+    animation: fadeUp 0.6s forwards;
+}
+
+/* Animation */
+@keyframes growHorse {
+    0% {
+        transform: scale(0.05);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes growHorseLeft {
+    from {
+        transform: scaleX(1) scale(0.05);
+        transform: rotateY(180deg);
+        opacity: 0;
+    }
+
+    to {
+        transform: scaleX(1) scale(1);
+        transform: rotateY(180deg);
+        opacity: 1;
+    }
+}
+
+@keyframes flyLeft {
+    to {
+        left: 20px;
+        opacity: 1;
+    }
+}
+
+@keyframes flyDown {
+    to {
+        top: 0px;
+        opacity: 1;
+    }
+}
+
+@keyframes flyRight {
+    to {
+        right: 20px;
+        opacity: 1;
+    }
+}
+
+@keyframes cloudFloat {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(4px, -3px);
+    }
+
+    50% {
+        transform: translate(-4px, 2px);
+    }
+
+    75% {
+        transform: translate(3px, -2px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* Animation gió thổi đung đưa */
+@keyframes swing {
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    25% {
+        transform: translateX(-50%) rotate(4deg);
+    }
+
+    50% {
+        transform: translateX(-50%) rotate(-4deg);
+    }
+
+    75% {
+        transform: translateX(-50%) rotate(3deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadeUpNum {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

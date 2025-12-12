@@ -5,27 +5,15 @@
   <meta charset="UTF-8" />
   <title>Quay Thưởng Cuối Năm</title>
   <link rel="stylesheet" href="./css/index.css" />
+  <link rel="stylesheet" href="./css/cover.css" />
+
 </head>
 
 <body>
-  <!-- <a class="import-btn" href="pages/importexcel.html">Import Excel</a> -->
-  <!-- <header>Quay Thưởng Cuối Năm</header> -->
-  <!-- <div class="prize-select-box">
-    <label>Chọn giải thưởng:</label>
-    <select id="prizeSelect" onchange="onPrizeChange()">
-      <option value="">-- Chọn giải --</option>
-    </select>
-  </div> -->
   <div class="main">
     <div class="left-flower-top"></div>
-
-    <!-- Bên trái: Hình giải thưởng -->
     <div class="prizes">
-      <div class="prizes-box">
-        <img src="prize1.jpg" alt="Giải thưởng 1" />
-        <img src="prize2.jpg" alt="Giải thưởng 2" />
-        <img src="prize3.jpg" alt="Giải thưởng 3" />
-      </div>
+      <div class="prizes-box " id="prizesBox"></div>
     </div>
     <div class="gacha">
       <div class="gacha-machine">
@@ -65,6 +53,8 @@
     </div>
   </div>
   <script src="./js/spin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
 </body>
 
 </html>
