@@ -31,15 +31,27 @@ header {
   /* toàn màn hình */
 }
 
+.crop {
+  width: 200px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.crop img {
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+}
 
 .left-flower-top {
   position: fixed;
   bottom: -70px;
-  left: 70px;
   background-image: url('../assets/basics/flower-left.png');
   background-size: cover;
   width: 350px;
   height: 350px;
+  transform: scaleX(-1);
+
 }
 
 /* Bên trái: hình giải thưởng */
@@ -99,8 +111,6 @@ header {
   width: 25%;
   min-width: 250px;
   overflow-y: auto;
-  /* box-shadow: 0 0 25px rgba(218, 218, 218, 0.8); */
-  /* Nếu muốn box bên trong đẹp hơn, thêm padding 10px */
   padding: 10px;
   box-sizing: border-box;
 
@@ -108,14 +118,10 @@ header {
 
 .winner-box {
   background: transparent;
-  /* width: 100%; */
   height: 100%;
   border-radius: 12px;
-  /* display: flex; */
   padding: 12px;
   box-sizing: border-box;
-
-  /* Bóng đổ mượt */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -133,7 +139,6 @@ header {
   flex: 1;
   max-height: 95%;
   overflow: auto;
-  /* padding-right: 5px; */
 }
 
 .winner-list::-webkit-scrollbar {
@@ -146,13 +151,35 @@ header {
   background: transparent;
   margin-bottom: 10px;
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px; */
   align-items: center;
   padding: 10px;
   opacity: 0;
   transform: translateX(40px);
   animation: slideIn 0.6s ease-out forwards;
+
+  background: rgb(255 226 197 / 67%);
+  border: 3px solid #d19a00;
+  border-radius: 14px;
+  box-shadow: 0 0 12px rgba(255, 187, 0, 0.5),
+    inset 0 0 12px rgba(255, 200, 80, 0.4);
 }
+
+/* Họa tiết Tết mờ ở góc */
+.winner-item::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 80px;
+  height: 80px;
+  background-image: url("../assets/basics/mai.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
 
 /* Ảnh */
 .winner-avatar {
@@ -191,6 +218,7 @@ header {
 /* Nút Import Excel góc phải */
 .image-button {
   position: fixed;
+  z-index: 2;
   top: 0px;
   right: 0px;
   background: transparent;

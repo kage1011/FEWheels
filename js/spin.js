@@ -452,7 +452,7 @@ function startQuestionRain(duration = 6000) {
   const interval = setInterval(() => {
     const q = document.createElement("div");
     q.className = "question";
-    q.innerHTML = `<img src="./assets/basics/question.png" style="width:80px;height:80px;">`;
+    q.innerHTML = `<img src="./assets/basics/question.png" style="width:120px;height:120px;">`;
 
 
     // vị trí xuất hiện ngẫu nhiên trên chiều ngang màn hình
