@@ -1,0 +1,25 @@
+/*  */
+#smoke-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    /* Màu khói/sương mờ đen */
+    opacity: 1;
+    /* Ban đầu lớp phủ hiện ra */
+    z-index: 9999;
+    /* Đảm bảo nó nằm trên tất cả các phần tử khác */
+    pointer-events: none;
+    /* Cho phép nhấp chuột xuyên qua khi hiệu ứng kết thúc */
+}

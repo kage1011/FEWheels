@@ -1,3 +1,95 @@
+
+
+// =========== PAGE TRANS ============== //
+
+const canvas = document.getElementById("smoke-canvas");
+const ctx = canvas.getContext("2d");
+
+let smokes = [];
+let running = false;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+class Smoke {
+  constructor() {
+    this.x = -100;
+    this.y = Math.random() * canvas.height;
+    this.size = 120 + Math.random() * 700;
+    this.speed = 1.5 + Math.random() * 7;
+    this.alpha = 0.15 + Math.random() * 0.15 * 3;
+  }
+
+  update() {
+    this.x += this.speed;
+    this.y += Math.sin(this.x * 0.01) * 0.3;
+  }
+
+  draw() {
+    const g = ctx.createRadialGradient(
+      this.x,
+      this.y,
+      0,
+      this.x,
+      this.y,
+      this.size
+    );
+    g.addColorStop(0, `rgba(255,255,255,${this.alpha})`);
+    g.addColorStop(1, "rgba(255,255,255,0)");
+
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function animateSmoke() {
+  if (!running) return;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  if (smokes.length < 20) {
+    smokes.push(new Smoke());
+  }
+
+  smokes.forEach((s) => {
+    s.update();
+    s.draw();
+  });
+
+  smokes = smokes.filter((s) => s.x < canvas.width + s.size);
+
+  requestAnimationFrame(animateSmoke);
+}
+
+
+
+async function renderSmoke() {
+  localStorage.removeItem("SMOKE_TRANSITION");
+  const canvas = document.getElementById("smoke-canvas");
+  if (!canvas) return;
+  canvas.style.opacity = 1;
+  running = true;
+  smokes = [];
+  animateSmoke();
+
+  // tạo khói tan ra
+  let fade = 1;
+  const fadeOut = setInterval(() => {
+    fade -= 0.05;
+    canvas.style.opacity = fade;
+
+    if (fade <= 0) {
+      clearInterval(fadeOut);
+      canvas.style.opacity = 0;
+    }
+  }, 400);
+}
 let prizeList = [];
 let selectedPrize = null;
 
@@ -54,6 +146,7 @@ function renderPrize() {
 
 renderWinners();
 renderGachaRows();
+renderSmoke();
 // =========================
 // Quay Gacha 6 số từ 0-6
 // =========================
@@ -157,6 +250,7 @@ async function initializeUsers() {
 }
 window.onload = function () {
   initializeUsers();
+  console.log("Test");
 };
 
 // Update,Delete,get
@@ -476,3 +570,7 @@ function startQuestionRain(duration = 6000) {
     rain.remove();
   }, duration);
 }
+
+
+
+

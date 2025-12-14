@@ -6,10 +6,15 @@
   <title>Quay Thưởng Cuối Năm</title>
   <link rel="stylesheet" href="./css/index.css" />
   <link rel="stylesheet" href="./css/cover.css" />
+  <link rel="stylesheet" href="./css/transition.css" />
+
 
 </head>
 
 <body>
+  <!-- MÀN KHÓI -->
+  <canvas id="smoke-canvas"></canvas>
+  <!-- <div id="transition-overlay"></div> -->
   <div class="main">
 
     <div class="prizes">
@@ -17,7 +22,7 @@
       <div class="left-flower-top"></div>
     </div>
     <div class="gacha">
-      <div class="gacha-machine">
+      <div class="gacha-machine ">
         <div class="machine-frame">
           <div class="machine-display">
             <div id="gachaRows"></div>
@@ -27,7 +32,7 @@
       <div class="jackpot-match-area"></div>
       <div class="jackpot-button-area">
         <div class="left-bg">
-          <div class="left-bg-top">FENV</div>
+          <!-- <div class="left-bg-top">FENV</div> -->
           <div class="left-bg-bottom"></div>
         </div>
         <button class="spin-btn" onclick="spinGacha()">QUAY</button>
@@ -52,6 +57,7 @@
   </div>
   <script src="./js/spin.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <!-- <script src="./js/transition.js"></script> -->
 
 </body>
 

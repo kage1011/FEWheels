@@ -1,9 +1,10 @@
 document.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
-    window.location.href = "index.html";
+    goToPage('index.html')
   }
 });
+
 document.querySelectorAll('.fade-letters .line').forEach(line => {
   let letters = line.textContent.split('');
 
