@@ -59,7 +59,6 @@ function renderPrize() {
 
 renderWinners();
 renderGachaRows();
-renderSmoke();
 // =========================
 // Quay Gacha 6 số từ 0-6
 // =========================
