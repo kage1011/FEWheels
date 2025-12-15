@@ -1,0 +1,41 @@
+#cloud-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cloudtrans {
+  position: absolute;
+  opacity: 1;
+  transition: transform 2.2s cubic-bezier(0.77, 0, 0.18, 1), opacity 2.2s ease;
+}
+
+.cloudtrans-left {
+  width: 120%;
+  left: -30%;
+  top: 10%;
+}
+
+.cloudtrans-right {
+  width: 120%;
+  right: -30%;
+  top: 12%;
+}
+
+.cloudtrans-bottom {
+  width: 180%;
+  bottom: -40%;
+  left: -10%;
+}
+
+#cloud-transition.hide .cloudtrans-left {
+  transform: translateX(-120%);
+}
+#cloud-transition.hide .cloudtrans-right {
+  transform: translateX(120%);
+}
+#cloud-transition.hide .cloudtrans-bottom {
+  transform: translateY(120%);
+}

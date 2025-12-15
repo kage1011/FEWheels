@@ -1,95 +1,3 @@
-
-
-// =========== PAGE TRANS ============== //
-
-const canvas = document.getElementById("smoke-canvas");
-const ctx = canvas.getContext("2d");
-
-let smokes = [];
-let running = false;
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-
-class Smoke {
-  constructor() {
-    this.x = -100;
-    this.y = Math.random() * canvas.height;
-    this.size = 120 + Math.random() * 700;
-    this.speed = 1.5 + Math.random() * 7;
-    this.alpha = 0.15 + Math.random() * 0.15 * 3;
-  }
-
-  update() {
-    this.x += this.speed;
-    this.y += Math.sin(this.x * 0.01) * 0.3;
-  }
-
-  draw() {
-    const g = ctx.createRadialGradient(
-      this.x,
-      this.y,
-      0,
-      this.x,
-      this.y,
-      this.size
-    );
-    g.addColorStop(0, `rgba(255,255,255,${this.alpha})`);
-    g.addColorStop(1, "rgba(255,255,255,0)");
-
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
-  }
-}
-
-function animateSmoke() {
-  if (!running) return;
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  if (smokes.length < 20) {
-    smokes.push(new Smoke());
-  }
-
-  smokes.forEach((s) => {
-    s.update();
-    s.draw();
-  });
-
-  smokes = smokes.filter((s) => s.x < canvas.width + s.size);
-
-  requestAnimationFrame(animateSmoke);
-}
-
-
-
-async function renderSmoke() {
-  localStorage.removeItem("SMOKE_TRANSITION");
-  const canvas = document.getElementById("smoke-canvas");
-  if (!canvas) return;
-  canvas.style.opacity = 1;
-  running = true;
-  smokes = [];
-  animateSmoke();
-
-  // tạo khói tan ra
-  let fade = 1;
-  const fadeOut = setInterval(() => {
-    fade -= 0.05;
-    canvas.style.opacity = fade;
-
-    if (fade <= 0) {
-      clearInterval(fadeOut);
-      canvas.style.opacity = 0;
-    }
-  }, 400);
-}
 let prizeList = [];
 let selectedPrize = null;
 
@@ -108,7 +16,10 @@ async function renderWinners() {
     let index = 0;
 
     users
-      .filter((u) => u.IsReward != 0 && u.isJoin == 1 && u.IsReward == selectedPrize.id)
+      .filter(
+        (u) =>
+          u.IsReward != 0 && u.isJoin == 1 && u.IsReward == selectedPrize.id
+      )
       .forEach((u) => {
         const item = document.createElement("div");
         item.className = "winner-item";
@@ -118,7 +29,9 @@ async function renderWinners() {
         index++;
 
         item.innerHTML = `
-          <div class="winner-avatar" style="background-image:url('../assets/users/${u.UserCode + ".JPG" || "020439.JPG"}')"></div>
+          <div class="winner-avatar" style="background-image:url('../assets/users/${
+            u.UserCode + ".JPG" || "020439.JPG"
+          }')"></div>
           <div class="winner-info">
             <div class="name">${u.UserName}</div>
             <div class="code">Mã NV: ${u.UserCode}</div>
@@ -521,14 +434,14 @@ function fireConfetti() {
       particleCount: 7,
       angle: 60,
       spread: 55,
-      origin: { x: 0 }
+      origin: { x: 0 },
     });
 
     confetti({
       particleCount: 7,
       angle: 120,
       spread: 55,
-      origin: { x: 1 }
+      origin: { x: 1 },
     });
 
     if (Date.now() < end) {
@@ -536,7 +449,6 @@ function fireConfetti() {
     }
   })();
 }
-
 
 function startQuestionRain(duration = 6000) {
   const rain = document.createElement("div");
@@ -548,12 +460,11 @@ function startQuestionRain(duration = 6000) {
     q.className = "question";
     q.innerHTML = `<img src="./assets/basics/question.png" style="width:120px;height:120px;">`;
 
-
     // vị trí xuất hiện ngẫu nhiên trên chiều ngang màn hình
     q.style.left = Math.random() * 100 + "vw";
 
     // thời gian rơi ngẫu nhiên từ 2–4 giây
-    q.style.animationDuration = (2 + Math.random() * 2) + "s";
+    q.style.animationDuration = 2 + Math.random() * 2 + "s";
 
     // xoay ngẫu nhiên cho đẹp
     q.style.transform = `rotate(${Math.random() * 360}deg)`;
@@ -570,7 +481,3 @@ function startQuestionRain(duration = 6000) {
     rain.remove();
   }, duration);
 }
-
-
-
-

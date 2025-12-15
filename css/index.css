@@ -4,7 +4,7 @@ body {
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  background-image: url('../assets/basics/bg.png');
+  background-image: url("../assets/basics/bg.png");
   background-size: cover;
   height: 100vh;
 }
@@ -17,7 +17,6 @@ body::-webkit-scrollbar {
 header {
   height: 60px;
   background-color: #b71c1c;
-  /* đỏ Tết */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,8 +30,6 @@ header {
   display: flex;
   width: 100%;
   height: 100vh;
-  /* padding: 10px; */
-  /* toàn màn hình */
 }
 
 .crop {
@@ -50,12 +47,11 @@ header {
 .left-flower-top {
   position: fixed;
   bottom: -70px;
-  background-image: url('../assets/basics/flower-left.png');
+  background-image: url("../assets/basics/flower-left.png");
   background-size: cover;
   width: 350px;
   height: 350px;
   transform: scaleX(-1);
-
 }
 
 /* Bên trái: hình giải thưởng */
@@ -117,7 +113,6 @@ header {
   overflow-y: auto;
   padding: 10px;
   box-sizing: border-box;
-
 }
 
 .winner-box {
@@ -155,7 +150,6 @@ header {
   background: transparent;
   margin-bottom: 10px;
   border-radius: 8px;
-  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px; */
   align-items: center;
   padding: 10px;
   opacity: 0;
@@ -183,7 +177,6 @@ header {
   opacity: 0.4;
   pointer-events: none;
 }
-
 
 /* Ảnh */
 .winner-avatar {
@@ -218,7 +211,6 @@ header {
   color: #333;
 }
 
-
 /* Nút Import Excel góc phải */
 .image-button {
   position: fixed;
@@ -229,11 +221,8 @@ header {
   border: none;
   padding: 0;
   cursor: pointer;
-
-  /* Để viền hover không làm "giật" layout */
   border: 3px solid transparent;
   border-radius: 10px;
-
   transition: border 0.2s ease-in-out;
 }
 
@@ -266,11 +255,8 @@ header {
   display: flex;
   justify-content: center;
   margin: 4px 0;
-  /* border: black 1px solid; */
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
-
-
 
 /* Giữa: máy gacha 6 số */
 .gacha {
@@ -281,7 +267,6 @@ header {
   align-items: center;
   justify-content: end;
   margin-bottom: 10px;
-  /* === Áp dụng CHUYỂN ĐỘNG ĐI LÊN cho .gacha === */
   animation: gacha-slide-up 5s linear forwards;
 }
 
@@ -326,16 +311,12 @@ header {
 .gacha-machine {
   width: 350px;
   position: relative;
-  /* === Áp dụng RUNG LẮC cho .gacha-machine === */
-  animation: gacha-earthquake 0.1s steps(3, jump-none) 50 forwards;
 }
 
 .machine-frame {
   background: linear-gradient(180deg, #c60000, #7a0000);
   padding: 20px;
   border-radius: 10px;
-  /* border: linear-gradient(180deg, #c60000, #7a0000) 4px solid; */
-  /* border-top: 6px solid #fff2cc; */
   box-shadow: 0 0 25px rgba(255, 230, 0, 0.8);
 }
 
@@ -403,7 +384,6 @@ header {
 
 /* --- Bên trái (70%) --- */
 .left-bg {
-  /* background-color: #f4f4f4; */
   width: 60%;
   height: 90%;
   border-radius: 6px;
@@ -411,7 +391,6 @@ header {
 
 .left-bg-top {
   text-align: center;
-  /* font-family: ; */
   font-weight: bold;
   font-size: 60px;
 }
@@ -420,7 +399,6 @@ header {
 .spin-btn {
   width: 30%;
   aspect-ratio: 1;
-  /* giúp giữ tròn */
   border-radius: 50%;
   border: none;
 
@@ -593,7 +571,6 @@ header {
   }
 }
 
-
 @keyframes slideUpBlur {
   to {
     opacity: 1;
@@ -605,7 +582,7 @@ header {
 .soft-bounce {
   opacity: 0;
   transform: scale(0.7);
-  animation: softBounce 0.7s cubic-bezier(.26, .05, .43, 1.48) forwards;
+  animation: softBounce 0.7s cubic-bezier(0.26, 0.05, 0.43, 1.48) forwards;
 }
 
 @keyframes softBounce {
@@ -626,11 +603,9 @@ header {
   }
 }
 
-
 .question-rain {
   position: fixed;
   inset: 0;
-  /* full màn hình */
   pointer-events: none;
   overflow: hidden;
   z-index: 99999;
@@ -651,50 +626,13 @@ header {
   }
 }
 
-/* ==================================== */
-/* 1. KEYFRAMES MỚI CHO HIỆU ỨNG */
-/* ==================================== */
-
-/* Keyframe cho chuyển động đi lên (Slide-up) */
 @keyframes gacha-slide-up {
-
-  /* Đặt máy gacha xuống dưới */
   0% {
     transform: translateY(100vh);
     opacity: 0;
   }
-
-  /* Đưa máy gacha về vị trí Flexbox ban đầu */
   100% {
     transform: translateY(0);
     opacity: 1;
   }
-}
-
-/* Keyframe cho chuyển động rung lắc dữ dội (Earthquake) */
-@keyframes gacha-earthquake {
-
-  /* Biên độ nhỏ và xoay nhẹ tạo cảm giác rung */
-  0% {
-    transform: translate(1px, 1px) rotate(0deg);
-  }
-
-  25% {
-    transform: translate(-2px, -1px) rotate(-0.5deg);
-  }
-
-  /* Tăng biên độ cho dữ dội */
-  50% {
-    transform: translate(1px, -2px) rotate(0.5deg);
-  }
-
-  75% {
-    transform: translate(-1px, 2px) rotate(-0.3deg);
-  }
-
-  100% {
-    transform: translate(0px, 0px) rotate(0deg);
-  }
-
-  /* Quan trọng để rung lắc lặp lại mượt mà */
 }
