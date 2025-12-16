@@ -1,7 +1,7 @@
 document.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
-    goToPage('index.html')
+    goToPage('gacha.html')
   }
 });
 

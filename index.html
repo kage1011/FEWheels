@@ -1,72 +1,61 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Quay Thưởng Cuối Năm</title>
-    <link rel="stylesheet" href="./css/index.css" />
-    <link rel="stylesheet" href="./css/cover.css" />
-    <!-- <link rel="stylesheet" href="./css/transition.css" /> -->
-    <link rel="stylesheet" href="./css/cloud.css" />
-  </head>
 
-  <body>
-    <!-- MÀN KHÓI -->
-    <div id="cloud-transition">
-      <img
-        src="./assets/basics/cloudtrans.png"
-        class="cloudtrans cloudtrans-left"
-      />
-      <img
-        src="./assets/basics/cloudtrans.png"
-        class="cloudtrans cloudtrans-right"
-      />
-      <img
-        src="./assets/basics/cloudtrans.png"
-        class="cloudtrans cloudtrans-bottom"
-      />
+<head>
+  <meta charset="UTF-8" />
+  <title>Quay Thưởng Cuối Năm</title>
+  <link rel="stylesheet" href="./css/index.css" />
+  <link rel="stylesheet" href="./css/cover.css" />
+  <!-- <link rel="stylesheet" href="./css/transition.css" /> -->
+  <link rel="stylesheet" href="./css/cloud.css" />
+</head>
+
+<body>
+  <!-- MÀN KHÓI -->
+  <div id="cloud-transition">
+    <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-left" />
+    <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-right" />
+    <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-bottom" />
+  </div>
+  <!-- <div id="transition-overlay"></div> -->
+  <div class="main">
+    <div class="prizes">
+      <div class="prizes-box" id="prizesBox"></div>
+      <div class="left-flower-top"></div>
     </div>
-    <!-- <div id="transition-overlay"></div> -->
-    <div class="main">
-      <div class="prizes">
-        <div class="prizes-box" id="prizesBox"></div>
-        <div class="left-flower-top"></div>
-      </div>
-      <div class="gacha">
-        <div class="gacha-machine">
-          <div class="machine-frame">
-            <div class="machine-display">
-              <div id="gachaRows"></div>
-            </div>
+    <div class="gacha">
+      <div class="gacha-machine">
+        <div class="machine-frame">
+          <div class="machine-display">
+            <div id="gachaRows"></div>
           </div>
         </div>
-        <div class="jackpot-match-area"></div>
-        <div class="jackpot-button-area">
-          <div class="left-bg">
-            <!-- <div class="left-bg-top">FENV</div> -->
-            <div class="left-bg-bottom"></div>
-          </div>
-          <button class="spin-btn" onclick="spinGacha()">QUAY</button>
-        </div>
       </div>
-      <div class="winners">
-        <button
-          class="image-button"
-          onclick="window.location.href='pages/importexcel.html'"
-        >
-          <img src="./assets/basics/lantern.png" alt="User Button" />
-        </button>
-        <div class="winner-box">
-          <div class="winners-title">Người Trúng Giải</div>
-          <div class="winner-list" id="winnerList"></div>
+      <div class="jackpot-match-area"></div>
+      <div class="jackpot-button-area">
+        <div class="left-bg">
+          <div class="left-bg-bottom"></div>
         </div>
-      </div>
-      <div class="fab-container">
-        <div class="fab-menu" id="fabMenu"></div>
-        <button class="fab-btn" onclick="toggleFabMenu()">🎁</button>
+        <button class="spin-btn" onclick="spinGacha()">QUAY</button>
       </div>
     </div>
-    <script src="./js/spin.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-    <script src="./js/cloud.js"></script>
-  </body>
+    <div class="winners">
+      <button class="image-button" onclick="window.location.href='pages/importexcel.html'">
+        <img src="./assets/basics/lantern.png" alt="User Button" />
+      </button>
+      <div class="winner-box">
+        <div class="winners-title">Người Trúng Giải</div>
+        <div class="winner-list" id="winnerList"></div>
+      </div>
+    </div>
+    <div class="fab-container">
+      <div class="fab-menu" id="fabMenu"></div>
+      <button class="fab-btn" onclick="toggleFabMenu()">🎁</button>
+    </div>
+  </div>
+  <script src="./js/spin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="./js/cloud.js"></script>
+</body>
+
 </html>

@@ -18,7 +18,7 @@ if (window.location.pathname.includes("intro")) {
       cloud.classList.remove("hide"); // mây che lại
 
       setTimeout(() => {
-        window.location.href = "index.html";
+        window.location.href = "gacha.html";
       }, 1200);
     }
   });
