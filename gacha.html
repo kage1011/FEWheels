@@ -1,70 +1,73 @@
 <!DOCTYPE html>
 <html lang="vi">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vòng Quay May Mắn Tết Giáp Thìn</title>
-    <link rel="stylesheet" href="./css/gacha.css">
+    <link rel="stylesheet" href="./css/gacha.css" />
     <link rel="stylesheet" href="./css/cloud.css" />
+  </head>
 
-</head>
+  <body>
+    <div id="confetti-wrapper" class="pure-css-confetti"></div>
 
-<body>
     <div id="cloud-transition">
-        <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-left" />
-        <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-right" />
-        <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-bottom" />
+      <img
+        src="./assets/basics/cloudtrans.png"
+        class="cloudtrans cloudtrans-top-left"
+      />
+      <img
+        src="./assets/basics/cloudtrans.png"
+        class="cloudtrans cloudtrans-top-right"
+      />
+      <img
+        src="./assets/basics/cloudtrans.png"
+        class="cloudtrans cloudtrans-left"
+      />
+      <img
+        src="./assets/basics/cloudtrans.png"
+        class="cloudtrans cloudtrans-right"
+      />
+      <img
+        src="./assets/basics/cloudtrans.png"
+        class="cloudtrans cloudtrans-bottom"
+      />
     </div>
     <div class="tet-background">
-        <div class="sparkle-layer"></div>
-        <div class="cloud-border top-border">
-            <div class="cloud-layer layer-1"></div>
-            <div class="cloud-layer layer-2"></div>
-            <div class="cloud-layer layer-3"></div>
-        </div>
-        <div class="cloud-border bottom-border">
-            <div class="cloud-layer-bottom layer-bottom-1"></div>
-            <div class="cloud-layer-bottom layer-bottom-2"></div>
-            <div class="cloud-layer-bottom layer-bottom-3"></div>
-        </div>
+      <div class="sparkle-layer"></div>
+      <div class="cloud-border top-border">
+        <div class="cloud-layer layer-1"></div>
+        <div class="cloud-layer layer-2"></div>
+        <div class="cloud-layer layer-3"></div>
+      </div>
+      <div class="cloud-border bottom-border">
+        <div class="cloud-layer-bottom layer-bottom-1"></div>
+        <div class="cloud-layer-bottom layer-bottom-2"></div>
+        <div class="cloud-layer-bottom layer-bottom-3"></div>
+      </div>
 
-        <div class="center-container">
-            <!-- <div class="main-frame">
-                <h2 class="frame-title">QUAY SỐ ĐÓN XUÂN</h2>
-                <button id="spinButton" class="spin-button">BẮT ĐẦU QUAY</button>
-                <div id="result" class="result-display"></div>
-            </div> -->
-            <div class="gacha">
-                <div class="gacha-machine">
-                    <div class="machine-frame">
-                        <div class="machine-display">
-                            <div id="gachaRows"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="jackpot-match-area"></div>
-                <div class="jackpot-button-area">
-                    <div class="left-bg">
-                        <div class="left-bg-bottom"></div>
-                    </div>
-                    <button class="spin-btn" onclick="spinGacha()">QUAY</button>
-                </div> -->
+      <div class="center-container">
+        <div class="gacha">
+          <div class="gacha-machine">
+            <div class="machine-frame">
+              <div class="machine-display">
+                <div id="gachaRows"></div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="decorative-cloud left-cloud"></div>
-        <div class="decorative-cloud right-cloud"></div>
-        <div class="fab-container">
-            <div class="fab-menu" id="fabMenu"></div>
-            <button class="fab-btn" onclick="toggleFabMenu()">🎁</button>
-        </div>
+      <div class="decorative-cloud left-cloud"></div>
+      <div class="decorative-cloud right-cloud"></div>
+      <div class="fab-container">
+        <div class="fab-menu" id="fabMenu"></div>
+        <button class="fab-btn" onclick="toggleFabMenu()">🎁</button>
+      </div>
     </div>
 
     <script src="./js/gacha.js"></script>
     <script src="./js/cloud.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-
-</body>
-
+  </body>
 </html>

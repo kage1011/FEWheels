@@ -1,637 +1,658 @@
 :root {
-    --red-dark: #8B0000;
-    /* Màu đỏ đậm */
-    --red-main: #990000;
-    /* Màu nền chính */
-    --gold-border: #FFD700;
-    /* Màu vàng kim */
-    --cloud-red: #B22222;
-    /* Màu đỏ của đám mây */
+  --red-dark: #8b0000;
+  /* Màu đỏ đậm */
+  --red-main: #990000;
+  /* Màu nền chính */
+  --gold-border: #ffd700;
+  /* Màu vàng kim */
+  --cloud-red: #b22222;
+  /* Màu đỏ của đám mây */
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-    /* Giúp các đám mây viền không bị thanh cuộn */
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  overflow: hidden;
+  /* Giúp các đám mây viền không bị thanh cuộn */
 }
 
 /* --- Tổng quan Nền Tết --- */
 .tet-background {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--red-main);
-    /* Tạo hiệu ứng vân đá mờ mờ cho nền đỏ (tương tự hình ảnh) */
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 5px 5px;
-    overflow: hidden;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--red-main);
+  /* Tạo hiệu ứng vân đá mờ mờ cho nền đỏ (tương tự hình ảnh) */
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 5px 5px;
+  overflow: hidden;
 }
 
 /* --- Lớp Lấp Lánh (Sparkle Layer) --- */
 /* Tạo các chấm nhỏ lấp lánh như bụi vàng */
 .sparkle-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Sử dụng Box Shadow để tạo các chấm vàng ngẫu nhiên */
-    box-shadow:
-        0 0 10px 5px rgba(255, 215, 0, 0.6),
-        /* Ánh sáng mờ */
-        10px 10px 0 #FFD700, -20px 30px 0 #FFD700,
-        50px 70px 0 #FFD700, -80px 10px 0 #FFD700,
-        /* Thêm nhiều điểm ngẫu nhiên hơn để lấp đầy */
-        100px 100px 0 #FFD700, -150px 50px 0 #FFD700,
-        200px 20px 0 #FFD700, -50px -100px 0 #FFD700,
-        30px 150px 0 #FFD700, -10px -200px 0 #FFD700,
-        /* ... bạn có thể thêm rất nhiều cặp (x y 0 color) ... */
-        150px 250px 0 #FFD700, 250px 150px 0 #FFD700,
-        -180px 180px 0 #FFD700, 180px -180px 0 #FFD700,
-        120px 200px 0 #FFD700, -220px 120px 0 #FFD700;
-    /* Có thể thêm animation để các điểm này nhấp nháy hoặc di chuyển */
-    animation: sparkle-glow 3s infinite alternate;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Sử dụng Box Shadow để tạo các chấm vàng ngẫu nhiên */
+  box-shadow: 0 0 10px 5px rgba(255, 215, 0, 0.6),
+    /* Ánh sáng mờ */ 10px 10px 0 #ffd700, -20px 30px 0 #ffd700,
+    50px 70px 0 #ffd700, -80px 10px 0 #ffd700,
+    /* Thêm nhiều điểm ngẫu nhiên hơn để lấp đầy */ 100px 100px 0 #ffd700,
+    -150px 50px 0 #ffd700, 200px 20px 0 #ffd700, -50px -100px 0 #ffd700,
+    30px 150px 0 #ffd700, -10px -200px 0 #ffd700,
+    /* ... bạn có thể thêm rất nhiều cặp (x y 0 color) ... */ 150px 250px 0
+      #ffd700,
+    250px 150px 0 #ffd700, -180px 180px 0 #ffd700, 180px -180px 0 #ffd700,
+    120px 200px 0 #ffd700, -220px 120px 0 #ffd700;
+  animation: sparkle-glow 3s infinite alternate;
 }
 
 @keyframes sparkle-glow {
-    from {
-        opacity: 0.8;
-    }
+  from {
+    opacity: 0.8;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
-
-/* --- Thiết kế Đám Mây Viền Trên/Dưới --- */
-/* --- Thiết kế Viền Đám Mây Mới (Sử dụng Hình ảnh) --- */
-
 .cloud-border {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 15vh;
-    overflow: hidden;
-    z-index: 10;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 17vh;
+  overflow: hidden;
+  z-index: 999;
 }
 
 .top-border {
-    top: 0;
+  top: 0;
 }
 
 .cloud-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../assets/basics/cloudtop.png');
-    background-repeat: repeat-x;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/basics/cloudtop.png");
+  background-repeat: repeat-x;
 }
 
 .layer-1 {
-    background-size: auto 150%;
-    background-position: 0 -35px;
-    animation: floatLayer1 3s ease-in-out infinite alternate;
+  background-size: auto 150%;
+  background-position: 0 -45px;
+  animation: floatLayer1 3s ease-in-out infinite alternate;
 }
 
 .layer-2 {
-    background-size: auto 120%;
-    background-position: 50px -10px;
-    animation: floatLayer2 6s ease-in-out infinite alternate;
+  background-size: auto 120%;
+  background-position: 50px -10px;
+  animation: floatLayer2 6s ease-in-out infinite alternate;
 }
 
 .layer-3 {
-    background-size: auto 100%;
-    background-position: 200px -20px;
-    animation: floatLayer3 9s ease-in-out infinite alternate;
+  background-size: auto 100%;
+  background-position: 200px -20px;
+  animation: floatLayer3 9s ease-in-out infinite alternate;
 }
 
 .bottom-border {
-    bottom: 0;
+  bottom: 0;
 }
 
 .cloud-layer-bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../assets/basics/cloudfoot.png');
-    background-repeat: repeat-x;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/basics/cloudfoot.png");
+  background-repeat: repeat-x;
 }
 
 .layer-bottom-1 {
-    background-size: auto 150%;
-    background-position: 0 30px;
-    animation: floatLayerBottom1 3s ease-in-out infinite alternate;
+  background-size: auto 150%;
+  background-position: 0 30px;
+  animation: floatLayerBottom1 3s ease-in-out infinite alternate;
 }
 
 .layer-bottom-2 {
-    background-size: auto 120%;
-    background-position: 50px 5px;
-    animation: floatLayerBottom2 6s ease-in-out infinite alternate;
+  background-size: auto 120%;
+  background-position: 50px 5px;
+  animation: floatLayerBottom2 6s ease-in-out infinite alternate;
 }
 
 .layer-bottom-3 {
-    background-size: auto 100%;
-    background-position: 200px 15px;
-    animation: floatLayerBottom3 9s ease-in-out infinite alternate;
+  background-size: auto 100%;
+  background-position: 200px 15px;
+  animation: floatLayerBottom3 9s ease-in-out infinite alternate;
 }
 
 /* --- Khung Chính Giữa --- */
 .center-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40%;
-    height: 60%;
-    z-index: 20;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 60%;
+  z-index: 999;
 }
 
 .main-frame {
-    width: 100%;
-    height: 100%;
-    background-color: var(--red-dark);
-    border: 8px solid var(--gold-border);
-    border-radius: 30px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 20px 5px var(--gold-border);
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--red-dark);
+  border: 8px solid var(--gold-border);
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 20px 5px var(--gold-border);
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .frame-title {
-    color: var(--gold-border);
-    font-size: 2.5em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    margin-bottom: 20px;
+  color: var(--gold-border);
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
 }
 
 .gacha {
-    /* width: 900px; */
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: end;
-    margin-bottom: 10px;
-    animation: gacha-slide-up 5s linear forwards;
+  /* width: 900px; */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  margin-bottom: 10px;
+  animation: gacha-slide-up 5s linear forwards;
 }
 
-
 .numbers {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .number {
-    width: 40px;
-    height: 50px;
-    background: #111;
-    color: rgb(255, 255, 255);
-    font-size: 35px;
-    font-weight: bold;
-    border-radius: 8px;
-    margin: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 10px rgb(137, 140, 137) inset;
-    transition: all 0.2s ease-out;
+  width: 40px;
+  height: 50px;
+  background: #111;
+  color: rgb(255, 255, 255);
+  font-size: 35px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgb(137, 140, 137) inset;
+  transition: all 0.2s ease-out;
 }
 
-
 .btn-spin {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #d32f2f;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .btn-spin:hover {
-    background-color: #b71c1c;
+  background-color: #b71c1c;
 }
 
 /*  */
 /* ====== KHUNG MÁY ====== */
 
 .gacha-machine {
-    width: 350px;
-    position: relative;
+  width: 350px;
+  position: relative;
 }
 
 .machine-frame {
-    background: linear-gradient(180deg, #c60000, #7a0000);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(255, 230, 0, 0.8);
+  background: linear-gradient(180deg, #c60000, #7a0000);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(255, 230, 0, 0.8);
 }
 
 /* ====== MÀN HÌNH HIỂN THỊ ====== */
 .machine-display {
-    background: transparent;
-    border-radius: 10px;
-    border: 4px solid #ffd966;
-    padding: 15px;
-    min-height: 60px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background: transparent;
+  border-radius: 10px;
+  border: 4px solid #ffd966;
+  padding: 15px;
+  min-height: 60px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    transition: height 0.25s ease;
+  transition: height 0.25s ease;
 }
 
 #gachaRows {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
 }
 
 /* Một hàng số */
 .gacha-row {
-    display: flex;
-    justify-content: center;
-    gap: 4px;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
 }
 
 .gacha-number {
-    background: #000;
-    color: #ffd966;
-    border: 2px solid #ffd966;
-    border-radius: 6px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.25s ease;
+  background: #000;
+  color: #ffd966;
+  border: 2px solid #ffd966;
+  border-radius: 6px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.25s ease;
 }
 
 .numbers-row {
-    display: flex;
-    justify-content: center;
-    margin: 4px 0;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  margin: 4px 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
-
-
 
 /* --- Đám Mây Trang Trí Hai Bên --- */
 .decorative-cloud {
-    position: absolute;
-    width: 120px;
-    height: 70px;
-    background-color: var(--cloud-red);
-    border: 2px solid var(--gold-border);
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 15;
+  position: absolute;
+  width: 120px;
+  height: 70px;
+  background-color: var(--cloud-red);
+  border: 2px solid var(--gold-border);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 15;
 }
 
 .decorative-cloud::before,
 .decorative-cloud::after {
-    content: '';
-    position: absolute;
-    background-color: var(--cloud-red);
-    border: 2px solid var(--gold-border);
-    border-radius: 50%;
+  content: "";
+  position: absolute;
+  background-color: var(--cloud-red);
+  border: 2px solid var(--gold-border);
+  border-radius: 50%;
 }
 
 .decorative-cloud::before {
-    width: 60px;
-    height: 60px;
-    top: -20px;
-    left: 20px;
+  /* width: 60px;
+  height: 60px; */
+  top: -20px;
+  left: 20px;
 }
 
 .decorative-cloud::after {
-    width: 80px;
-    height: 80px;
-    bottom: -30px;
-    right: 10px;
+  /* width: 80px;
+  height: 80px; */
+  bottom: -30px;
+  right: 10px;
 }
 
 .left-cloud {
-    top: 40%;
-    left: 5%;
-    transform: scale(0.7);
+  top: 40%;
+  left: 5%;
+  transform: scale(0.7);
 }
 
 .right-cloud {
-    top: 40%;
-    right: 5%;
-    transform: scale(0.7);
+  top: 40%;
+  right: 5%;
+  transform: scale(0.7);
 }
 
 /* --- Thiết kế Nút Quay Thưởng --- */
 .spin-button {
-    background-color: var(--gold-border);
-    color: var(--red-dark);
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.5em;
-    font-weight: bold;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-    box-shadow: 0 5px var(--red-dark);
+  background-color: var(--gold-border);
+  color: var(--red-dark);
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  box-shadow: 0 5px var(--red-dark);
 }
 
 .spin-button:hover {
-    background-color: #FFEA80;
+  background-color: #ffea80;
 }
 
 .spin-button:active {
-    transform: translateY(4px);
-    box-shadow: 0 1px var(--red-dark);
+  transform: translateY(4px);
+  box-shadow: 0 1px var(--red-dark);
 }
 
 .result-display {
-    margin-top: 20px;
-    color: white;
-    font-size: 1.2em;
+  margin-top: 20px;
+  color: white;
+  font-size: 1.2em;
 }
-
 
 /* Container cố định góc phải */
 .fab-container {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 30;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
 }
 
 /* Nút tròn lớn */
 .fab-btn {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    border: none;
-    background: #ff4747;
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: none;
+  background: #ff4747;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 
-    transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .fab-btn:hover {
-    transform: scale(1.07);
-    background: #ff5d5d;
+  transform: scale(1.07);
+  background: #ff5d5d;
 }
 
 /* MENU GIẢI THƯỞNG */
 .fab-menu {
-    display: none;
-    flex-direction: column;
-    margin-bottom: 10px;
-    align-items: center;
-    gap: 10px;
+  display: none;
+  flex-direction: column;
+  margin-bottom: 10px;
+  align-items: center;
+  gap: 10px;
 }
 
 /* Nút item giải */
 .fab-item {
-    min-width: 150px;
-    padding: 10px 15px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-    border: 2px solid transparent;
+  min-width: 150px;
+  padding: 10px 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  border: 2px solid transparent;
 
-    transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .fab-item:hover {
-    border-color: gold;
-    transform: translateY(-3px);
+  border-color: gold;
+  transform: translateY(-3px);
 }
 
 /* Animation hiện menu */
 .fab-menu.show {
-    display: flex;
-    animation: fadeIn 0.25s ease;
+  display: flex;
+  animation: fadeIn 0.25s ease;
 }
 
+.pure-css-confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.p-confetti {
+  position: absolute;
+  top: -20px;
+  /* Kích thước ngẫu nhiên sẽ được set qua style inline hoặc giữ mặc định */
+  width: 8px;
+  height: 8px;
+  opacity: 0.8;
+  animation: confettiFall linear infinite;
+}
 
 /* Animation cho đám mây chuyển động chậm rãi (lớp trên) */
-
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotateX(720deg) rotateY(360deg) rotateZ(180deg);
+    opacity: 0;
+  }
+}
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes floatLayer1 {
-    from {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(0);
+  }
 
-    to {
-        transform: translateY(-15px);
-    }
-
+  to {
+    transform: translateY(-15px);
+  }
 }
 
 @keyframes floatLayer2 {
-    from {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(0);
+  }
 
-    to {
-        transform: translateY(-20px);
-    }
+  to {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes floatLayer3 {
-    from {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(0);
+  }
 
-    to {
-        transform: translateY(-15px);
-    }
+  to {
+    transform: translateY(-15px);
+  }
 }
 
 @keyframes floatLayerBottom1 {
-    from {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(0);
+  }
 
-    to {
-        transform: translateY(15px);
-    }
-
+  to {
+    transform: translateY(15px);
+  }
 }
 
 @keyframes floatLayerBottom2 {
-    from {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(0);
+  }
 
-    to {
-        transform: translateY(20px);
-    }
+  to {
+    transform: translateY(20px);
+  }
 }
 
 @keyframes floatLayerBottom3 {
-    from {
-        transform: translateY(0);
-    }
+  from {
+    transform: translateY(0);
+  }
 
-    to {
-        transform: translateY(15px);
-    }
+  to {
+    transform: translateY(15px);
+  }
 }
 
 @keyframes gacha-slide-up {
-    0% {
-        transform: translateY(100vh);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
 
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* hiệu ứng blur khi quay */
 .spin-blur {
-    filter: blur(5px);
-    color: #0a0 !important;
+  filter: blur(5px);
+  color: #0a0 !important;
 }
 
 /* hơi rung giống máy thật */
 .spin-shake {
-    animation: shake 0.1s infinite;
+  animation: shake 0.1s infinite;
 }
 
 @keyframes shake {
-    0% {
-        transform: translateX(0px);
-    }
+  0% {
+    transform: translateX(0px);
+  }
 
-    25% {
-        transform: translateX(-2px);
-    }
+  25% {
+    transform: translateX(-2px);
+  }
 
-    50% {
-        transform: translateX(2px);
-    }
+  50% {
+    transform: translateX(2px);
+  }
 
-    75% {
-        transform: translateX(-1px);
-    }
+  75% {
+    transform: translateX(-1px);
+  }
 
-    100% {
-        transform: translateX(1px);
-    }
+  100% {
+    transform: translateX(1px);
+  }
 }
 
 @keyframes shakeTree {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    25% {
-        transform: rotate(1.5deg);
-    }
+  25% {
+    transform: rotate(1.5deg);
+  }
 
-    50% {
-        transform: rotate(0deg);
-    }
+  50% {
+    transform: rotate(0deg);
+  }
 
-    75% {
-        transform: rotate(-1.5deg);
-    }
+  75% {
+    transform: rotate(-1.5deg);
+  }
 
-    100% {
-        transform: rotate(0deg);
-    }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes slideUpBlur {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 .soft-bounce {
-    opacity: 0;
-    transform: scale(0.7);
-    animation: softBounce 0.7s cubic-bezier(0.26, 0.05, 0.43, 1.48) forwards;
+  opacity: 0;
+  transform: scale(0.7);
+  animation: softBounce 0.7s cubic-bezier(0.26, 0.05, 0.43, 1.48) forwards;
 }
 
 @keyframes softBounce {
-    60% {
-        opacity: 1;
-        transform: scale(1.1);
-    }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 
-    100% {
-        transform: scale(1);
-    }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes slideIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .question-rain {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 99999;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 99999;
 }
 
 .question {
-    position: absolute;
-    top: -60px;
-    font-size: 40px;
-    opacity: 1;
-    animation: fall linear forwards;
+  position: absolute;
+  top: -60px;
+  font-size: 40px;
+  opacity: 1;
+  animation: fall linear forwards;
 }
 
 @keyframes fall {
-    to {
-        transform: translateY(120vh) rotate(360deg);
-        opacity: 0;
-    }
+  to {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
 }

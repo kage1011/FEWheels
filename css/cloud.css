@@ -12,28 +12,45 @@
   transition: transform 2.2s cubic-bezier(0.77, 0, 0.18, 1), opacity 2.2s ease;
 }
 
+.cloudtrans-top-left {
+  width: 120%;
+  left: -20%;
+  top: -60%;
+}
+.cloudtrans-top-right {
+  width: 120%;
+  right: -45%;
+  top: -60%;
+}
+
 .cloudtrans-left {
   width: 120%;
-  left: -30%;
-  top: 10%;
+  left: -20%;
+  top: 0%;
 }
 
 .cloudtrans-right {
   width: 120%;
   right: -30%;
-  top: 12%;
+  top: 15%;
 }
 
 .cloudtrans-bottom {
   width: 180%;
-  bottom: -40%;
-  left: -10%;
+  bottom: -60%;
+  left: -40%;
 }
 
 #cloud-transition.hide .cloudtrans-left {
   transform: translateX(-120%);
 }
+#cloud-transition.hide .cloudtrans-top-left {
+  transform: translateX(-120%);
+}
 #cloud-transition.hide .cloudtrans-right {
+  transform: translateX(120%);
+}
+#cloud-transition.hide .cloudtrans-top-right {
   transform: translateX(120%);
 }
 #cloud-transition.hide .cloudtrans-bottom {
