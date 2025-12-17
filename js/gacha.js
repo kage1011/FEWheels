@@ -63,6 +63,7 @@ function checkUserCount(db) {
 function renderPrizeMenu(prizes) {
   const menu = document.getElementById("fabMenu");
   menu.innerHTML = "";
+  console.log("Prizes:", prizes);
   prizes.forEach((p) => {
     const div = document.createElement("div");
     div.className = "fab-item";
@@ -339,3 +340,7 @@ document.addEventListener("DOMContentLoaded", function () {
     wrapper.appendChild(confetti);
   }
 });
+
+
+initializeUsers();
+initPrizeSelect();

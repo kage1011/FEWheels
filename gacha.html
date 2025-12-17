@@ -1,53 +1,40 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vòng Quay May Mắn Tết Giáp Thìn</title>
     <link rel="stylesheet" href="./css/gacha.css" />
     <link rel="stylesheet" href="./css/cloud.css" />
-  </head>
+    <link rel="stylesheet" href="./css/jackpotmachine.css" />
+</head>
 
-  <body>
+<body>
     <div id="confetti-wrapper" class="pure-css-confetti"></div>
 
     <div id="cloud-transition">
-      <img
-        src="./assets/basics/cloudtrans.png"
-        class="cloudtrans cloudtrans-top-left"
-      />
-      <img
-        src="./assets/basics/cloudtrans.png"
-        class="cloudtrans cloudtrans-top-right"
-      />
-      <img
-        src="./assets/basics/cloudtrans.png"
-        class="cloudtrans cloudtrans-left"
-      />
-      <img
-        src="./assets/basics/cloudtrans.png"
-        class="cloudtrans cloudtrans-right"
-      />
-      <img
-        src="./assets/basics/cloudtrans.png"
-        class="cloudtrans cloudtrans-bottom"
-      />
+        <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-top-left" />
+        <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-top-right" />
+        <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-left" />
+        <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-right" />
+        <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-bottom" />
     </div>
     <div class="tet-background">
-      <div class="sparkle-layer"></div>
-      <div class="cloud-border top-border">
-        <div class="cloud-layer layer-1"></div>
-        <div class="cloud-layer layer-2"></div>
-        <div class="cloud-layer layer-3"></div>
-      </div>
-      <div class="cloud-border bottom-border">
-        <div class="cloud-layer-bottom layer-bottom-1"></div>
-        <div class="cloud-layer-bottom layer-bottom-2"></div>
-        <div class="cloud-layer-bottom layer-bottom-3"></div>
-      </div>
+        <div class="sparkle-layer"></div>
+        <div class="cloud-border top-border">
+            <div class="cloud-layer layer-1"></div>
+            <div class="cloud-layer layer-2"></div>
+            <div class="cloud-layer layer-3"></div>
+        </div>
+        <div class="cloud-border bottom-border">
+            <div class="cloud-layer-bottom layer-bottom-1"></div>
+            <div class="cloud-layer-bottom layer-bottom-2"></div>
+            <div class="cloud-layer-bottom layer-bottom-3"></div>
+        </div>
 
-      <div class="center-container">
-        <div class="gacha">
+        <div class="center-container">
+            <!-- <div class="gacha">
           <div class="gacha-machine">
             <div class="machine-frame">
               <div class="machine-display">
@@ -55,19 +42,89 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div> -->
 
-      <div class="decorative-cloud left-cloud"></div>
-      <div class="decorative-cloud right-cloud"></div>
-      <div class="fab-container">
-        <div class="fab-menu" id="fabMenu"></div>
-        <button class="fab-btn" onclick="toggleFabMenu()">🎁</button>
-      </div>
+            <div class="machine-container">
+
+                <div class="panel top-panel p-top">
+                    <div class="lights-container" id="lights-top">
+                        <div class="bulb" style="left: 56px; top: -5px; animation-delay: 0s;"></div>
+                        <div class="bulb" style="left: 86.3982px; top: -5px; animation-delay: 0.1s;"></div>
+                        <div class="bulb" style="left: 116.796px; top: -5px; animation-delay: 0.2s;"></div>
+                        <div class="bulb" style="left: 147.195px; top: -5px; animation-delay: 0.3s;"></div>
+                        <div class="bulb" style="left: 177.593px; top: -5px; animation-delay: 0.4s;"></div>
+                        <div class="bulb" style="left: 207.991px; top: -5px; animation-delay: 0.5s;"></div>
+                        <div class="bulb" style="left: 238.389px; top: -5px; animation-delay: 0.6s;"></div>
+                        <div class="bulb" style="left: 268.788px; top: -5px; animation-delay: 0.7s;"></div>
+                        <div class="bulb" style="left: 299.186px; top: -5px; animation-delay: 0.8s;"></div>
+                        <div class="bulb" style="left: 329.584px; top: -5px; animation-delay: 0.9s;"></div>
+                        <div class="bulb" style="left: 359.982px; top: -5px; animation-delay: 1s;"></div>
+                        <div class="bulb" style="left: 390.381px; top: -5px; animation-delay: 1.1s;"></div>
+                        <div class="bulb" style="left: 420.779px; top: -5px; animation-delay: 1.2s;"></div>
+                        <div class="bulb" style="left: 451.177px; top: -5px; animation-delay: 1.3s;"></div>
+                        <!--  -->
+                        <div class="bulb" style="left: 510px; top: 1px; animation-delay: 1.4s;"></div>
+                        <div class="bulb" style="left: 530px; top: 24.058px; animation-delay: 1.5s;"></div>
+                        <div class="bulb" style="left: 532px; top: 52.4095px; animation-delay: 1.6s;"></div>
+                        <div class="bulb" style="left: 532px; top: 82.8053px; animation-delay: 1.7s;"></div>
+                        <div class="bulb" style="left: 532px; top: 113.204px; animation-delay: 1.8s;"></div>
+                        <!--  -->
+                        <div class="bulb" style="left: 502.398px; top: 136px; animation-delay: 1.9s;"></div>
+                        <div class="bulb" style="left: 470px; top: 136px; animation-delay: 2s;"></div>
+                        <div class="bulb" style="left: 439.602px; top: 136px; animation-delay: 2.1s;"></div>
+                        <div class="bulb" style="left: 409.204px; top: 136px; animation-delay: 2.2s;"></div>
+                        <div class="bulb" style="left: 378.805px; top: 136px; animation-delay: 2.3s;"></div>
+                        <div class="bulb" style="left: 348.407px; top: 136px; animation-delay: 2.4s;"></div>
+                        <div class="bulb" style="left: 318.009px; top: 136px; animation-delay: 2.5s;"></div>
+                        <div class="bulb" style="left: 297.611px; top: 136px; animation-delay: 2.6s;"></div>
+                        <div class="bulb" style="left: 259.212px; top: 136px; animation-delay: 2.7s;"></div>
+                        <div class="bulb" style="left: 226.814px; top: 136px; animation-delay: 2.8s;"></div>
+                        <div class="bulb" style="left: 196.416px; top: 136px; animation-delay: 2.9s;"></div>
+                        <div class="bulb" style="left: 166.018px; top: 136px; animation-delay: 3s;"></div>
+                        <div class="bulb" style="left: 135.619px; top: 136px; animation-delay: 3.1s;"></div>
+                        <div class="bulb" style="left: 101.2212px; top: 136px; animation-delay: 3.2s;"></div>
+                        <div class="bulb" style="left: 74.823px; top: 136px; animation-delay: 3.3s;"></div>
+                        <div class="bulb" style="left: 48.4248px; top: 136px; animation-delay: 3.4s;"></div>
+                        <div class="bulb" style="left: 14.02655px; top: 136px; animation-delay: 3.5s;"></div>
+                        <!--  -->
+                        <div class="bulb" style="left: -5px; top: 113.204px; animation-delay: 3.6s;"></div>
+                        <div class="bulb" style="left: -5px; top: 82.8053px; animation-delay: 3.7s;"></div>
+                        <div class="bulb" style="left: -5px; top: 52.4095px; animation-delay: 3.8s;"></div>
+                        <div class="bulb" style="left: -4px; top: 24.058px; animation-delay: 3.9s;"></div>
+                        <div class="bulb" style="left: 15px; top: 1px; animation-delay: 4.0s;"></div>
+                    </div>
+                    <div class="crown">♕</div>
+                    <h1 class="jackpot-text">JACKPOT</h1>
+                </div>
+
+                <div class="panel middle-panel p-middle">
+                    <div class="lights-container" id="lights-middle"></div>
+                    <div id="gachaRows">
+                    </div>
+                </div>
+                <!-- <div class="handle-base"></div>
+                <div class="handle-stick"></div>
+                <div class="handle-ball"></div> -->
+
+                <!-- <div class="panel bottom-panel">
+                    <div class="lights-container" id="lights-bottom"></div> <button class="spin-btn">SPIN</button>
+                </div> -->
+
+            </div>
+        </div>
+
+        <div class="decorative-cloud left-cloud"></div>
+        <div class="decorative-cloud right-cloud"></div>
+        <div class="fab-container">
+            <div class="fab-menu" id="fabMenu"></div>
+            <button class="fab-btn" onclick="toggleFabMenu()">🎁</button>
+        </div>
     </div>
 
     <script src="./js/gacha.js"></script>
     <script src="./js/cloud.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
-  </body>
+    <script src="./js/jackpotmachine.js"></script>
+</body>
+
 </html>
