@@ -1,0 +1,83 @@
+.winner-wraper {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 10000;
+}
+
+.winner-card {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    text-align: center;
+    color: #fff;
+    z-index: 50;
+}
+
+.winner-card-animation {
+    animation: fadeInWinner 1s ease-out;
+}
+
+.winner-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #ffd700;
+    background-color: #fff;
+    object-fit: cover;
+}
+
+.winner-card .info {
+    margin-top: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.pos-top-center {
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pos-left {
+    top: 40vh;
+    left: 15vw;
+}
+
+.pos-right {
+    top: 40vh;
+    right: 15vw;
+}
+
+.pos-bottom-left {
+    bottom: 2vh;
+    left: 10vw;
+}
+
+.pos-bottom-right {
+    bottom: 2vh;
+    right: 10vw;
+}
+
+.winner-hide {
+    opacity: 0;
+}
+
+@keyframes fadeInWinner {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

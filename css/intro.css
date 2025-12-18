@@ -641,3 +641,114 @@ body::-webkit-scrollbar {
         transform: translateY(0) scale(1);
     }
 }
+
+
+
+.part {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.tail {
+    clip-path: polygon(0% 0%, 31.7% 0%, 26.2% 46.8%, 21.7% 56%, 17.7% 100.3%, 0% 100.3%);
+    transform-origin: 40% 45%;
+    opacity: 0;
+    animation: waggle 1.5s ease-in-out infinite;
+}
+
+.mane {
+    clip-path: polygon(28.7% 26.3%, 49.6% 0.3%, 58.4% 14.8%, 49.4% 19.3%, 45.9% 37.5%, 38.7% 44%);
+    transform-origin: 55% 40%;
+    opacity: 0;
+    animation: flutter 2s ease-in-out infinite;
+}
+
+/* ANIMATION */
+@keyframes waggle {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(0deg) translateY(-2px);
+    }
+}
+
+@keyframes flutter {
+
+    0%,
+    100% {
+        transform: skewY(0deg);
+    }
+
+    50% {
+        transform: skewY(-3deg) scale(1.01);
+    }
+}
+
+@keyframes opaci {
+
+    0% {
+        opacity: 0;
+
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.part-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.tail-right {
+    clip-path: polygon(72.3% 43%, 98% 32.5%, 100% 83%, 80% 71.8%, 78.6% 61%, 77.6% 53.5%);
+    transform-origin: 40% 45%;
+    opacity: 0;
+    animation: waggle-right 1.5s ease-in-out infinite;
+}
+
+.mane-right {
+    clip-path: polygon(38.9% 9.5%, 81.4% 3.8%, 63.3% 44%, 54.3% 40.3%, 51.8% 21.3%, 43% 16%);
+    transform-origin: 55% 40%;
+    opacity: 0;
+    animation: flutter-right 2s ease-in-out infinite;
+}
+
+.opacity-horse {
+    opacity: 1;
+}
+
+@keyframes waggle-right {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(0deg) translateY(2px);
+    }
+}
+
+@keyframes flutter-right {
+
+    0%,
+    100% {
+        transform: skewY(1.1deg);
+    }
+
+    50% {
+        transform: skewY(0deg) scale(1.01);
+    }
+}

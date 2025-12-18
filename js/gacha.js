@@ -194,10 +194,12 @@ async function spinGacha() {
   }
 
   const element = document.querySelector(".handle-base");
-  element.classList.add("rotating-image");
+  // element.classList.add("rotating-image");
+  element.classList.add("lever-pull-animation");
+
   setTimeout(() => {
-    element.classList.remove("rotating-image");
-  }, 3000);
+    element.classList.remove("lever-pull-animation");
+  }, 1200);
 
   startQuestionRain(5000);
   const winners = [];
@@ -229,6 +231,13 @@ async function spinGacha() {
   setTimeout(function () {
     fireConfetti();
   }, 5000);
+
+  setTimeout(function () {
+    toggleFan();
+    setTimeout(function () {
+      renderWinners(winners)
+    }, 2000);
+  }, 10000);
 }
 
 function animateDigit(element, targetDigit, duration) {
@@ -265,24 +274,47 @@ function animateRow(rowIndex, digits) {
     animateDigit(cell, digit, 1600 + i * 2000);
   }
 }
-
 function fireConfetti() {
-  const duration = 2 * 1000;
+  const duration = 4 * 1000; // Tăng thời gian bắn lên 4 giây cho rực rỡ
   const end = Date.now() + duration;
 
   (function frame() {
+    // Tăng mật độ hạt mỗi lần bắn
+    const pCount = 15;
+
+    // Pháo bắn từ bên TRÁI
     confetti({
-      particleCount: 7,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
+      particleCount: pCount,
+      angle: 60,       // Góc bắn chéo lên
+      spread: 80,       // Độ xòe rộng hơn
+      origin: { x: -0.1, y: 0.8 }, // Bắn hơi lệch ngoài màn hình một chút
+      ticks: 500,       // Tăng ticks cực cao để hạt không biến mất sớm
+      gravity: 0.7,     // Trọng lực tự nhiên để tạo quỹ đạo hình vòng cung
+      startVelocity: 60, // LỰC BẮN: Càng cao pháo càng bay XA
+      scalar: 1.5,      // Hạt pháo TO rõ rệt
+      colors: ['#ff0000', '#ffd700', '#ffffff', '#ffcccb']
+    });
+
+    // Pháo bắn từ bên PHẢI
+    confetti({
+      particleCount: pCount,
+      angle: 120,
+      spread: 80,
+      origin: { x: 1.1, y: 0.8 },
+      ticks: 500,
+      gravity: 0.7,
+      startVelocity: 60, // Tăng lực bắn đồng bộ
+      scalar: 1.5,
+      colors: ['#ff0000', '#ffd700', '#ffffff', '#ffcccb']
     });
 
     confetti({
-      particleCount: 7,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 },
+      particleCount: pCount, // Một phát nổ 200 hạt
+      spread: 160,
+      origin: { y: 0.6 },
+      startVelocity: 50,
+      scalar: 2,
+      ticks: 400
     });
 
     if (Date.now() < end) {
@@ -350,8 +382,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 initializeUsers();
 initPrizeSelect();
-
-const prizesBox = document.getElementsByClassName("iphone");
-setTimeout(() => {
-  prizesBox.classList.remove("soft-bounce");
-}, 2000);

@@ -60,3 +60,14 @@ function renderCircles() {
 }
 
 renderCircles();
+
+setTimeout(function () {
+  const tr = document.querySelector(".tail-right");
+  const mr = document.querySelector(".mane-right");
+  const t = document.querySelector(".tail");
+  const m = document.querySelector(".mane");
+  m.classList.add("opacity-horse");
+  t.classList.add("opacity-horse");
+  tr.classList.add("opacity-horse");
+  mr.classList.add("opacity-horse");
+}, 2000);

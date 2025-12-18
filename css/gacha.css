@@ -18,11 +18,9 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: var(--red-main);
-  background-image: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(circle,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px);
   background-size: 5px 5px;
   overflow: hidden;
 }
@@ -206,8 +204,7 @@ body {
   right: 10px;
 } */
 
-.left-cloud {
-}
+.left-cloud {}
 
 .left-cloud .bg-prize {
   position: absolute;
@@ -267,7 +264,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 999;
+  z-index: 99999;
 }
 
 /* Nút tròn lớn */
@@ -303,7 +300,6 @@ body {
   gap: 10px;
 }
 
-/* Nút item giải */
 .fab-item {
   min-width: 150px;
   padding: 10px 15px;
@@ -321,7 +317,6 @@ body {
   transform: translateY(-3px);
 }
 
-/* Animation hiện menu */
 .fab-menu.show {
   display: flex;
   animation: fadeIn 0.25s ease;
@@ -341,26 +336,24 @@ body {
 .p-confetti {
   position: absolute;
   top: -20px;
-  /* Kích thước ngẫu nhiên sẽ được set qua style inline hoặc giữ mặc định */
   width: 8px;
   height: 8px;
   opacity: 0.8;
   animation: confettiFall linear infinite;
 }
 
-/* Hiệu ứng phần thưởng */
-
-/* Animation cho đám mây chuyển động chậm rãi (lớp trên) */
 @keyframes confettiFall {
   0% {
     transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
     opacity: 1;
   }
+
   100% {
     transform: translateY(110vh) rotateX(720deg) rotateY(360deg) rotateZ(180deg);
     opacity: 0;
   }
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
