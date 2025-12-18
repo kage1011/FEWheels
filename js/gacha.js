@@ -192,6 +192,13 @@ async function spinGacha() {
     alert("Không đủ người để quay!");
     return;
   }
+
+  const element = document.querySelector(".handle-base");
+  element.classList.add("rotating-image");
+  setTimeout(() => {
+    element.classList.remove("rotating-image");
+  }, 3000);
+
   startQuestionRain(5000);
   const winners = [];
   for (let i = 0; i < slotCount; i++) {
@@ -341,6 +348,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
 initializeUsers();
 initPrizeSelect();
+
+const prizesBox = document.getElementsByClassName("iphone");
+setTimeout(() => {
+  prizesBox.classList.remove("soft-bounce");
+}, 2000);

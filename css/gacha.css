@@ -1,12 +1,9 @@
 :root {
   --red-dark: #8b0000;
-  /* Màu đỏ đậm */
-  --red-main: #990000;
-  /* Màu nền chính */
+  --red-main: rgb(116, 0, 6);
   --gold-border: #ffd700;
-  /* Màu vàng kim */
   --cloud-red: #b22222;
-  /* Màu đỏ của đám mây */
+  --glow-color: rgba(0, 150, 255, 0.6);
 }
 
 body {
@@ -14,16 +11,13 @@ body {
   padding: 0;
   font-family: "Arial", sans-serif;
   overflow: hidden;
-  /* Giúp các đám mây viền không bị thanh cuộn */
 }
 
-/* --- Tổng quan Nền Tết --- */
 .tet-background {
   position: relative;
   width: 100vw;
   height: 100vh;
   background-color: var(--red-main);
-  /* Tạo hiệu ứng vân đá mờ mờ cho nền đỏ (tương tự hình ảnh) */
   background-image: radial-gradient(
     circle,
     rgba(255, 255, 255, 0.1) 1px,
@@ -41,17 +35,12 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Sử dụng Box Shadow để tạo các chấm vàng ngẫu nhiên */
-  box-shadow: 0 0 10px 5px rgba(255, 215, 0, 0.6),
-    /* Ánh sáng mờ */ 10px 10px 0 #ffd700, -20px 30px 0 #ffd700,
-    50px 70px 0 #ffd700, -80px 10px 0 #ffd700,
-    /* Thêm nhiều điểm ngẫu nhiên hơn để lấp đầy */ 100px 100px 0 #ffd700,
+  box-shadow: 0 0 10px 5px rgba(255, 215, 0, 0.6), 10px 10px 0 #ffd700,
+    -20px 30px 0 #ffd700, 50px 70px 0 #ffd700, -80px 10px 0 #ffd700,
     -150px 50px 0 #ffd700, 200px 20px 0 #ffd700, -50px -100px 0 #ffd700,
-    30px 150px 0 #ffd700, -10px -200px 0 #ffd700,
-    /* ... bạn có thể thêm rất nhiều cặp (x y 0 color) ... */ 150px 250px 0
-      #ffd700,
-    250px 150px 0 #ffd700, -180px 180px 0 #ffd700, 180px -180px 0 #ffd700,
-    120px 200px 0 #ffd700, -220px 120px 0 #ffd700;
+    30px 150px 0 #ffd700, -10px -200px 0 #ffd700, #ffd700, 250px 150px 0 #ffd700,
+    -180px 180px 0 #ffd700, 180px -180px 0 #ffd700, 120px 200px 0 #ffd700,
+    -220px 120px 0 #ffd700;
   animation: sparkle-glow 3s infinite alternate;
 }
 
@@ -175,39 +164,6 @@ body {
   margin-bottom: 20px;
 }
 
-.gacha {
-  /* width: 900px; */
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: end;
-  margin-bottom: 10px;
-  animation: gacha-slide-up 5s linear forwards;
-}
-
-.numbers {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.number {
-  width: 40px;
-  height: 50px;
-  background: #111;
-  color: rgb(255, 255, 255);
-  font-size: 35px;
-  font-weight: bold;
-  border-radius: 8px;
-  margin: 3px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 10px rgb(137, 140, 137) inset;
-  transition: all 0.2s ease-out;
-}
-
 .btn-spin {
   padding: 10px 20px;
   font-size: 18px;
@@ -223,109 +179,49 @@ body {
   background-color: #b71c1c;
 }
 
-/*  */
-/* ====== KHUNG MÁY ====== */
-
-.gacha-machine {
-  width: 350px;
-  position: relative;
-}
-
-.machine-frame {
-  background: linear-gradient(180deg, #c60000, #7a0000);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 25px rgba(255, 230, 0, 0.8);
-}
-
-/* ====== MÀN HÌNH HIỂN THỊ ====== */
-.machine-display {
-  background: transparent;
-  border-radius: 10px;
-  border: 4px solid #ffd966;
-  padding: 15px;
-  min-height: 60px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  transition: height 0.25s ease;
-}
-
-#gachaRows {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  width: 100%;
-}
-
-/* Một hàng số */
-.gacha-row {
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-}
-
-.gacha-number {
-  background: #000;
-  color: #ffd966;
-  border: 2px solid #ffd966;
-  border-radius: 6px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.25s ease;
-}
-
-.numbers-row {
-  display: flex;
-  justify-content: center;
-  margin: 4px 0;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
 /* --- Đám Mây Trang Trí Hai Bên --- */
 .decorative-cloud {
   position: absolute;
-  width: 120px;
-  height: 70px;
-  background-color: var(--cloud-red);
-  border: 2px solid var(--gold-border);
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 30%;
+  height: 100%;
   z-index: 15;
 }
 
-.decorative-cloud::before,
+/* .decorative-cloud::before,
 .decorative-cloud::after {
   content: "";
   position: absolute;
   background-color: var(--cloud-red);
   border: 2px solid var(--gold-border);
   border-radius: 50%;
-}
+} */
 
-.decorative-cloud::before {
-  /* width: 60px;
-  height: 60px; */
+/* .decorative-cloud::before {
   top: -20px;
   left: 20px;
 }
 
 .decorative-cloud::after {
-  /* width: 80px;
-  height: 80px; */
   bottom: -30px;
   right: 10px;
-}
+} */
 
 .left-cloud {
-  top: 40%;
-  left: 5%;
-  transform: scale(0.7);
+}
+
+.left-cloud .bg-prize {
+  position: absolute;
+  width: 500px;
+  height: 600px;
+  bottom: 15vh;
+  left: 0;
+}
+
+.left-cloud .iphone {
+  position: absolute;
+  width: 300px;
+  bottom: calc(15vh + 100px);
+  left: 120px;
 }
 
 .right-cloud {
@@ -451,6 +347,8 @@ body {
   opacity: 0.8;
   animation: confettiFall linear infinite;
 }
+
+/* Hiệu ứng phần thưởng */
 
 /* Animation cho đám mây chuyển động chậm rãi (lớp trên) */
 @keyframes confettiFall {
@@ -654,5 +552,22 @@ body {
   to {
     transform: translateY(120vh) rotate(360deg);
     opacity: 0;
+  }
+}
+
+.soft-bounce {
+  opacity: 0;
+  transform: scale(0.7);
+  animation: softBounce 0.7s cubic-bezier(0.26, 0.05, 0.43, 1.48) forwards;
+}
+
+@keyframes softBounce {
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
