@@ -293,7 +293,7 @@ function fireConfetti() {
 
   (function frame() {
     // Tăng mật độ hạt mỗi lần bắn
-    const pCount = 15;
+    const pCount = 5;
 
     // Pháo bắn từ bên TRÁI
     confetti({
