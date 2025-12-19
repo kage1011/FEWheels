@@ -31,7 +31,20 @@ async function loadPrizeJson() {
   const res = await fetch("../json/gift.json");
   return await res.json();
 }
+async function loadUserJson() {
+  const res = await fetch("../json/user.json");
+  return await res.json();
+}
+function saveUsersToDB(db, users) {
+  return new Promise((resolve) => {
+    const tx = db.transaction("Users", "readwrite");
+    const store = tx.objectStore("Users");
 
+    users.forEach((user) => store.put(user));
+
+    tx.oncomplete = () => resolve(true);
+  });
+}
 async function initPrizeSelect() {
   prizeList = await loadPrizeJson();
   renderPrizeMenu(prizeList);
@@ -235,7 +248,7 @@ async function spinGacha() {
   setTimeout(function () {
     toggleFan();
     setTimeout(function () {
-      renderWinners(winners)
+      renderWinners(winners);
     }, 2000);
   }, 10000);
 }
@@ -285,14 +298,14 @@ function fireConfetti() {
     // Pháo bắn từ bên TRÁI
     confetti({
       particleCount: pCount,
-      angle: 60,       // Góc bắn chéo lên
-      spread: 80,       // Độ xòe rộng hơn
+      angle: 60, // Góc bắn chéo lên
+      spread: 80, // Độ xòe rộng hơn
       origin: { x: -0.1, y: 0.8 }, // Bắn hơi lệch ngoài màn hình một chút
-      ticks: 500,       // Tăng ticks cực cao để hạt không biến mất sớm
-      gravity: 0.7,     // Trọng lực tự nhiên để tạo quỹ đạo hình vòng cung
+      ticks: 500, // Tăng ticks cực cao để hạt không biến mất sớm
+      gravity: 0.7, // Trọng lực tự nhiên để tạo quỹ đạo hình vòng cung
       startVelocity: 60, // LỰC BẮN: Càng cao pháo càng bay XA
-      scalar: 1.5,      // Hạt pháo TO rõ rệt
-      colors: ['#ff0000', '#ffd700', '#ffffff', '#ffcccb']
+      scalar: 1.5, // Hạt pháo TO rõ rệt
+      colors: ["#ff0000", "#ffd700", "#ffffff", "#ffcccb"],
     });
 
     // Pháo bắn từ bên PHẢI
@@ -305,7 +318,7 @@ function fireConfetti() {
       gravity: 0.7,
       startVelocity: 60, // Tăng lực bắn đồng bộ
       scalar: 1.5,
-      colors: ['#ff0000', '#ffd700', '#ffffff', '#ffcccb']
+      colors: ["#ff0000", "#ffd700", "#ffffff", "#ffcccb"],
     });
 
     confetti({
@@ -314,7 +327,7 @@ function fireConfetti() {
       origin: { y: 0.6 },
       startVelocity: 50,
       scalar: 2,
-      ticks: 400
+      ticks: 400,
     });
 
     if (Date.now() < end) {
