@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Slot Machine</title>
+    <link rel="stylesheet" href="css/noel.css">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet"> -->
+</head>
+
+<body>
+    <div id="intro-screen">
+        <!-- <div class="intro-content">
+            <h1>Merry Christmas</h1>
+            <p class="instruction-text">Nhấn <span class="key-badge">Spacebar</span> để vào sảnh</p>
+        </div> -->
+    </div>
+    <div class="main-stage">
+
+        <div class="tree-wrapper">
+            <img src="./assets/basics/cay-thong-noel.png" alt="Cây thông Noel" class="tree-img">
+
+            <div class="slots-container">
+                <div class="slot">0</div>
+                <div class="slot">0</div>
+                <div class="slot">0</div>
+                <div class="slot">0</div>
+                <div class="slot">0</div>
+                <div class="slot">0</div>
+            </div>
+
+            <button class="spin-btn" onclick="quaySo()">QUAY SỐ</button>
+        </div>
+
+    </div>
+    <div id="winner-dialog" class="dialog-overlay">
+        <div class="dialog-card">
+            <div class="dialog-decor top">❄️</div>
+            <h2 class="dialog-title">CHÚC MỪNG CHIẾN THẮNG!</h2>
+            <div class="winner-info">
+                <p class="label">Người may mắn là:</p>
+                <div id="winner-name">Đang chờ...</div>
+                <div id="winner-code">MS: 000000</div>
+            </div>
+            <button id="close-dialog">Tiếp tục quay số</button>
+            <div class="dialog-decor bottom">🎁</div>
+        </div>
+    </div>
+    <script src="js/noel.js"></script>
+</body>
+
+</html>

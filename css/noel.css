@@ -1,0 +1,234 @@
+:root {
+    --christmas-red: #d42426;
+    --christmas-green: #165b33;
+    --christmas-gold: #f8b229;
+    --snow-white: #f0f0f0;
+    --dark-bg: #1a1a1a;
+    /* --font-festive: 'Mountains of Christmas', cursive; */
+}
+
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    /* font-family: var(--font-festive); */
+    font-size: xx-large;
+    color: beige;
+}
+
+#intro-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 10vh;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent), url('../assets/basics/bg1.png') center/cover;
+    transition: 1s ease;
+}
+
+#intro-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.main-stage {
+    width: 100vw;
+    height: 100vh;
+    background: url('../assets/basics/bg2.png') no-repeat center center;
+    background-size: contain;
+    position: relative;
+}
+
+.tree-wrapper {
+    position: absolute;
+    bottom: 5%;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 35vw;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tree-img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+.slots-container {
+    position: absolute;
+    top: 55%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+}
+
+.slot {
+    width: 45px;
+    height: 65px;
+    background-color: #fff;
+    border: 3px solid #d32f2f;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #b71c1c;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Nút bấm */
+.spin-btn {
+    /* margin-top: -40px; */
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(180deg, #ff5252, #b71c1c);
+    border: 2px solid white;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+    margin-left: 55px;
+}
+
+.spin-btn:hover {
+    transform: scale(1.1);
+}
+
+.spin-btn:disabled {
+    background: #757575;
+    cursor: not-allowed;
+}
+
+@media (max-width: 1200px) {
+    .slot {
+        width: 35px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+
+/* Dialog */
+/* Overlay che phủ toàn màn hình */
+.dialog-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    /* Ẩn mặc định */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+/* Thẻ thông báo chính */
+.dialog-card {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    position: relative;
+    border: 5px solid var(--gold);
+    box-shadow: 0 0 50px rgba(248, 178, 41, 0.5);
+    animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.dialog-title {
+    font-family: 'Mountains of Christmas', cursive;
+    color: var(--christmas-red);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.winner-info {
+    background: #fdf2f2;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px dashed var(--christmas-red);
+    margin-bottom: 25px;
+}
+
+.winner-info .label {
+    color: #666;
+    font-style: italic;
+}
+
+#winner-name {
+    font-size: 2.2rem;
+    color: var(--christmas-green);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+#winner-code {
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: #444;
+}
+
+/* Nút bấm */
+#close-dialog {
+    background: linear-gradient(135deg, var(--christmas-green), #248a52);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#close-dialog:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-decor {
+    font-size: 2rem;
+    position: absolute;
+}
+
+.dialog-decor.top {
+    top: -20px;
+    right: -20px;
+    transform: rotate(15deg);
+}
+
+.dialog-decor.bottom {
+    bottom: -20px;
+    left: -20px;
+    transform: rotate(-15deg);
+}
