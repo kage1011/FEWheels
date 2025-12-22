@@ -32,8 +32,7 @@ async function loadPrizeJson() {
   return await res.json();
 }
 async function loadUserJson() {
-  const res = await fetch("../json/user.json");
-  return await res.json();
+  return userData;
 }
 function saveUsersToDB(db, users) {
   return new Promise((resolve) => {
