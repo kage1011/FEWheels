@@ -21,6 +21,11 @@ body {
     color: beige;
 }
 
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
 #intro-screen {
     position: absolute;
     inset: 0;
@@ -137,7 +142,9 @@ body {
     align-items: center;
     z-index: 1000;
     backdrop-filter: blur(5px);
+    transition: all 0.4s ease;
 }
+
 
 /* Thẻ thông báo chính */
 .dialog-card {
@@ -150,7 +157,8 @@ body {
     position: relative;
     border: 5px solid var(--gold);
     box-shadow: 0 0 50px rgba(248, 178, 41, 0.5);
-    animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+    animation: xmasAppear 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 @keyframes zoomIn {
@@ -166,7 +174,8 @@ body {
 }
 
 .dialog-title {
-    font-family: 'Mountains of Christmas', cursive;
+    /* font-family: 'Mountains of Christmas', cursive; */
+    font-family: auto;
     color: var(--christmas-red);
     font-size: 2.5rem;
     margin-bottom: 20px;
@@ -231,4 +240,250 @@ body {
     bottom: -20px;
     left: -20px;
     transform: rotate(-15deg);
+}
+
+
+
+/* Container cố định góc phải */
+.fab-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 99;
+    font-size: 15px;
+    color: black;
+}
+
+.fab-btn {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: none;
+    background: #ff4747;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.fab-btn:hover {
+    transform: scale(1.07);
+    background: #ff5d5d;
+}
+
+/* MENU GIẢI THƯỞNG */
+.fab-menu {
+    display: none;
+    flex-direction: column;
+    margin-bottom: 10px;
+    align-items: center;
+    gap: 10px;
+}
+
+.fab-item {
+    min-width: 150px;
+    padding: 10px 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    border: 2px solid transparent;
+
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.fab-item:hover {
+    border-color: gold;
+    transform: translateY(-3px);
+}
+
+.fab-menu.show {
+    display: flex;
+    animation: fadeIn 0.25s ease;
+}
+
+
+.list-card {
+    /* background: #fff;
+    width: 95%;
+    max-width: 900px;
+    max-height: 85vh;
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    border: 4px solid var(--christmas-green);
+    overflow-y: auto;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    animation: listSlideUp 0.5s ease-out forwards; */
+    background: #fff;
+    /* max-width: 900px; */
+    max-height: 85vh;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    position: relative;
+    border: 5px solid var(--christmas-green);
+    box-shadow: 0 0 50px rgba(248, 178, 41, 0.5);
+    /* animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+    animation: xmasAppear 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.list-title {
+    text-align: center;
+    font-family: auto;
+    color: var(--christmas-red);
+    font-size: 3rem;
+    margin-bottom: 25px;
+}
+
+.winners-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.winner-item {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 12px;
+    border-left: 5px solid var(--christmas-gold);
+    transition: 0.3s;
+    width: 450px;
+    /* animation: itemAppear 2s ease-out forwards; */
+}
+
+.winner-item:hover {
+    background: #fff5f5;
+    transform: translateX(10px);
+}
+
+.winner-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid var(--christmas-red);
+}
+
+.winner-details {
+    text-align: left;
+}
+
+.winner-details .w-name {
+    font-weight: bold;
+    color: var(--christmas-green);
+    font-size: 1.1rem;
+    display: block;
+}
+
+.winner-details .w-code {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.winner-details .w-dept {
+    font-size: 0.85rem;
+    color: var(--christmas-red);
+    font-style: italic;
+}
+
+.btn-close-list {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #999;
+}
+
+.btn-close-list:hover {
+    color: var(--christmas-red);
+}
+
+.list-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #444;
+}
+
+.list-decor {
+    font-size: 2rem;
+    position: absolute;
+}
+
+.list-decor.top {
+    top: -20px;
+    right: -20px;
+    transform: rotate(15deg);
+}
+
+.list-decor.bottom {
+    bottom: -20px;
+    left: -20px;
+    transform: rotate(-15deg);
+}
+
+/* --- ĐỊNH NGHĨA CÁC ANIMATION --- */
+
+/* 1. Phóng to và nảy nhẹ */
+@keyframes xmasAppear {
+    0% {
+        transform: scale(0.5) rotate(-5deg);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.05) rotate(2deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* 2. Trượt từ dưới lên */
+@keyframes listSlideUp {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes itemAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes borderGlow {
+    from {
+        box-shadow: 0 0 20px rgba(248, 178, 41, 0.4);
+    }
+
+    to {
+        box-shadow: 0 0 40px rgba(248, 178, 41, 0.8), 0 0 10px var(--christmas-red);
+    }
 }

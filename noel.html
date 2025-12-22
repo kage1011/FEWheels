@@ -48,6 +48,28 @@
             <div class="dialog-decor bottom">🎁</div>
         </div>
     </div>
+
+    <div id="list-winners-popup" class="dialog-overlay">
+        <div class="list-card">
+            <div class="list-decor top">❄️</div>
+            <button class="btn-close-list" id="close-list-btn">&times;</button>
+            <h2 class="list-title">DANH SÁCH TRÚNG GIẢI</h2>
+
+            <div class="winners-grid" id="winners-grid-container">
+            </div>
+
+            <div class="list-footer">
+                <p id="total-winners">Tổng cộng: 14 thành viên may mắn</p>
+            </div>
+            <div class="list-decor bottom">🎁</div>
+        </div>
+    </div>
+
+    <div class="fab-container">
+        <div class="fab-menu" id="fabMenu"></div>
+        <button class="fab-btn" onclick="toggleFabMenu()">🎁</button>
+    </div>
+    <script src="data/giftnoel.js"></script>
     <script src="data/usernoel.js"></script>
     <script src="js/noel.js"></script>
 

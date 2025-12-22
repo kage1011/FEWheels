@@ -146,10 +146,10 @@ async function quaySo() {
     });
 
     // Cập nhật trạng thái trúng
-    // winners.forEach(async w => {
-    //     w.IsReward = 1;
-    //     await updateUserInDB(w);
-    // });
+    winners.forEach(async w => {
+        w.IsReward = 1;
+        await updateUserInDB(w);
+    });
 }
 
 
@@ -168,7 +168,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 initializeUsers();
-
+renderPrizeMenu();
 
 
 // Dialog
@@ -195,4 +195,80 @@ async function showWinner(user) {
 // Cập nhật sự kiện đóng Dialog
 document.getElementById('close-dialog').addEventListener('click', () => {
     document.getElementById('winner-dialog').style.display = 'none';
+});
+
+
+function toggleFabMenu() {
+    document.getElementById("fabMenu").classList.toggle("show");
+}
+
+function renderPrizeMenu() {
+    const menu = document.getElementById("fabMenu");
+    menu.innerHTML = "";
+    // giftNoel.forEach((p) => {
+    //     const div = document.createElement("div");
+    //     div.className = "fab-item";
+    //     div.textContent = `${p.name} (${p.slot} slot)`;
+    //     div.onclick = () => {
+    //         selectedPrize = p;
+    //         toggleFabMenu();
+    //         if (!selectedPrize) return;
+    //     };
+    //     menu.appendChild(div);
+    // });
+    const div = document.createElement("div");
+    div.className = "fab-item";
+    div.textContent = `Danh sách trúng giải`;
+    div.onclick = () => {
+        toggleFabMenu();
+        showWinnersList()
+    };
+    menu.appendChild(div);
+}
+
+
+
+
+async function showWinnersList() {
+    const popup = document.getElementById('list-winners-popup');
+    const container = document.getElementById('winners-grid-container');
+    container.innerHTML = "";
+
+    try {
+        const users = await getUsersFromDB();
+        let availableUsers = users.filter((u) => u.IsReward == 1 && u.isJoin == 1);
+        if (availableUsers.length <= 0) {
+            alert("Không có người trúng giải!");
+            return;
+        }
+        const displayList = availableUsers;
+
+        document.getElementById('total-winners').textContent = `Tổng cộng: ${displayList.length} thành viên may mắn`;
+
+        displayList.forEach(user => {
+            const item = document.createElement('div');
+            item.className = 'winner-item';
+
+            const randomAvatar = `../assets/basics/user-icon.jpg`;
+
+            item.innerHTML = `
+                <img src="${randomAvatar}" class="winner-avatar" alt="avatar">
+                <div class="winner-details">
+                    <span class="w-name">${user.UserName}</span>
+                    <span class="w-code">MSNV: ${user.UserCode}</span><br>
+                    <span class="w-dept">Bộ phận: ${user.Department || 'N/A'}</span>
+                </div>
+            `;
+            container.appendChild(item);
+        });
+
+        popup.style.display = 'flex';
+    } catch (err) {
+        console.error("Lỗi hiển thị danh sách:", err);
+    }
+}
+
+// Gán sự kiện đóng nút
+document.getElementById('close-list-btn').addEventListener('click', () => {
+    document.getElementById('list-winners-popup').style.display = 'none';
 });
