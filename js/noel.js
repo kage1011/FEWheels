@@ -75,8 +75,9 @@ function checkUserCount(db) {
     });
 }
 async function loadUserJson() {
-    const res = await fetch("../json/usernoel.json");
-    return await res.json();
+    console.log(usernoel, 'usernoel');
+    // const res = await fetch("../json/usernoel.json");
+    return usernoel;
 }
 function saveUsersToDB(db, users) {
     return new Promise((resolve) => {
