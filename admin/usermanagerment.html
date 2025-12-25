@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Nhân Sự</title>
+    <link rel="stylesheet" href="../css/usermanagement.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+</head>
+
+<body>
+
+    <header class="main-header">
+        <h1>QUẢN LÝ NHÂN SỰ</h1>
+    </header>
+
+    <main>
+        <div class="control-panel">
+            <div class="input-group">
+                <input type="text" id="quickInput" placeholder="Nhập số thẻ từ và nhấn Enter..." autocomplete="off">
+                <button onclick="handleQuickInput()">🔍</button>
+            </div>
+            <div id="statusMessage" class="status-msg"></div>
+        </div>
+
+        <div class="table-container">
+            <table id="userTable">
+                <thead>
+                    <tr id="tableHeaderRow">
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <button class="fab-btn" onclick="openModal('add')">
+        ➕
+    </button>
+
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Thêm Nhân Viên</h2>
+            <form id="userForm">
+                <input type="hidden" id="editId">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Số thẻ từ</label>
+                        <input type="text" id="inpAttendanceCard" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mã nhân viên</label>
+                        <input type="text" id="inpUserCode" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên nhân viên</label>
+                        <input type="text" id="inpUserName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Bộ phận</label>
+                        <input type="text" id="inpDepartment">
+                    </div>
+                    <div class="form-group">
+                        <label>Phòng ban</label>
+                        <input type="text" id="inpSection">
+                    </div>
+                    <div class="form-group">
+                        <label>Tổ</label>
+                        <input type="text" id="inpTeam">
+                    </div>
+                    <div class="form-group">
+                        <label>Chuyên môn</label>
+                        <input type="text" id="inpJobTitle">
+                    </div>
+                    <div class="form-group">
+                        <label>Thắng giải</label>
+                        <input type="text" id="inpPrizeName">
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="closeModal()">Hủy</button>
+                    <button type="submit" class="btn-save">Lưu lại</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/usermanagement.js"></script>
+    <script src="../data/user.js"></script>
+    <script src="../data/gift.js"></script>
+
+</body>
+
+</html>
