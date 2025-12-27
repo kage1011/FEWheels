@@ -3,6 +3,7 @@ let selectedPrize = null;
 // =========================
 // INDEX BD -------------------------------
 // =========================
+initPrizeSelect();
 renderGachaRows();
 
 function openDB() {
@@ -28,13 +29,20 @@ function openDB() {
   });
 }
 async function loadPrizeJson() {
-  const res = await fetch("../json/gift.json");
-  return await res.json();
+  try {
+    return prizesFENV;
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
 }
 async function loadUserJson() {
   return userData;
 }
-
+async function initPrizeSelect() {
+  prizeList = await loadPrizeJson();
+  renderPrizeMenu(prizeList);
+}
 function renderPrizeMenu(prizes) {
   const menu = document.getElementById("fabMenu");
   menu.innerHTML = "";
@@ -48,6 +56,16 @@ function renderPrizeMenu(prizes) {
       toggleFabMenu();
       if (!selectedPrize) return;
       renderGachaRows(selectedPrize.slot == 10 ? 5 : selectedPrize.slot);
+      renderWinnerList(selectedPrize);
+
+      const img = document.getElementById("selectedPrizeImage");
+      if (img && selectedPrize.image) {
+        img.classList.remove("prize-bounce");
+        void img.offsetWidth;
+        img.src = `./assets/gift/${selectedPrize.image}`;
+
+        img.classList.add("prize-bounce");
+      }
     };
 
     menu.appendChild(div);
@@ -56,60 +74,6 @@ function renderPrizeMenu(prizes) {
 
 function toggleFabMenu() {
   document.getElementById("fabMenu").classList.toggle("show");
-}
-function renderGachaRows(slotCount) {
-  const container = document.getElementById("gachaRows");
-  container.innerHTML = "";
-  // row 5
-  let div = document.createElement("div");
-  div.className = "numbers-row";
-  let html = "";
-  for (let i = 1; i <= 6; i++) {
-    html += `<div class="number" id="num_${4}_${i}">0</div>`;
-  }
-  div.innerHTML = html;
-  container.appendChild(div);
-
-  // row 3
-  div = document.createElement("div");
-  div.className = "numbers-row";
-  html = "";
-  for (let i = 1; i <= 6; i++) {
-    html += `<div class="number" id="num_${2}_${i}">0</div>`;
-  }
-  div.innerHTML = html;
-  container.appendChild(div);
-
-  // row 1
-  div = document.createElement("div");
-  div.className = "numbers-row";
-  html = "";
-  for (let i = 1; i <= 6; i++) {
-    html += `<div class="number" id="num_${0}_${i}">0</div>`;
-  }
-  div.innerHTML = html;
-  container.appendChild(div);
-
-  // row 2
-  div = document.createElement("div");
-  div.className = "numbers-row";
-  html = "";
-  for (let i = 1; i <= 6; i++) {
-    html += `<div class="number" id="num_${1}_${i}">0</div>`;
-  }
-  div.innerHTML = html;
-  container.appendChild(div);
-
-  // row 4
-  div = document.createElement("div");
-  div.className = "numbers-row";
-  html = "";
-  for (let i = 1; i <= 6; i++) {
-    html += `<div class="number" id="num_${3}_${i}">0</div>`;
-  }
-
-  div.innerHTML = html;
-  container.appendChild(div);
 }
 
 // Update,Delete,get
@@ -199,12 +163,44 @@ async function spinGacha() {
     fireConfetti();
   }, 5000);
 
-  setTimeout(function () {
-    toggleFan();
-    setTimeout(function () {
-      renderWinners(winners);
-    }, 2000);
-  }, 10000);
+  setTimeout(async function () {
+    await renderWinnerList(selectedPrize);
+  }, 5000);
+}
+
+async function renderWinnerList(selectedPrize) {
+  const container = document.querySelector(".list-container");
+  if (!container) return;
+
+  // Xóa danh sách cũ trước khi render mới (nếu cần)
+  container.innerHTML = "";
+  const users = await getUsersFromDB();
+  let winners = users.filter(
+    (u) => u.IsReward == selectedPrize.id && u.isJoin == 1
+  );
+  winners.forEach((winner, index) => {
+    let rankImageSrc = "";
+    rankImageSrc = "./assets/users/" + winner.UserCode + ".jpg";
+    // Tạo chuỗi HTML
+    const winnerItem = document.createElement("div");
+    winnerItem.className = "winner-item";
+
+    // Thêm chút delay animation cho từng dòng để trông chuyên nghiệp hơn
+    winnerItem.style.animationDelay = `${index * 0.1}s`;
+
+    winnerItem.innerHTML = `
+            <img class="winner-rank-img" src="${rankImageSrc}" alt="${winner.UserCode}">
+            <div class="winner-info">
+                <span class="user-name">${winner.UserName}</span>
+                <div class="user-meta">
+                    <span>#${winner.UserCode}</span>
+                    <span class="user-dept">${winner.Department}</span>
+                </div>
+            </div>
+        `;
+    container.appendChild(winnerItem);
+  });
+  container.scrollTop = container.scrollHeight;
 }
 
 function animateDigit(element, targetDigit, duration) {
@@ -346,5 +342,3 @@ document.addEventListener("DOMContentLoaded", function () {
     wrapper.appendChild(confetti);
   }
 });
-
-initPrizeSelect();

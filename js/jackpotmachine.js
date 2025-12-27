@@ -119,34 +119,38 @@ function createLights(containerId, bulbCount) {
 
 // Gọi hàm khi trang tải xong
 window.onload = () => {
-  // createLights('lights-top', 40);
-  // createLights('lights-middle', 100);
-  // createLights('panel-bottom', 40);
+  createLights("lights-middle", 100);
 };
 
 function renderGachaRows(slotCount) {
   const container = document.getElementById("gachaRows");
+  console.log("Slot count:", slotCount);
   container.innerHTML = "";
   // row 5
-  let div = document.createElement("div");
-  div.className = "numbers-row";
-  let html = "";
-  for (let i = 1; i <= 6; i++) {
-    html += `<div class="number" id="num_${4}_${i}">0</div>`;
+  if (slotCount == undefined) {
+    slotCount = 5;
   }
-  div.innerHTML = html;
-  container.appendChild(div);
-
+  if (slotCount >= 5) {
+    let div = document.createElement("div");
+    div.className = "numbers-row";
+    let html = "";
+    for (let i = 1; i <= 6; i++) {
+      html += `<div class="number" id="num_${4}_${i}">0</div>`;
+    }
+    div.innerHTML = html;
+    container.appendChild(div);
+  }
   // row 3
-  div = document.createElement("div");
-  div.className = "numbers-row";
-  html = "";
-  for (let i = 1; i <= 6; i++) {
-    html += `<div class="number" id="num_${2}_${i}">0</div>`;
+  if (slotCount >= 3) {
+    div = document.createElement("div");
+    div.className = "numbers-row";
+    html = "";
+    for (let i = 1; i <= 6; i++) {
+      html += `<div class="number" id="num_${2}_${i}">0</div>`;
+    }
+    div.innerHTML = html;
+    container.appendChild(div);
   }
-  div.innerHTML = html;
-  container.appendChild(div);
-
   // row 1
   div = document.createElement("div");
   div.className = "numbers-row";
@@ -158,24 +162,25 @@ function renderGachaRows(slotCount) {
   container.appendChild(div);
 
   // row 2
-  div = document.createElement("div");
-  div.className = "numbers-row";
-  html = "";
-  for (let i = 1; i <= 6; i++) {
-    html += `<div class="number" id="num_${1}_${i}">0</div>`;
+  if (slotCount >= 3) {
+    div = document.createElement("div");
+    div.className = "numbers-row";
+    html = "";
+    for (let i = 1; i <= 6; i++) {
+      html += `<div class="number" id="num_${1}_${i}">0</div>`;
+    }
+    div.innerHTML = html;
+    container.appendChild(div);
   }
-  div.innerHTML = html;
-  container.appendChild(div);
-
   // row 4
-  div = document.createElement("div");
-  div.className = "numbers-row";
-  html = "";
-  for (let i = 1; i <= 6; i++) {
-    html += `<div class="number" id="num_${3}_${i}">0</div>`;
+  if (slotCount >= 5) {
+    div = document.createElement("div");
+    div.className = "numbers-row";
+    html = "";
+    for (let i = 1; i <= 6; i++) {
+      html += `<div class="number" id="num_${3}_${i}">0</div>`;
+    }
   }
-
   div.innerHTML = html;
   container.appendChild(div);
 }
-renderGachaRows();

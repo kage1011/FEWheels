@@ -18,9 +18,11 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: var(--red-main);
-  background-image: radial-gradient(circle,
-      rgba(255, 255, 255, 0.1) 1px,
-      transparent 1px);
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
   background-size: 5px 5px;
   overflow: hidden;
 }
@@ -185,46 +187,36 @@ body {
   z-index: 15;
 }
 
-/* .decorative-cloud::before,
-.decorative-cloud::after {
-  content: "";
+.left-cloud {
   position: absolute;
-  background-color: var(--cloud-red);
-  border: 2px solid var(--gold-border);
-  border-radius: 50%;
-} */
-
-/* .decorative-cloud::before {
-  top: -20px;
-  left: 20px;
+  top: 17vh;
+  height: calc(100vh - 17vh - 17vh);
+  left: 15px;
+  width: 25%;
 }
 
-.decorative-cloud::after {
-  bottom: -30px;
-  right: 10px;
-} */
-
-.left-cloud {}
-
-.left-cloud .bg-prize {
+.left-cloud .bg-fan {
   position: absolute;
-  width: 500px;
-  height: 600px;
-  bottom: 15vh;
-  left: 0;
+  width: 25vw;
+  top: 25%;
 }
 
-.left-cloud .iphone {
+.left-cloud .prize {
   position: absolute;
-  width: 300px;
-  bottom: calc(15vh + 100px);
-  left: 120px;
+  width: 25vw;
+  height: calc(100vh - 17vh - 17vh);
+  object-fit: contain;
+  display: block;
+  margin: auto;
+  background: transparent;
 }
 
 .right-cloud {
-  top: 40%;
-  right: 5%;
-  transform: scale(0.7);
+  position: absolute;
+  top: 17vh;
+  height: calc(100vh - 17vh - 17vh);
+  right: 15px;
+  width: 25%;
 }
 
 /* --- Thiết kế Nút Quay Thưởng --- */
@@ -563,4 +555,37 @@ body {
   100% {
     transform: scale(1);
   }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes prizeGlow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.9)) brightness(1.1);
+  }
+}
+.prize-bounce {
+  animation: bounceIn 0.8s cubic-bezier(0.36, 0, 0.66, -0.56) forwards,
+    prizeGlow 3s ease-in-out infinite alternate;
+  will-change: filter, transform;
+}
+.prize-hidden {
+  opacity: 0;
 }

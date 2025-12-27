@@ -1,245 +1,246 @@
 :root {
-    --primary-color: #2c3e50;
-    --accent-color: #3498db;
-    --bg-light: #f4f6f7;
-    --text-white: #ffffff;
+  --primary-color: #2c3e50;
+  --accent-color: #3498db;
+  --bg-light: #f4f6f7;
+  --text-white: #ffffff;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    background-color: var(--bg-light);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: var(--bg-light);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header Banner */
 .main-header {
-    height: 120px;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/basics/banner-header.jpg') no-repeat fixed;
-    background-size: cover;
-    color: var(--text-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  height: 120px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../assets/basics/banner-header-admin.jpg") no-repeat fixed;
+  background-size: cover;
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Control Panel (Input nhanh) */
 .control-panel {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .input-group {
-    display: flex;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .input-group input {
-    padding: 12px;
-    width: 300px;
-    border: 1px solid #ddd;
-    border-radius: 4px 0 0 4px;
-    outline: none;
+  padding: 12px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  outline: none;
 }
 
 .input-group button {
-    padding: 12px 20px;
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
+  padding: 12px 20px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
 }
 
 /* Table Container (Fixed Header) */
 .table-container {
-    flex: 1;
-    overflow: auto;
-    /* Cho phép cuộn nội dung */
-    margin: 0 20px 20px 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background: white;
-    max-height: calc(100vh - 250px);
-    /* Giới hạn chiều cao để scroll */
+  flex: 1;
+  overflow: auto;
+  /* Cho phép cuộn nội dung */
+  margin: 0 20px 20px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  max-height: calc(100vh - 250px);
+  /* Giới hạn chiều cao để scroll */
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 /* Header cố định */
 thead th {
-    position: sticky;
-    top: 0;
-    background-color: var(--primary-color);
-    color: var(--text-white);
-    padding: 15px;
-    text-align: left;
-    z-index: 10;
+  position: sticky;
+  top: 0;
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  padding: 15px;
+  text-align: left;
+  z-index: 10;
 }
 
 tbody td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #eee;
-    vertical-align: middle;
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
 }
 
 tbody tr:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 /* User Image */
 .user-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #ddd;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
 }
 
 /* Actions Buttons in Table */
 .btn-icon {
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-size: 1.1rem;
-    margin: 0 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin: 0 5px;
 }
 
 .btn-edit {
-    color: #f39c12;
+  color: #f39c12;
 }
 
 .btn-delete {
-    color: #e74c3c;
+  color: #e74c3c;
 }
 
 /* Floating Action Button (FAB) */
 .fab-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: var(--accent-color);
-    color: white;
-    border: none;
-    font-size: 24px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: transform 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  font-size: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .fab-btn:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* Modal Popup */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: center;
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    width: 600px;
-    max-width: 90%;
-    position: relative;
-    animation: slideDown 0.3s;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 600px;
+  max-width: 90%;
+  position: relative;
+  animation: slideDown 0.3s;
 }
 
 @keyframes slideDown {
-    from {
-        top: -50px;
-        opacity: 0;
-    }
+  from {
+    top: -50px;
+    opacity: 0;
+  }
 
-    to {
-        top: 0;
-        opacity: 1;
-    }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 
 .close-btn {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 28px;
-    cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 0.9rem;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .form-group input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .modal-actions {
-    margin-top: 25px;
-    text-align: right;
+  margin-top: 25px;
+  text-align: right;
 }
 
 .modal-actions button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .btn-cancel {
-    background: #ddd;
-    margin-right: 10px;
+  background: #ddd;
+  margin-right: 10px;
 }
 
 .btn-save {
-    background: var(--accent-color);
-    color: white;
+  background: var(--accent-color);
+  color: white;
 }
 
 /* Status Soft Delete */
 .status-inactive {
-    opacity: 0.5;
-    background-color: #fff0f0;
+  opacity: 0.5;
+  background-color: #fff0f0;
 }
