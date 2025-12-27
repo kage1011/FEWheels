@@ -34,43 +34,6 @@ async function loadPrizeJson() {
 async function loadUserJson() {
   return userData;
 }
-function saveUsersToDB(db, users) {
-  return new Promise((resolve) => {
-    const tx = db.transaction("Users", "readwrite");
-    const store = tx.objectStore("Users");
-
-    users.forEach((user) => store.put(user));
-
-    tx.oncomplete = () => resolve(true);
-  });
-}
-async function initPrizeSelect() {
-  prizeList = await loadPrizeJson();
-  renderPrizeMenu(prizeList);
-}
-async function initializeUsers() {
-  const db = await openDB();
-  const count = await checkUserCount(db);
-  if (count > 0) {
-    console.log("DB đã có dữ liệu, không import từ JSON");
-    return;
-  }
-  console.log("DB chưa có dữ liệu → Đọc user.json...");
-  const users = await loadUserJson();
-  await saveUsersToDB(db, users);
-  console.log("Đã import JSON vào IndexedDB thành công!");
-}
-
-function checkUserCount(db) {
-  return new Promise((resolve) => {
-    const tx = db.transaction("Users", "readonly");
-    const store = tx.objectStore("Users");
-    const req = store.count();
-
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = () => resolve(0);
-  });
-}
 
 function renderPrizeMenu(prizes) {
   const menu = document.getElementById("fabMenu");
@@ -85,8 +48,6 @@ function renderPrizeMenu(prizes) {
       toggleFabMenu();
       if (!selectedPrize) return;
       renderGachaRows(selectedPrize.slot == 10 ? 5 : selectedPrize.slot);
-      // renderWinners();
-      // renderPrize();
     };
 
     menu.appendChild(div);
@@ -96,12 +57,6 @@ function renderPrizeMenu(prizes) {
 function toggleFabMenu() {
   document.getElementById("fabMenu").classList.toggle("show");
 }
-
-window.onload = function () {
-  initializeUsers();
-  initPrizeSelect();
-};
-
 function renderGachaRows(slotCount) {
   const container = document.getElementById("gachaRows");
   container.innerHTML = "";
@@ -392,5 +347,4 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-initializeUsers();
 initPrizeSelect();
