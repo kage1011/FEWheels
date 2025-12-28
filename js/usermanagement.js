@@ -29,8 +29,8 @@ function mapUserWithPrize(users, prizes) {
 
 
 const COLUMN_HEADERS = [
-    "Số thẻ từ", "Mã nhân viên", "Tên nhân viên", "Bộ phận",
-    "Phòng ban", "Tổ", "Chuyên môn", "Thắng giải", "Hình ảnh", "Hành động"
+    "Số thẻ từ", "Mã NV", "Tên NV", "Bộ phận",
+    "Phòng ban", "Tổ", "Chuyên môn", "Thắng giải", "Ảnh", ""
 ];
 
 // Hàm khởi tạo Load User
@@ -367,4 +367,49 @@ async function getUsersFromDB() {
             reject(err);
         }
     });
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInputs = document.querySelectorAll('.column-search');
+
+    searchInputs.forEach(input => {
+        input.addEventListener('keyup', function () {
+            filterTable();
+        });
+    });
+});
+
+function filterTable() {
+    // 1. Lấy bảng và các dòng dữ liệu
+    const table = document.getElementById("userTable");
+    const tr = table.getElementsByTagName("tr");
+
+    // 2. Lấy giá trị của tất cả các ô input hiện tại
+    const inputs = document.querySelectorAll('.column-search');
+    let filters = {};
+
+    inputs.forEach(input => {
+        const colIndex = input.getAttribute('data-col');
+        const value = input.value.toLowerCase();
+        if (value) {
+            filters[colIndex] = value;
+        }
+    });
+    for (let i = 2; i < tr.length; i++) {
+        let row = tr[i];
+        let tds = row.getElementsByTagName("td");
+        let showRow = true;
+        for (let colIndex in filters) {
+            if (tds[colIndex]) {
+                let txtValue = tds[colIndex].textContent || tds[colIndex].innerText;
+                if (txtValue.toLowerCase().indexOf(filters[colIndex]) === -1) {
+                    showRow = false;
+                    break;
+                }
+            }
+        }
+
+        row.style.display = showRow ? "" : "none";
+    }
 }

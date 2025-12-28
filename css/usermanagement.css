@@ -27,6 +27,28 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.filter-row th {
+  top: 50px;
+  background-color: #34495e;
+  padding: 5px;
+}
+
+.column-search {
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.column-search:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: #fff;
+}
+
 /* Control Panel (Input nhanh) */
 .control-panel {
   padding: 20px;
