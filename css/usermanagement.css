@@ -266,3 +266,94 @@ tbody tr:hover {
   opacity: 0.5;
   background-color: #fff0f0;
 }
+
+
+/* Menu left */
+.admin-menu-wrapper {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  padding-left: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.admin-trigger {
+  background: linear-gradient(135deg, #b30000, #d92027);
+  width: 10px;
+  height: 60px;
+  border-radius: 0 40px 40px 0;
+  border: 2px solid #ffd700;
+  border-left: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+  transition: width 0.3s;
+}
+
+.arrow-icon {
+  color: #ffd700;
+  font-size: 20px;
+  font-weight: bold;
+  transition: transform 0.4s;
+}
+
+.admin-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-left: -200px;
+  margin-bottom: 15px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.nav-btn {
+  background: #fffdf5;
+  border: 2px solid #ffd700;
+  padding: 6px 10px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #4a0e0e;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  /* gap: 10px; */
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.nav-btn:hover {
+  background: #b30000;
+  color: #fff;
+  transform: translateX(10px);
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+}
+
+/* --- HIỆU ỨNG HOVER --- */
+.admin-menu-wrapper:hover .admin-nav-links {
+  margin-left: 10px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.admin-menu-wrapper:hover .arrow-icon {
+  transform: rotate(180deg) scale(1.2);
+  color: #fff;
+}
+
+.admin-menu-wrapper:hover .admin-trigger {
+  width: 30px;
+  background: #4a0e0e;
+}

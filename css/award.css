@@ -1,0 +1,384 @@
+:root {
+    --tet-red: #b30000;
+    --tet-red-light: #d92027;
+    --tet-gold: #ffd700;
+    --tet-gold-dark: #b8860b;
+    --bg-cream: #fffdf5;
+    --text-main: #4a0e0e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #800000;
+    background-image:
+        radial-gradient(var(--tet-gold) 1px, transparent 1px),
+        linear-gradient(to bottom, #800000, #4d0000);
+    background-size: 30px 30px, 100% 100%;
+    color: var(--text-main);
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+/* --- Header --- */
+header {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--tet-gold);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.company-name {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    /* Font có chân sang trọng */
+    font-size: 3rem;
+    margin: 0;
+    background: linear-gradient(to right, #ffd700, #ffecb3, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+.sub-title {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-top: 5px;
+    color: #ffecb3;
+}
+
+/* --- Container --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.prize-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 40px;
+}
+
+/* --- PRODUCT CARD (THE STAR) --- */
+.tet-card {
+    background: var(--bg-cream);
+    border-radius: 15px;
+    position: relative;
+    box-shadow:
+        0 0 0 4px #fff,
+        /* Viền trắng trong */
+        0 0 0 6px var(--tet-gold),
+        /* Viền vàng ngoài */
+        0 10px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tet-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 0 0 4px #fff,
+        0 0 0 6px var(--tet-gold),
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 50px rgba(255, 215, 0, 0.3);
+    /* Phát sáng vàng */
+}
+
+/* Dải ruy băng tiêu đề */
+.card-header {
+    background: linear-gradient(135deg, var(--tet-red), var(--tet-red-light));
+    color: #fff;
+    padding: 20px 10px;
+    text-align: center;
+    position: relative;
+    border-bottom: 2px solid var(--tet-gold);
+}
+
+/* Họa tiết trang trí góc header */
+.card-header::before,
+.card-header::after {
+    content: "✻";
+    /* Hoa tuyết hoặc hoa văn */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: rgba(255, 215, 0, 0.4);
+}
+
+.card-header::before {
+    left: 15px;
+}
+
+.card-header::after {
+    right: 15px;
+}
+
+.prize-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Phần thân card */
+.card-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23b8860b" opacity="0.1"/></svg>');
+    /* Chấm bi mờ */
+}
+
+.product-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s;
+}
+
+.tet-card:hover .product-img {
+    transform: scale(1.1);
+}
+
+/* Danh sách người trúng */
+.winner-list {
+    width: 100%;
+    list-style: none;
+    border-top: 1px solid rgba(184, 134, 11, 0.2);
+    padding-top: 10px;
+}
+
+.winner-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    background: #fff;
+    border-radius: 6px;
+    border-left: 3px solid var(--tet-gold);
+    /* Điểm nhấn bên trái */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    transition: background 0.2s;
+}
+
+.winner-item:hover {
+    background: #fff8e1;
+    /* Màu nền khi hover chuột vào tên */
+}
+
+.w-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.w-name {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+.w-dept {
+    font-size: 0.75rem;
+    color: #888;
+    font-style: italic;
+}
+
+.w-code {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: var(--tet-red);
+    font-weight: bold;
+    background: rgba(179, 0, 0, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Layout đặc biệt cho giải nhiều người (Giải 7, 8) */
+.tet-card.wide-layout {
+    grid-column: span 1;
+    /* Trên mobile là 1 cột */
+}
+
+@media (min-width: 900px) {
+    .tet-card.wide-layout {
+        grid-column: span 2;
+    }
+
+    /* Trên PC to ra */
+    .tet-card.wide-layout .winner-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+}
+
+/* Loading */
+.loading {
+    color: var(--tet-gold);
+    text-align: center;
+    font-size: 1.5rem;
+    grid-column: 1/-1;
+}
+
+/* Icon trang trí CSS */
+.icon-gold {
+    color: var(--tet-gold-dark);
+    margin-right: 5px;
+}
+
+
+/* --- Footer Decorations --- */
+.footer-decor {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    /* Chỉ để chứa hình ảnh nổi lên */
+    pointer-events: none;
+    z-index: -1;
+}
+
+.decor-img-left,
+.decor-img-right {
+    position: absolute;
+    bottom: 0;
+    width: 150px;
+}
+
+.decor-img-left {
+    left: 20px;
+}
+
+.decor-img-right {
+    right: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .prize-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .prize-card.large-list .winner-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.snowflake {
+    color: #c1d3ec;
+    font-size: 1em;
+    font-family: Arial;
+    text-shadow: 0 0 1px #000;
+    position: fixed;
+    top: -10%;
+    z-index: 9999;
+    user-select: none;
+    cursor: default;
+    animation-name: snowflakes-fall, snowflakes-shake;
+    animation-duration: 10s, 3s;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+    animation-play-state: running, running;
+}
+
+@keyframes snowflakes-fall {
+    0% {
+        top: -10%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+@keyframes snowflakes-shake {
+    0% {
+        transform: translateX(0px);
+    }
+
+    50% {
+        transform: translateX(80px);
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.snowflake:nth-of-type(0) {
+    left: 1%;
+    animation-delay: 0s, 0s;
+}
+
+.snowflake:nth-of-type(1) {
+    left: 10%;
+    animation-delay: 1s, 1s;
+}
+
+.snowflake:nth-of-type(2) {
+    left: 20%;
+    animation-delay: 6s, .5s;
+}
+
+.snowflake:nth-of-type(3) {
+    left: 30%;
+    animation-delay: 4s, 2s;
+}
+
+.snowflake:nth-of-type(4) {
+    left: 40%;
+    animation-delay: 2s, 2s;
+}
+
+.snowflake:nth-of-type(5) {
+    left: 50%;
+    animation-delay: 8s, 3s;
+}
+
+.snowflake:nth-of-type(6) {
+    left: 60%;
+    animation-delay: 6s, 2s;
+}
+
+.snowflake:nth-of-type(7) {
+    left: 70%;
+    animation-delay: 2.5s, 1s;
+}
+
+.snowflake:nth-of-type(8) {
+    left: 80%;
+    animation-delay: 1s, 0s;
+}
+
+.snowflake:nth-of-type(9) {
+    left: 90%;
+    animation-delay: 3s, 1.5s;
+}
