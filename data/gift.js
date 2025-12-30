@@ -15,13 +15,13 @@ const prizesFENV = [
     id: 3,
     name: "Giải 3",
     image: "prize3.png",
-    slot: 3,
+    slot: 1,
   },
   {
     id: 4,
     name: "Giải 4",
     image: "prize4.png",
-    slot: 5,
+    slot: 3,
   },
   {
     id: 5,
