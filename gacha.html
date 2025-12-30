@@ -13,8 +13,6 @@
 
 <body>
   <div id="confetti-wrapper" class="pure-css-confetti"></div>
-  <canvas id="coinCanvas"></canvas>
-
   <div id="cloud-transition">
     <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-top-left" />
     <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-top-right" />
@@ -99,15 +97,20 @@
       </div>
     </div>
 
+    <div class="left-blossom">
+      <img class="bg-left-blossom" src="./assets/basics/left-blossom.png" />
+    </div>
+    <div class="right-blossom">
+      <img class="bg-right-blossom" src="./assets/basics/right-blossom.png" />
+    </div>
     <div class="decorative-cloud left-cloud">
-      <img class="bg-fan" src="./assets/basics/fan.png" />
       <img id="selectedPrizeImage" class="prize prize-bounce" src="./assets/gift/prize1.png" alt="Prize Image" />
     </div>
     <div class="decorative-cloud right-cloud">
       <div class="winner-card">
         <div class="card-header">
           <h2>Danh Sách Trúng Thưởng</h2>
-          <span>Chúc mừng các cá nhân may mắn</span>
+          <span>🌸Chúc mừng các cá nhân may mắn🌸</span>
         </div>
         <div class="list-container"></div>
       </div>
@@ -135,12 +138,15 @@
     </div>
   </div>
   <script src="./data/gift.js"></script>
+  <script src="./js/firework.js"></script>
   <script src="./data/user.js"></script>
   <script src="./js/jackpotmachine.js"></script>
   <script src="./js/gacha.js"></script>
   <script src="./js/cloud.js"></script>
   <script src="./js/winnerlist.js"></script>
   <script src="./js/canvas-confetti.js"></script>
+
+
 </body>
 
 </html>

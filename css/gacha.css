@@ -189,7 +189,7 @@ body {
   position: absolute;
   top: 17vh;
   height: calc(100vh - 17vh - 17vh);
-  left: 15px;
+  left: 100px;
   width: 25%;
 }
 
@@ -686,10 +686,70 @@ body {
   background: #4a0e0e;
 }
 
-canvas {
+
+.left-blossom {
   position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  /* Để có thể click xuyên qua canvas vào máy quay */
+}
+
+.left-blossom .bg-left-blossom {
+  position: absolute;
+  top: 5vh;
+  height: 90vh;
+  animation: blossomSwayLeft 14s ease-in-out infinite;
+  transform-origin: 0% 0%;
+}
+
+
+.right-blossom .bg-right-blossom {
+  position: absolute;
+  top: 5vh;
+  height: 90vh;
+  right: 0;
+  animation: blossomSway 14s ease-in-out infinite;
+  transform-origin: 100% 0%;
+}
+
+@keyframes blossomSway {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+
+  25% {
+    transform: rotate(0deg) translate(-2px, 2px);
+  }
+
+  50% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+
+  75% {
+    transform: rotate(-1deg) translate(2px, -2px);
+  }
+
+  100% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+}
+
+
+@keyframes blossomSwayLeft {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+
+  25% {
+    transform: rotate(1deg) translate(-2px, -2px);
+  }
+
+  50% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+
+  75% {
+    transform: rotate(1deg) translate(-2px, -2px);
+  }
+
+  100% {
+    transform: rotate(0deg) translate(0, 0);
+  }
 }

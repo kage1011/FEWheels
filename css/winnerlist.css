@@ -1,25 +1,23 @@
 :root {
   --red-main: #b30000;
-  --red-gradient: linear-gradient(
-    135deg,
-    #d32f2f,
-    #8e0000
-  ); /* Gradient đỏ sang trọng */
+  --red-gradient: linear-gradient(135deg,
+      #d32f2f,
+      #8e0000);
+  /* Gradient đỏ sang trọng */
   --gold-main: #ffd700;
-  --gold-gradient: linear-gradient(
-    45deg,
-    #ffd700,
-    #ffecb3,
-    #b8860b,
-    #ffd700
-  ); /* Hiệu ứng vàng kim loại */
-  --card-bg: rgba(
-    255,
-    251,
-    240,
-    0.95
-  ); /* Màu kem giấy dó, hơi trong suốt nhẹ */
-  --text-primary: #2c0e0e; /* Đen nâu (thay vì đen tuyền) cho dịu mắt */
+  --gold-gradient: linear-gradient(45deg,
+      #ffd700,
+      #ffecb3,
+      #b8860b,
+      #ffd700);
+  /* Hiệu ứng vàng kim loại */
+  --card-bg: rgba(255,
+      251,
+      240,
+      0.95);
+  /* Màu kem giấy dó, hơi trong suốt nhẹ */
+  --text-primary: #2c0e0e;
+  /* Đen nâu (thay vì đen tuyền) cho dịu mắt */
   --text-secondary: #664444;
   --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
@@ -39,6 +37,25 @@
   flex-direction: column;
   overflow: hidden;
   backdrop-filter: blur(5px);
+}
+
+.winner-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../assets/basics/cardbg.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 100%;
+  opacity: 0.18;
+  z-index: 0;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.winner-card>* {
+  position: relative;
+  z-index: 1;
 }
 
 .card-header {
@@ -95,6 +112,7 @@
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -159,14 +177,17 @@
 .list-container::-webkit-scrollbar {
   display: none;
 }
+
 .list-container::-webkit-scrollbar-track {
   background: transparent;
   margin-bottom: 10px;
 }
+
 .list-container::-webkit-scrollbar-thumb {
   background: #d1c4a5;
   border-radius: 10px;
 }
+
 .list-container::-webkit-scrollbar-thumb:hover {
   background: #b30000;
 }
@@ -176,6 +197,7 @@
     width: 35vw;
     right: 1%;
   }
+
   .card-header h2 {
     font-size: 1.2rem;
   }
