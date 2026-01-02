@@ -1,0 +1,379 @@
+        :root {
+            --envelope-width: 320px;
+            /* Tăng nhẹ độ rộng để thoáng hơn */
+            --envelope-height: 50vh;
+            --envelope-color: #d90429;
+            --envelope-dark: #a60926;
+            --gold-color: #ffd700;
+            --duration-move: 0.8s;
+            --duration-reveal: 0.8s;
+            /* Tăng thời gian lên chút cho mượt */
+        }
+
+        .scene {
+            font-family: "Arial", sans-serif;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            z-index: 99999;
+        }
+
+        /* --- HIỆU ỨNG ÁNH SÁNG --- */
+        .halo {
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.5) 0%, rgba(255, 69, 0, 0.1) 60%, transparent 70%);
+            border-radius: 50%;
+            transform: scale(0);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 1;
+        }
+
+        .halo.active {
+            transform: scale(1);
+            opacity: 1;
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            from {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            to {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        /* --- BAO LÌ XÌ --- */
+        .envelope-wrapper {
+            width: var(--envelope-width);
+            height: var(--envelope-height);
+            position: relative;
+            z-index: 10;
+            transform: translateX(-150vw) skewX(-20deg);
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .envelope-wrapper.entrance {
+            animation: slideIn var(--duration-move) cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-150vw) skewX(-30deg);
+                opacity: 0.5;
+                filter: blur(10px);
+            }
+
+            80% {
+                filter: blur(0px);
+                transform: translateX(10%) skewX(10deg);
+            }
+
+            100% {
+                transform: translateX(0) skewX(0);
+                opacity: 1;
+            }
+        }
+
+        .envelope-wrapper.exit {
+            animation: slideOut var(--duration-move) ease-in forwards;
+        }
+
+        @keyframes slideOut {
+            0% {
+                transform: translateX(0);
+            }
+
+            40% {
+                transform: translateX(-10%) skewX(-10deg);
+            }
+
+            100% {
+                transform: translateX(150vw) skewX(30deg);
+                opacity: 0;
+            }
+        }
+
+        /* --- BODY BAO (Chứa logic Overflow) --- */
+        .envelope-body {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--envelope-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+            /* QUAN TRỌNG: Mặc định ẩn để che thẻ bên trong */
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: overflow 0.1s;
+            /* Chuyển đổi trạng thái overflow */
+        }
+
+        /* QUAN TRỌNG: Khi mở ra thì cho phép tràn viền để hiện Avatar */
+        .envelope-wrapper.open .envelope-body {
+            overflow: visible;
+        }
+
+        /* --- THẺ NGƯỜI THẮNG --- */
+        .winner-card-1 {
+            position: absolute;
+            left: 15px;
+            width: calc(100% - 30px);
+            /* Tăng chiều cao thẻ để chứa đủ thông tin */
+            height: 85%;
+            background: linear-gradient(to bottom, #fffdf5, #fff);
+            border-radius: 12px;
+            z-index: 3;
+            transition: transform var(--duration-reveal) cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateY(105%);
+            /* Ban đầu giấu kỹ bên dưới */
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 25px 15px;
+            box-sizing: border-box;
+            text-align: center;
+            border: 2px solid #eec843;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Khi mở thẻ: Đẩy lên cao hơn (-45% thay vì -20%) */
+        .envelope-wrapper.open .winner-card-1 {
+            transform: translateY(-45%);
+        }
+
+
+        .winner-card-1 ::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url(../assets/basics/flower-left.png);
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: 100%;
+            z-index: 0;
+            mix-blend-mode: darken;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .avatar-container {
+            width: 110px;
+            height: 110px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .avatar {
+            width: 25%;
+            height: 25%;
+            border-radius: 50%;
+            border: 4px solid var(--gold-color);
+            object-fit: cover;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .info h2 {
+            font-family: 'none';
+            margin: 5px 0;
+            color: #d90429;
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .info p {
+            font-family: 'none';
+            margin: 4px 0;
+            color: #444;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .badge {
+            font-family: 'none';
+            margin-top: 12px;
+            display: inline-block;
+            background: #d90429;
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(217, 4, 41, 0.3);
+        }
+
+        /* --- TÚI BAO (Phần màu đỏ che chân thẻ) --- */
+        .envelope-pocket {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: var(--envelope-color);
+            z-index: 10;
+            border-top: 3px solid #a60926;
+            clip-path: ellipse(80% 95% at 50% 100%);
+            border-radius: 0 0 10px 10px;
+        }
+
+        .decoration {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 130px;
+            height: 130px;
+            border: 2px solid var(--gold-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold-color);
+            font-size: 3.5rem;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            background: rgba(166, 9, 38, 0.2);
+            font-family: 'Zhi Mang Xing', cursive;
+            /* Tên font */
+        }
+
+        /* --- NẮP BAO (FLAP) --- */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: var(--envelope-dark);
+            z-index: 11;
+            /* clip-path: polygon(0 0, 100% 0, 50% 100%); */
+            clip-path: polygon(50% 55%, 86% 45%, 100% 0, 50% 0, 0 0, 18% 45%);
+            transform-origin: top;
+            transition: transform var(--duration-reveal) ease-in-out, z-index 0s linear 0.2s;
+        }
+
+        .envelope-wrapper.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .click-hint {
+            position: absolute;
+            bottom: -50px;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            opacity: 0;
+            font-size: 0.9rem;
+            animation: bounce 1s infinite;
+        }
+
+        .envelope-wrapper.open .click-hint {
+            opacity: 1;
+            transition-delay: 1s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+        }
+
+        @keyframes slideOut {
+            0% {
+                transform: translateX(0) skewX(0);
+                opacity: 1;
+                /* QUAN TRỌNG: Bắt buộc phải có dòng này để xác nhận đang hiện */
+            }
+
+            40% {
+                transform: translateX(-10%) skewX(-10deg);
+                /* Lùi lại lấy đà */
+                opacity: 1;
+                /* Vẫn phải hiện rõ */
+            }
+
+            100% {
+                transform: translateX(150vw) skewX(30deg);
+                /* Bay vút ra xa */
+                opacity: 0;
+                /* Lúc này mới mờ dần */
+            }
+        }
+
+        .envelope-body,
+        .envelope-pocket,
+        .envelope-flap {
+            background-color: #d90429;
+            background-image: url("../assets/basics/black-scales.png");
+        }
+
+        .envelope-pocket {
+            border-top: 2px solid #ffd700;
+            box-shadow:
+                inset 0 0 0 3px #d90429,
+                inset 0 0 0 5px #ffd700,
+                0 -5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .envelope-flap {
+            background-color: #b00522;
+            border-bottom: 2px solid #ffd700;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+
+        /* FOCUS STAGE */
+        /* --- HIỆU ỨNG SPOTLIGHT --- */
+        #stage-spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+            background-color: rgba(0, 0, 0, 0.9);
+
+            /* 2. Vẽ 2 luồng sáng (Màu trắng vàng nhẹ) đè lên nền tối */
+            background-image:
+                radial-gradient(circle 300px at var(--x1, 30%) var(--y1, 30%), rgba(255, 255, 255, 0.9) 0%, transparent 60%),
+                radial-gradient(circle 300px at var(--x2, 70%) var(--y2, 70%), rgba(255, 255, 255, 0.9) 0%, transparent 60%);
+
+            /* Xóa blend-mode cũ đi vì nó làm tối đèn */
+            background-repeat: no-repeat;
+            z-index: 9999;
+        }
+
+        #stage-spotlight.active {
+            opacity: 1;
+        }
+
+        #stage-spotlight.searching {
+            transition: background-position 0.6s ease-out, opacity 0.5s;
+        }

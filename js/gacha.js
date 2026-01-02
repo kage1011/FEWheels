@@ -151,17 +151,48 @@ async function spinGacha() {
     }
   });
 
+
+
   // Gọi animation
   playJackpotAnimationMulti(winners, slotCount);
+  if (selectedPrize.id == 1 || selectedPrize.id == 2 || selectedPrize.id == 3) {
+    const lixi = document.getElementById("lixi-w");
+    let cardHtml = "";
+    winners.forEach((winner, row) => {
+      cardHtml += `
+          <img src="../assets/users/${winner.UserCode}.jpg" alt="Winner Avatar" class="avatar" id="winner-avatar">
+          <div class="info">
+            <h2 id="winner-name">${winner.UserName}</h2>
+            <p id="winner-id">MSNV: ${winner.UserName}</p>
+            <span class="badge" id="winner-dept">${winner.Department}</span>
+          </div>
+                `;
+    });
+    lixi.innerHTML = cardHtml;
+    ;
+  }
+
 
   // Cập nhật trạng thái trúng
   // winners.forEach(async w => {
   //     w.IsReward = 1;
   //     await updateUserInDB(w);
   // });
-  setTimeout(function () {
-    fireConfetti();
-  }, 5000);
+  if (selectedPrize.id == 1 || selectedPrize.id == 2 || selectedPrize.id == 3) {
+    setTimeout(function () {
+      startShow();
+      setTimeout(function () {
+        const stageSpotlight1 = document.getElementById('stage-spotlight');
+        stageSpotlight1.classList.remove('active', 'searching');
+        fireConfetti();
+      }, 7000);
+    }, 4000);
+  } else {
+    setTimeout(function () {
+      fireConfetti();
+    }, 5000);
+  }
+
 
   setTimeout(async function () {
     await renderWinnerList(selectedPrize);
@@ -314,6 +345,8 @@ document.addEventListener("keydown", function (e) {
     spinGacha();
   }
 });
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const wrapper = document.getElementById("confetti-wrapper");

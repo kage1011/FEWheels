@@ -9,9 +9,34 @@
   <link rel="stylesheet" href="./css/cloud.css" />
   <link rel="stylesheet" href="./css/jackpotmachine.css" />
   <link rel="stylesheet" href="./css/winnerlist.css" />
+  <link rel="stylesheet" href="./css/first.css" />
+
+
 </head>
 
 <body>
+  <div id="stage-spotlight"></div>
+  <div class="scene">
+    <div class="halo" id="halo"></div>
+
+    <div class="envelope-wrapper" id="envelope" onclick="closeAndExit()">
+
+      <div class="envelope-body">
+
+        <div class="winner-card-1" id="lixi-w">
+        </div>
+
+        <div class="envelope-pocket">
+          <div class="decoration">禄</div>
+        </div>
+
+        <div class="envelope-flap"></div>
+      </div>
+      <div class="click-hint">Click để đóng</div>
+    </div>
+  </div>
+
+
   <div id="confetti-wrapper" class="pure-css-confetti"></div>
   <div id="cloud-transition">
     <img src="./assets/basics/cloudtrans.png" class="cloudtrans cloudtrans-top-left" />
@@ -140,6 +165,7 @@
   <script src="./data/gift.js"></script>
   <script src="./js/firework.js"></script>
   <script src="./data/user.js"></script>
+  <script src="./js/first.js"></script>
   <script src="./js/jackpotmachine.js"></script>
   <script src="./js/gacha.js"></script>
   <script src="./js/cloud.js"></script>
