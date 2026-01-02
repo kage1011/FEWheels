@@ -34,7 +34,7 @@ body::-webkit-scrollbar {
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 10vh;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent), url('../assets/basics/bg1.png') center/cover;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent), url('../assets/basics/tet-bg.png') center/cover;
     transition: 1s ease;
 }
 
@@ -46,8 +46,8 @@ body::-webkit-scrollbar {
 .main-stage {
     width: 100vw;
     height: 100vh;
-    background: url('../assets/basics/bg2.png') no-repeat center center;
-    background-size: contain;
+    background: url('../assets/basics/tet-bg2.png') no-repeat center center;
+    background-size: auto;
     position: relative;
 }
 
