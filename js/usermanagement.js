@@ -3,6 +3,28 @@ let jsonPrize = [];
 let jsonUserData = [];
 let jsonUserAllData = [];
 
+function startSmartAutoFocus() {
+    setInterval(() => {
+        const quickInput = document.getElementById('quickInput');
+        const userModal = document.getElementById('userModal');
+
+        let isModalOpen = false;
+
+        if (userModal) {
+            const style = window.getComputedStyle(userModal);
+            if (userModal.classList.contains('show') || style.display === 'flex' || style.display !== 'none') {
+                isModalOpen = true;
+            }
+        }
+        if (quickInput && !isModalOpen) {
+            if (document.activeElement !== quickInput) {
+                quickInput.focus();
+            }
+        }
+    }, 1000);
+}
+
+startSmartAutoFocus();
 
 // --- KHỞI CHẠY ---
 document.addEventListener("DOMContentLoaded", async () => {
@@ -17,11 +39,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderTable(jsonData);
 });
 function mapUserWithPrize(users, prizes) {
-    return users.map((user) => {
+    return users.map((user, index) => {
         const prize = prizes.find((p) => p.id == user.IsReward);
         return {
             ...user,
             prizeName: prize ? prize.name : "",
+            number: index + 1,
         };
     });
 }
@@ -29,8 +52,8 @@ function mapUserWithPrize(users, prizes) {
 
 
 const COLUMN_HEADERS = [
-    "Số thẻ từ", "Mã NV", "Tên NV", "Bộ phận",
-    "Phòng ban", "Tổ", "Chuyên môn", "Thắng giải", "Ảnh", ""
+    "Số thứ tự", "Mã NV", "Tên NV", "Bộ phận",
+    "Tổ", "Thắng giải", "Ảnh", ""
 ];
 
 // Hàm khởi tạo Load User
@@ -101,13 +124,11 @@ function renderTable(data) {
 
         // Tạo mảng dữ liệu cho các cột như yêu cầu
         let cols = [
-            item.AttendanceCard,
+            item.number,
             item.UserCode,
             item.UserName,
             item.Department,
-            item.Section,
             item.Team,
-            item.JobTitle,
             item.prizeName,
             `<img src="../assets/users/${item.UserCode}.JPG" class="user-img">`, // Fallback ảnh lỗi
             // Cột hành động
@@ -120,12 +141,12 @@ function renderTable(data) {
         cols.forEach((colData, index) => {
             const td = document.createElement("td");
             // Nếu là cột Hình ảnh hoặc Hành động thì dùng innerHTML, còn lại textContent để bảo mật
-            if (index === 8 || index === 9) {
+            if (index === 6 || index === 7) {
                 td.innerHTML = colData;
             } else {
                 td.textContent = colData || "";
             }
-            if (index === 9) {
+            if (index === 8) {
                 td.style = "display: grid; ";
             }
             tr.appendChild(td);
@@ -142,8 +163,12 @@ async function handleQuickInput() {
     const input = document.getElementById("quickInput");
     const cardVal = input.value.trim();
     if (!cardVal) return;
-
-    const user = jsonUserAllData.find(u => u.AttendanceCard == cardVal);
+    let user = {};
+    if (cardVal.length == 6) {
+        user = jsonUserAllData.find(u => u.UserCode == cardVal);
+    } else {
+        user = jsonUserAllData.find(u => u.AttendanceCard == cardVal);
+    }
 
     if (user) {
         if (user.isJoin == 1) {

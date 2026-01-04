@@ -11,10 +11,7 @@
       #b8860b,
       #ffd700);
   /* Hiệu ứng vàng kim loại */
-  --card-bg: rgba(255,
-      251,
-      240,
-      0.95);
+  --card-bg: rgb(142, 41, 41);
   /* Màu kem giấy dó, hơi trong suốt nhẹ */
   --text-primary: #2c0e0e;
   /* Đen nâu (thay vì đen tuyền) cho dịu mắt */
@@ -49,7 +46,7 @@
   background-size: 100%;
   opacity: 0.18;
   z-index: 0;
-  mix-blend-mode: multiply;
+  mix-blend-mode: hard-light;
   pointer-events: none;
 }
 

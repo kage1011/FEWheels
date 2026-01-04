@@ -183,4 +183,19 @@ function renderGachaRows(slotCount) {
   }
   div.innerHTML = html;
   container.appendChild(div);
+
+  const elements = document.querySelectorAll('.number');
+  if (slotCount <= 3) {
+    elements.forEach((el) => {
+      el.style.width = "70px";
+      el.style.height = "80px";
+    });
+
+  } else {
+    elements.forEach((el) => {
+      el.style.width = "60px";
+      el.style.height = "70px";
+    });
+
+  }
 }

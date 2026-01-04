@@ -59,11 +59,12 @@ function renderPrizeMenu(prizes) {
       renderWinnerList(selectedPrize);
 
       const img = document.getElementById("selectedPrizeImage");
+      const nameBanner = document.getElementById("prizeNamea");
       if (img && selectedPrize.image) {
         img.classList.remove("prize-bounce");
         void img.offsetWidth;
         img.src = `./assets/gift/${selectedPrize.image}`;
-
+        nameBanner.textContent = selectedPrize.nameBanner;
         img.classList.add("prize-bounce");
       }
     };
@@ -163,7 +164,7 @@ async function spinGacha() {
           <img src="../assets/users/${winner.UserCode}.jpg" alt="Winner Avatar" class="avatar" id="winner-avatar">
           <div class="info">
             <h2 id="winner-name">${winner.UserName}</h2>
-            <p id="winner-id">MSNV: ${winner.UserName}</p>
+            <p id="winner-id">MSNV: ${winner.UserCode}</p>
             <span class="badge" id="winner-dept">${winner.Department}</span>
           </div>
                 `;
@@ -174,10 +175,10 @@ async function spinGacha() {
 
 
   // Cập nhật trạng thái trúng
-  // winners.forEach(async w => {
-  //     w.IsReward = 1;
-  //     await updateUserInDB(w);
-  // });
+  winners.forEach(async w => {
+    w.IsReward = selectedPrize.id;
+    await updateUserInDB(w);
+  });
   if (selectedPrize.id == 1 || selectedPrize.id == 2 || selectedPrize.id == 3) {
     setTimeout(function () {
       startShow();
@@ -185,6 +186,7 @@ async function spinGacha() {
         const stageSpotlight1 = document.getElementById('stage-spotlight');
         stageSpotlight1.classList.remove('active', 'searching');
         fireConfetti();
+        showLanterns();
       }, 7000);
     }, 4000);
   } else {

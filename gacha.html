@@ -10,12 +10,14 @@
   <link rel="stylesheet" href="./css/jackpotmachine.css" />
   <link rel="stylesheet" href="./css/winnerlist.css" />
   <link rel="stylesheet" href="./css/first.css" />
-
+  <link rel="stylesheet" href="./css/winner-lantern.css" />
 
 </head>
 
 <body>
   <div id="stage-spotlight"></div>
+  <img src="./assets/basics/left-winner-lantern.png" id="lantern-left" class="tet-lantern" alt="Lồng đèn trái">
+  <img src="./assets/basics/right-winner-lantern.png" id="lantern-right" class="tet-lantern" alt="Lồng đèn phải">
   <div class="scene">
     <div class="halo" id="halo"></div>
 
@@ -108,7 +110,7 @@
             <div class="bulb" style="left: 15px; top: 1px; animation-delay: 4s"></div>
           </div>
           <div class="crown">♕</div>
-          <h1 class="jackpot-text">JACKPOT</h1>
+          <h1 class="jackpot-text">Congratulations</h1>
         </div>
 
         <div class="panel middle-panel p-middle">
@@ -130,6 +132,11 @@
     </div>
     <div class="decorative-cloud left-cloud">
       <img id="selectedPrizeImage" class="prize prize-bounce" src="./assets/gift/prize1.png" alt="Prize Image" />
+      <div class="imperial-scroll">
+        <div class="scroll-content">
+          <span id="prizeNamea" class="scroll-text">GIẢI ĐẶC BIỆT</span>
+        </div>
+      </div>
     </div>
     <div class="decorative-cloud right-cloud">
       <div class="winner-card">
@@ -162,6 +169,7 @@
       </div>
     </div>
   </div>
+  <script src="./js/winner-lantern.js"></script>
   <script src="./data/gift.js"></script>
   <script src="./js/firework.js"></script>
   <script src="./data/user.js"></script>

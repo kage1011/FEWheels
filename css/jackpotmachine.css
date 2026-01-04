@@ -36,7 +36,7 @@
   left: -8px;
   right: -8px;
   bottom: -8px;
-  border: 15px solid #ffd700;
+  border: 15px solid #b71c1c;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   box-shadow: 0 0 10px #ffea00;
@@ -50,7 +50,7 @@
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   z-index: 2;
-  border: 12px solid #ffd700;
+  border: 12px solid #b71c1c;
 }
 
 .crown {
@@ -62,7 +62,7 @@
 
 h1.jackpot-text {
   margin: 0;
-  font-size: 48px;
+  font-size: 40px;
   background: linear-gradient(to bottom, #fff5c3 0%, #ffd700 50%, #d4af37 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -74,10 +74,9 @@ h1.jackpot-text {
 
 .middle-panel {
   height: auto;
-  min-height: 150px;
   width: 500px;
-
-  border: 10px solid #ffd700;
+  background: #2d2d2d;
+  border: 10px solid #b71c1c;
 }
 
 .reels-window {
@@ -183,7 +182,7 @@ h1.jackpot-text {
 .machine-display {
   background: transparent;
   border-radius: 10px;
-  border: 4px solid #ffd966;
+  border: 4px solid #3d3d3d;
   padding: 15px;
   min-height: 60px;
   height: auto;
@@ -200,6 +199,8 @@ h1.jackpot-text {
   flex-direction: column;
   gap: 4px;
   width: 100%;
+  /* background: linear-gradient(to bottom, #b71c1c, #800e0e); */
+
 }
 
 .gacha-row {
@@ -223,6 +224,7 @@ h1.jackpot-text {
 .numbers-row {
   display: flex;
   justify-content: center;
+  background: linear-gradient(to bottom, #b71c1c, #800e0e);
   margin: 4px 0;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -247,13 +249,14 @@ h1.jackpot-text {
 .number {
   width: 50px;
   height: 60px;
-  background: linear-gradient(to bottom,
+  /* background: linear-gradient(to bottom,
       #e0e0e0 0%,
       #fff 40%,
       #fff 60%,
-      #e0e0e0 100%);
+      #e0e0e0 100%); */
+  background: #fefe95;
   color: #d32f2f;
-  font-size: 35px;
+  font-size: 40px;
   font-weight: bold;
   border-radius: 8px;
   margin: 10px;

@@ -40,6 +40,7 @@ function closeAndExit() {
 
     }, 800);
     stageSpotlight.classList.remove('active', 'searching');
+    closeLantern();
 
 }
 
