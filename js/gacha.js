@@ -115,7 +115,7 @@ async function spinGacha() {
   }
   // Số người cần tìm theo slot
 
-  const slotCount = selectedPrize.slot == 10 ? 5 : selectedPrize.slot;
+  const slotCount = selectedPrize.slot == 6 ? 3 : selectedPrize.slot;
   const users = await getUsersFromDB();
   // Lọc user hợp lệ
   let availableUsers = users.filter((u) => u.IsReward == 0 && u.isJoin == 1);
@@ -152,8 +152,6 @@ async function spinGacha() {
     }
   });
 
-
-
   // Gọi animation
   playJackpotAnimationMulti(winners, slotCount);
   if (selectedPrize.id == 1 || selectedPrize.id == 2 || selectedPrize.id == 3) {
@@ -170,12 +168,10 @@ async function spinGacha() {
                 `;
     });
     lixi.innerHTML = cardHtml;
-    ;
   }
 
-
   // Cập nhật trạng thái trúng
-  winners.forEach(async w => {
+  winners.forEach(async (w) => {
     w.IsReward = selectedPrize.id;
     await updateUserInDB(w);
   });
@@ -183,8 +179,8 @@ async function spinGacha() {
     setTimeout(function () {
       startShow();
       setTimeout(function () {
-        const stageSpotlight1 = document.getElementById('stage-spotlight');
-        stageSpotlight1.classList.remove('active', 'searching');
+        const stageSpotlight1 = document.getElementById("stage-spotlight");
+        stageSpotlight1.classList.remove("active", "searching");
         fireConfetti();
         showLanterns();
       }, 7000);
@@ -194,7 +190,6 @@ async function spinGacha() {
       fireConfetti();
     }, 5000);
   }
-
 
   setTimeout(async function () {
     await renderWinnerList(selectedPrize);
@@ -348,8 +343,6 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
   const wrapper = document.getElementById("confetti-wrapper");
   const confettiCount = 300;
@@ -377,6 +370,3 @@ document.addEventListener("DOMContentLoaded", function () {
     wrapper.appendChild(confetti);
   }
 });
-
-
-
