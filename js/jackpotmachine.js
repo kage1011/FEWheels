@@ -162,7 +162,7 @@ function renderGachaRows(slotCount) {
   container.appendChild(div);
 
   // row 2
-  if (slotCount >= 3) {
+  if (slotCount >= 2) {
     div = document.createElement("div");
     div.className = "numbers-row";
     html = "";
@@ -184,18 +184,16 @@ function renderGachaRows(slotCount) {
   div.innerHTML = html;
   container.appendChild(div);
 
-  const elements = document.querySelectorAll('.number');
+  const elements = document.querySelectorAll(".number");
   if (slotCount <= 3) {
     elements.forEach((el) => {
       el.style.width = "70px";
       el.style.height = "80px";
     });
-
   } else {
     elements.forEach((el) => {
       el.style.width = "60px";
       el.style.height = "70px";
     });
-
   }
 }
