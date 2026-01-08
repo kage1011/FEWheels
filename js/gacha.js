@@ -55,6 +55,7 @@ function renderPrizeMenu(prizes) {
       selectedPrize = p;
       toggleFabMenu();
       if (!selectedPrize) return;
+      resetEffect();
       renderGachaRows(selectedPrize.slot == 10 ? 5 : selectedPrize.slot);
       renderWinnerList(selectedPrize);
 
@@ -108,93 +109,95 @@ function updateUserInDB(user) {
   });
 }
 
-async function spinGacha() {
-  if (!selectedPrize) {
-    alert("Vui lòng chọn giải thưởng trước!");
-    return;
-  }
-  // Số người cần tìm theo slot
+// async function spinGacha() {
+//   if (!selectedPrize) {
+//     alert("Vui lòng chọn giải thưởng trước!");
+//     return;
+//   }
+//   // Số người cần tìm theo slot
 
-  const slotCount = selectedPrize.slot == 6 ? 3 : selectedPrize.slot;
-  const users = await getUsersFromDB();
-  // Lọc user hợp lệ
-  let availableUsers = users.filter((u) => u.IsReward == 0 && u.isJoin == 1);
+//   const slotCount = selectedPrize.slot == 6 ? 3 : selectedPrize.slot;
+//   const users = await getUsersFromDB();
+//   // Lọc user hợp lệ
+//   let availableUsers = users.filter((u) => u.IsReward == 0 && u.isJoin == 1);
+//   let availableUsershaveprize = users.filter((u) => u.IsReward == 0 && u.isJoin == 1 && u.IsReward == selectedPrize.id);
+//   let numberOfUserHavePrize = availableUsershaveprize.length;
 
-  if (availableUsers.length < slotCount) {
-    alert("Không đủ người để quay!");
-    return;
-  }
+//   if (availableUsers.length < slotCount) {
+//     alert("Không đủ người để quay!");
+//     return;
+//   }
 
-  const element = document.querySelector(".handle-base");
-  // element.classList.add("rotating-image");
-  element.classList.add("lever-pull-animation");
+//   const element = document.querySelector(".handle-base");
+//   // element.classList.add("rotating-image");
+//   element.classList.add("lever-pull-animation");
 
-  setTimeout(() => {
-    element.classList.remove("lever-pull-animation");
-  }, 1200);
+//   setTimeout(() => {
+//     element.classList.remove("lever-pull-animation");
+//   }, 1200);
 
-  startQuestionRain(5000);
-  const winners = [];
-  for (let i = 0; i < slotCount; i++) {
-    const idx = Math.floor(Math.random() * availableUsers.length);
-    winners.push(availableUsers[idx]);
-    availableUsers.splice(idx, 1); // Xóa để không trùng
-  }
+//   startQuestionRain(5000);
+//   const winners = [];
+//   for (let i = 0; i < slotCount; i++) {
+//     const idx = Math.floor(Math.random() * availableUsers.length);
+//     winners.push(availableUsers[idx]);
+//     availableUsers.splice(idx, 1); // Xóa để không trùng
+//   }
 
-  console.log("Winners:", winners);
+//   console.log("Winners:", winners);
 
-  // Render từng người theo từng hàng
-  winners.forEach((winner, row) => {
-    console.log("Winner:", row);
-    for (let i = 1; i <= 6; i++) {
-      const digit = winner.UserCode[i - 1] ?? "0";
-      document.getElementById(`num_${row}_${i}`).textContent = digit;
-    }
-  });
+//   // Render từng người theo từng hàng
+//   winners.forEach((winner, row) => {
+//     console.log("Winner:", row);
+//     for (let i = 1; i <= 6; i++) {
+//       const digit = winner.UserCode[i - 1] ?? "0";
+//       document.getElementById(`num_${row}_${i}`).textContent = digit;
+//     }
+//   });
 
-  // Gọi animation
-  playJackpotAnimationMulti(winners, slotCount);
-  if (selectedPrize.id == 1 || selectedPrize.id == 2) {
-    const lixi = document.getElementById("lixi-w");
-    let cardHtml = "";
-    winners.forEach((winner, row) => {
-      cardHtml += `
-          <img src="../assets/users/${winner.UserCode}.jpg" alt="Winner Avatar" class="avatar" id="winner-avatar">
-          <div class="info">
-            <h2 id="winner-name">${winner.UserName}</h2>
-            <p id="winner-id">MSNV: ${winner.UserCode}</p>
-            <span class="badge" id="winner-dept">${winner.Department}</span>
-          </div>
-                `;
-    });
-    lixi.innerHTML = cardHtml;
-  }
+//   // Gọi animation
+//   playJackpotAnimationMulti(winners, slotCount);
+//   if (selectedPrize.id == 1 || selectedPrize.id == 2) {
+//     const lixi = document.getElementById("lixi-w");
+//     let cardHtml = "";
+//     winners.forEach((winner, row) => {
+//       cardHtml += `
+//           <img src="../assets/users/${winner.UserCode}.jpg" alt="Winner Avatar" class="avatar" id="winner-avatar">
+//           <div class="info">
+//             <h2 id="winner-name">${winner.UserName}</h2>
+//             <p id="winner-id">MSNV: ${winner.UserCode}</p>
+//             <span class="badge" id="winner-dept">${winner.Department}</span>
+//           </div>
+//                 `;
+//     });
+//     lixi.innerHTML = cardHtml;
+//   }
 
-  // Cập nhật trạng thái trúng
-  winners.forEach(async (w) => {
-    w.IsReward = selectedPrize.id;
-    await updateUserInDB(w);
-  });
-  if (selectedPrize.id == 1 || selectedPrize.id == 2 || selectedPrize.id == 3) {
-    setTimeout(function () {
-      startShow();
-      setTimeout(function () {
-        const stageSpotlight1 = document.getElementById("stage-spotlight");
-        stageSpotlight1.classList.remove("active", "searching");
-        fireConfetti();
-        showLanterns();
-      }, 7000);
-    }, 4000);
-  } else {
-    setTimeout(function () {
-      fireConfetti();
-    }, 5000);
-  }
+//   // Cập nhật trạng thái trúng
+//   winners.forEach(async (w) => {
+//     w.IsReward = selectedPrize.id;
+//     await updateUserInDB(w);
+//   });
+//   if (selectedPrize.id == 1 || selectedPrize.id == 2 || selectedPrize.id == 3) {
+//     setTimeout(function () {
+//       startShow();
+//       setTimeout(function () {
+//         const stageSpotlight1 = document.getElementById("stage-spotlight");
+//         stageSpotlight1.classList.remove("active", "searching");
+//         fireConfetti();
+//         showLanterns();
+//       }, 7000);
+//     }, 4000);
+//   } else {
+//     setTimeout(function () {
+//       fireConfetti();
+//     }, 5000);
+//   }
 
-  setTimeout(async function () {
-    await renderWinnerList(selectedPrize);
-  }, 5000);
-}
+//   setTimeout(async function () {
+//     await renderWinnerList(selectedPrize);
+//   }, 5000);
+// }
 
 async function renderWinnerList(selectedPrize) {
   const container = document.querySelector(".list-container");
@@ -370,3 +373,235 @@ document.addEventListener("DOMContentLoaded", function () {
     wrapper.appendChild(confetti);
   }
 });
+
+
+
+// Biến cờ để ngăn spam phím Enter khi đang quay
+let isSpinning = false;
+
+async function spinGacha() {
+  // 1. Kiểm tra điều kiện cơ bản
+  if (isSpinning) return; // Đang quay thì bỏ qua
+  if (!selectedPrize) {
+    alert("Vui lòng chọn giải thưởng trước!");
+    return;
+  }
+
+  // Số slot tối đa của giải này
+  const maxSlots = selectedPrize.slot;
+
+  // Lấy dữ liệu mới nhất
+  const users = await getUsersFromDB();
+
+  // 2. Phân loại User
+  // - Người ĐÃ trúng giải này rồi (để hiển thị các dòng bên trên)
+  // Sửa lỗi logic cũ: Đã trúng thì IsReward phải bằng ID giải, không check IsReward == 0 nữa
+  let existingWinners = users.filter((u) => u.IsReward == selectedPrize.id).sort((a, b) => new Date(a.AttendanceDate) - new Date(b.AttendanceDate));
+
+  // - Người CHƯA trúng giải nào (để quay dòng hiện tại)
+  let candidates = users.filter((u) => u.IsReward == 0 && u.isJoin == 1);
+
+  // 3. Xác định trạng thái quay
+  const currentWinnerCount = existingWinners.length; // Số người đã trúng
+
+  // Nếu đã đủ người trúng giải -> Thông báo và dừng
+  if (currentWinnerCount >= maxSlots) {
+    alert("Giải thưởng này đã đủ số lượng người trúng!");
+    // Có thể gọi hàm hiển thị danh sách tổng kết tại đây nếu muốn
+    renderWinnerList(selectedPrize);
+    return;
+  }
+
+  // Nếu không còn ai để quay -> Dừng
+  if (candidates.length === 0) {
+    alert("Không đủ người hợp lệ để quay tiếp!");
+    return;
+  }
+
+  // === BẮT ĐẦU QUAY ===
+  isSpinning = true;
+
+  // 4. Animation gạt cần (Lever)
+  const element = document.querySelector(".handle-base");
+  if (element) {
+    element.classList.add("lever-pull-animation");
+    setTimeout(() => {
+      element.classList.remove("lever-pull-animation");
+    }, 1200);
+  }
+
+  console.log("existingWinners", existingWinners);
+  existingWinners.forEach((winner, row) => {
+    renderSingleRowStatic(winner, row);
+  });
+
+  const activeRowIndex = currentWinnerCount;
+
+  const randomIdx = Math.floor(Math.random() * candidates.length);
+  const newWinner = candidates[randomIdx];
+
+  console.log(`Đang quay dòng ${activeRowIndex + 1} cho:`, newWinner.UserName);
+
+  startQuestionRain(5000);
+
+  // 7. Gọi Animation CHỈ CHO DÒNG HIỆN TẠI
+  // Lưu ý: Bạn cần sửa hàm playJackpotAnimationMulti để nó hỗ trợ quay 1 dòng cụ thể
+  // Ở đây tôi giả định hàm playSingleRowAnimation(winner, rowIndex)
+  // playSingleRowAnimation(newWinner, activeRowIndex);
+  playJackpotRow1(activeRowIndex, newWinner);
+  // 8. Cập nhật Database sau khi quay xong dòng này
+  newWinner.IsReward = selectedPrize.id;
+  newWinner.AttendanceDate = new Date().toISOString();
+  updateUserInDB(newWinner);
+
+  // Cập nhật lại danh sách winners cục bộ để xử lý UI tiếp theo
+  const allWinnersNow = [...existingWinners, newWinner];
+
+  // 9. Xử lý hiệu ứng trúng thưởng (Lì xì, pháo hoa)
+  // Logic: Chỉ hiển thị hiệu ứng lớn khi quay xong slot CUỐI CÙNG hoặc tùy ý bạn
+  // Ở đây tôi giữ logic hiển thị thông tin người vừa trúng
+  if (selectedPrize.id == 1 || selectedPrize.id == 2) {
+    updateLixiDisplay(allWinnersNow); // Hàm tách riêng update UI lixi
+  }
+
+  // Nếu đây là slot cuối cùng của giải -> Kích hoạt hiệu ứng kết thúc giải
+  // if (allWinnersNow.length === maxSlots) {
+  //   if (selectedPrize.id <= 2) {
+  //     setTimeout(() => {
+  //       startShow(); // Nhạc, spotlight
+  //       setTimeout(() => {
+  //         fireConfetti();
+  //         showLanterns();
+  //       }, 2000);
+  //     }, 1000);
+  //   } else {
+  //     fireConfetti();
+  //   }
+  //   // Show bảng danh sách tổng kết
+  //   setTimeout(async function () {
+  //     await renderWinnerList(selectedPrize);
+  //   }, 3000);
+  // }
+
+  if (selectedPrize.id == 1 || selectedPrize.id == 2) {
+    setTimeout(function () {
+      startShow();
+      setTimeout(function () {
+        const stageSpotlight1 = document.getElementById("stage-spotlight");
+        stageSpotlight1.classList.remove("active", "searching");
+        fireConfetti();
+        showLanterns();
+      }, 7000);
+    }, 4000);
+  } else {
+    setTimeout(function () {
+      fireConfetti();
+    }, 5000);
+  }
+
+  setTimeout(async function () {
+    await renderWinnerList(selectedPrize);
+  }, 5000);
+  isSpinning = false; // Mở khóa để cho phép nhấn Enter lần tiếp theo
+}
+
+// --- CÁC HÀM BỔ TRỢ (HELPER FUNCTIONS) ---
+
+// Hàm hiển thị tĩnh giá trị (cho các dòng đã quay rồi)
+function renderSingleRowStatic(winner, rowIndex) {
+  for (let i = 1; i <= 6; i++) {
+    const digit = winner.UserCode[i - 1] ?? "0";
+    const el = document.getElementById(`num_${rowIndex}_${i}`);
+    if (el) el.textContent = digit;
+  }
+  // Có thể thêm class để làm sáng dòng đã trúng
+  // document.getElementById(`row_${rowIndex}`).classList.add('finished');
+}
+
+// Hàm cập nhật hiển thị Lì xì (Tách ra cho gọn)
+function updateLixiDisplay(winners) {
+  const lixi = document.getElementById("lixi-w");
+  if (!lixi) return;
+
+  let cardHtml = "";
+  winners.forEach((winner) => {
+    cardHtml += `
+          <div class="winner-card-item"> <img src="../assets/users/${winner.UserCode}.jpg" alt="Avatar" class="avatar">
+             <div class="info">
+               <h2>${winner.UserName}</h2>
+               <p>MSNV: ${winner.UserCode}</p>
+               <span class="badge">${winner.Department}</span>
+             </div>
+          </div>`;
+  });
+  lixi.innerHTML = cardHtml;
+}
+
+// Hàm giả lập animation quay cho 1 dòng (Bạn cần điều chỉnh hàm cũ của bạn theo logic này)
+function playSingleRowAnimation(winner, rowIndex) {
+  console.log("Start animation row", rowIndex);
+  renderSingleRowStatic(winner, rowIndex); // Hiển thị số
+}
+
+
+// 1. Hàm hiệu ứng số nhảy trên từng ô (Giữ nguyên)
+function animateDigit1(element, targetDigit, duration) {
+  let speed = 60; // Tốc độ ban đầu
+  let totalTime = 0;
+
+  // Bật hiệu ứng rung/lắc
+  element.classList.add("spin-shake");
+
+  const interval = setInterval(() => {
+    // Random số giả trong lúc quay
+    element.textContent = Math.floor(Math.random() * 10);
+    totalTime += speed;
+
+    // Giảm tốc từ từ (tăng speed nghĩa là chậm lại)
+    if (speed < 200) speed += 4;
+
+    // Khi hết thời gian
+    if (totalTime >= duration) {
+      clearInterval(interval);
+      element.classList.remove("spin-shake");
+      // Gán số thật (kết quả)
+      element.textContent = targetDigit;
+    }
+  }, speed);
+}
+
+// 2. Hàm xử lý logic quay cho 1 dòng (Giữ nguyên logic cũ)
+function animateRow1(rowIndex, digits) {
+  for (let i = 1; i <= 6; i++) {
+    const cell = document.getElementById(`num_${rowIndex}_${i}`);
+    if (cell) {
+      const digit = digits[i - 1] ?? "0";
+      // Thời gian dừng từng ô: Ô 1 dừng trước, ô 6 dừng sau cùng
+      animateDigit1(cell, digit, 1600 + i * 2000);
+    }
+  }
+}
+
+// 3. HÀM MỚI: Chỉ gọi quay cho 1 dòng cụ thể
+// Input: 
+// - rowIndex: Số thứ tự dòng (0, 1, 2...)
+// - winner: Object chứa thông tin người trúng (lấy UserCode)
+function playJackpotRow1(rowIndex, winner) {
+  if (!winner) {
+    console.error("Không có dữ liệu người trúng cho dòng: " + rowIndex);
+    return;
+  }
+
+  // Chuyển UserCode thành mảng ký tự
+  const userCode = winner.UserCode.toString().split("");
+
+  // Gọi hàm animateRow cho dòng chỉ định
+  animateRow1(rowIndex, userCode);
+}
+
+// (Tùy chọn) Hàm cũ nếu bạn vẫn muốn giữ để quay tất cả 1 lúc (nếu cần)
+function playJackpotAnimationMulti1(winners, slotCount) {
+  for (let r = 0; r < slotCount; r++) {
+    playJackpotRow1(r, winners[r]);
+  }
+}

@@ -9,6 +9,7 @@ const user = [
     JobTitle: "Utility Senior Chief / Trưởng Phòng Cấp Cao Công dụng",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003117300",
@@ -20,6 +21,7 @@ const user = [
     JobTitle: "Power Supervisor / Giám Sát Năng Lượng",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002213057",
@@ -31,6 +33,7 @@ const user = [
     JobTitle: "GA Vice Chief / Phó Phòng Tổng Vụ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003472989",
@@ -42,6 +45,7 @@ const user = [
     JobTitle: "HRD Vice Chief / Phó Phòng Phát Triển NNL",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001458161",
@@ -53,6 +57,7 @@ const user = [
     JobTitle: "Accounting Vice Chief/ Phó Phòng Kế Toán",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0015725795",
@@ -64,6 +69,7 @@ const user = [
     JobTitle: "Driver / Nhân Viên Tài Xế",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003104809",
@@ -75,6 +81,7 @@ const user = [
     JobTitle: "Driver Leader / Tổ Truởng Tài Xế",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003128611",
@@ -86,6 +93,7 @@ const user = [
     JobTitle: "Chef Leader / Tổ Trưởng Nấu Ăn",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001447960",
@@ -97,6 +105,7 @@ const user = [
     JobTitle: "Purchasing Staff / Nhân Viên Thu Mua",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001434866",
@@ -108,6 +117,7 @@ const user = [
     JobTitle: "Networking Chief / Trưởng Phòng Quản Trị Mạng & Hệ Thống",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0005273479",
@@ -119,6 +129,7 @@ const user = [
     JobTitle: "Electrician / Thợ điện",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002420508",
@@ -130,6 +141,7 @@ const user = [
     JobTitle: "Energy Senior Chief / TPCC Bộ Phận Năng Lượng",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001451010",
@@ -141,6 +153,7 @@ const user = [
     JobTitle: "Compliance Leader / Tổ Trưởng Tuân Thủ TNXH",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003135811",
@@ -152,6 +165,7 @@ const user = [
     JobTitle: "Dormitory Supervisor / Giám Sát KTX",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0005283224",
@@ -163,6 +177,7 @@ const user = [
     JobTitle: "Administration Vice Chief / Phó Phòng Hành Chính",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002410312",
@@ -174,6 +189,7 @@ const user = [
     JobTitle: "Electrician / Thợ điện",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0011038429",
@@ -185,6 +201,7 @@ const user = [
     JobTitle: "Physician / Y Sỹ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002416043",
@@ -196,6 +213,7 @@ const user = [
     JobTitle: "Purchasing Staff / Nhân Viên Thu Mua",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002177225",
@@ -207,6 +225,7 @@ const user = [
     JobTitle: "Recorder / Nhân Viên Thống Kê",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003459374",
@@ -218,6 +237,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002423723",
@@ -229,6 +249,7 @@ const user = [
     JobTitle: "Accounting Supervisor  / Giám Sát Phòng Kế Toán",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002438301",
@@ -240,6 +261,7 @@ const user = [
     JobTitle: "Accountant / Nhân viên Kế toán",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002202983",
@@ -251,6 +273,7 @@ const user = [
     JobTitle: "Purchasing Senior Chief / Trưởng Phòng Cấp Cao Thu Mua",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002180127",
@@ -262,6 +285,7 @@ const user = [
     JobTitle: "Security Leader / Tổ Trưởng Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001449269",
@@ -273,6 +297,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0006271084",
@@ -284,6 +309,7 @@ const user = [
     JobTitle: "Electrician Supervisor / Giám Sát Điện",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002181242",
@@ -295,6 +321,7 @@ const user = [
     JobTitle: "Purchasing Staff / Nhân Viên Thu Mua",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002198061",
@@ -306,6 +333,7 @@ const user = [
     JobTitle: "Maintenance Supervisor / Giám Sát Bảo Trì",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0008166789",
@@ -317,6 +345,7 @@ const user = [
     JobTitle: "HRM Senior Chief / TPCC Quản Lý Nhân Lực",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001464494",
@@ -328,6 +357,7 @@ const user = [
     JobTitle: "Electrician / Thợ điện",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0009437742",
@@ -339,6 +369,7 @@ const user = [
     JobTitle: "HR Vice Manager / Phó Giám Đốc Nguồn Nhân Lực",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002435552",
@@ -350,6 +381,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003777707",
@@ -361,6 +393,7 @@ const user = [
     JobTitle: "Service Supervisor/ Giám sát phục vụ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002426620",
@@ -372,6 +405,7 @@ const user = [
     JobTitle: "HSE Supervisor / Giám Sát HSE",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002177800",
@@ -383,6 +417,7 @@ const user = [
     JobTitle: "Working Hours Leader / Tổ Trưởng Chấm Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002208925",
@@ -394,6 +429,7 @@ const user = [
     JobTitle: "Power Supervisor / Giám Sát Năng Lượng",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0009256035",
@@ -405,6 +441,7 @@ const user = [
     JobTitle: "Electrician / Thợ điện",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0010057535",
@@ -416,6 +453,7 @@ const user = [
     JobTitle: "Service Leader / Tổ Trưởng Tổ Phục Vụ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0012779715",
@@ -427,6 +465,7 @@ const user = [
     JobTitle: "Physician / Y Sỹ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002195342",
@@ -439,6 +478,7 @@ const user = [
       "Training & Development Supervisor/ Giám Sát Đào Tạo và Phát Triển",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002210077",
@@ -450,6 +490,7 @@ const user = [
     JobTitle: "Recruitment Supervisor / Giám Sát Tuyển Dụng",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002205028",
@@ -461,6 +502,7 @@ const user = [
     JobTitle: "Cleaning Supervisor / Giám sát Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0006242672",
@@ -472,6 +514,7 @@ const user = [
     JobTitle: "Driver / Nhân Viên Tài Xế",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002185055",
@@ -483,6 +526,7 @@ const user = [
     JobTitle: "Security Supervisor / Giám Sát Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0006263995",
@@ -494,6 +538,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002424506",
@@ -505,6 +550,7 @@ const user = [
     JobTitle: "Insurance Staff / Nhân Viên Bảo Hiểm",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001441993",
@@ -516,6 +562,7 @@ const user = [
     JobTitle: "Shipping Leader / Tổ Trưởng XNK",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001976153",
@@ -527,6 +574,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001952439",
@@ -538,6 +586,7 @@ const user = [
     JobTitle: "Driver / Nhân Viên Tài Xế",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002138136",
@@ -549,6 +598,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003744285",
@@ -560,6 +610,7 @@ const user = [
     JobTitle: "Repairer / Thợ Sửa Chữa",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004577035",
@@ -571,6 +622,7 @@ const user = [
     JobTitle: "Disciplinary Staff / Nhân Viên XLKL",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0009237236",
@@ -582,6 +634,7 @@ const user = [
     JobTitle: "Payroll Staff / Nhân Viên Tiền Lương",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0011083937",
@@ -593,6 +646,7 @@ const user = [
     JobTitle: "Security Chief / Trưởng Phòng Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003747913",
@@ -604,6 +658,7 @@ const user = [
     JobTitle: "Recruitment Staff / Nhân Viên Tuyển Dụng",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002191647",
@@ -615,6 +670,7 @@ const user = [
     JobTitle: "Labor Contract Staff / Nhân Viên Quản Lý HĐLĐ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002179867",
@@ -626,6 +682,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003471755",
@@ -637,6 +694,7 @@ const user = [
     JobTitle: "Shipping Staff / Nhân viên XNK",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004756996",
@@ -648,6 +706,7 @@ const user = [
     JobTitle: "CR Senior Chief / Trưởng Phòng Cấp Cao Tuân Thủ TNXH",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002194492",
@@ -659,6 +718,7 @@ const user = [
     JobTitle: "Labor Relation Supervisor / Giám Sát Quan Hệ Lao Động",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003742227",
@@ -670,6 +730,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002169657",
@@ -681,6 +742,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002194365",
@@ -692,6 +754,7 @@ const user = [
     JobTitle: "Driver / Nhân Viên Tài Xế",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001451501",
@@ -703,6 +766,7 @@ const user = [
     JobTitle: "Software Maintenance Vice Chief / Phó Phòng Bảo Trì Phần Mềm",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003219308",
@@ -714,6 +778,7 @@ const user = [
     JobTitle: "Receptionist / Nhân Viên Tiếp Tân",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003751042",
@@ -725,6 +790,7 @@ const user = [
     JobTitle: "Processing Trade Staff / Nhân Viên Bảo Thuế",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003721761",
@@ -736,6 +802,7 @@ const user = [
     JobTitle: "Software Development Vice Chief / Phó Phòng Phát Triển Phần Mềm",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003468560",
@@ -747,6 +814,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002194210",
@@ -758,6 +826,7 @@ const user = [
     JobTitle: "Electrician / Thợ điện",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0006269998",
@@ -769,6 +838,7 @@ const user = [
     JobTitle: "Utility Recorder / Thống Kê Phòng Công Dụng",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002176296",
@@ -780,6 +850,7 @@ const user = [
     JobTitle: "Networking Staff / Nhân Viên Quản Trị Mạng & Hệ Thống",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001445642",
@@ -791,6 +862,7 @@ const user = [
     JobTitle: "Networking Staff / Nhân Viên Quản Trị Mạng & Hệ Thống",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0011056559",
@@ -802,6 +874,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002183581",
@@ -813,6 +886,7 @@ const user = [
     JobTitle: "Termination Management Staff / Nhân Viên Quản Lý Nghỉ Việc",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002200702",
@@ -824,6 +898,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001953321",
@@ -835,6 +910,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0007809861",
@@ -846,6 +922,7 @@ const user = [
     JobTitle: "Skill Examination Staff / Nhân Viên Kiểm Tra Tay Nghề",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0011067636",
@@ -857,6 +934,7 @@ const user = [
     JobTitle: "Administration Leader / Tổ trưởng Hành Chính",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0006236027",
@@ -868,6 +946,7 @@ const user = [
     JobTitle: "Security Leader / Tổ Trưởng Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001453358",
@@ -879,6 +958,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001466819",
@@ -890,6 +970,7 @@ const user = [
     JobTitle: "Security Leader / Tổ Trưởng Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0010765317",
@@ -901,6 +982,7 @@ const user = [
     JobTitle: "Electrician / Thợ điện",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004065356",
@@ -912,6 +994,7 @@ const user = [
     JobTitle: "Repairer / Thợ Sửa Chữa",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0007120932",
@@ -923,6 +1006,7 @@ const user = [
     JobTitle: "Accountant / Nhân viên Kế toán",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0015725856",
@@ -934,6 +1018,7 @@ const user = [
     JobTitle: "Working Hour Staff / Nhân Viên Chấm Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0012785079",
@@ -945,6 +1030,7 @@ const user = [
     JobTitle: "Accountant / Nhân viên Kế toán",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0009216276",
@@ -956,6 +1042,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0009277494",
@@ -967,6 +1054,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0010765540",
@@ -978,6 +1066,7 @@ const user = [
     JobTitle: "Driver / Nhân Viên Tài Xế",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0007126734",
@@ -989,6 +1078,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0012232216",
@@ -1000,6 +1090,7 @@ const user = [
     JobTitle: "Electrician / Thợ điện",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0009236098",
@@ -1011,6 +1102,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0009217687",
@@ -1022,6 +1114,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004730334",
@@ -1033,6 +1126,7 @@ const user = [
     JobTitle: "Security Leader / Tổ Trưởng Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0010765406",
@@ -1044,6 +1138,7 @@ const user = [
     JobTitle: "Networking Staff / Nhân Viên Quản Trị Mạng & Hệ Thống",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0009213530",
@@ -1055,6 +1150,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0011288251",
@@ -1066,6 +1162,7 @@ const user = [
     JobTitle: "Security Leader / Tổ Trưởng Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0005851942",
@@ -1077,6 +1174,7 @@ const user = [
     JobTitle: "Security Leader / Tổ Trưởng Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0005871018",
@@ -1088,6 +1186,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004078125",
@@ -1099,6 +1198,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0009272196",
@@ -1110,6 +1210,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004846747",
@@ -1121,6 +1222,7 @@ const user = [
     JobTitle: "CR Coordinator/ Nhân Viên Điều Phối CR",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003198989",
@@ -1132,6 +1234,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0011071729",
@@ -1143,6 +1246,7 @@ const user = [
     JobTitle: "Chef / Nhân Viên Nấu Ăn",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004079871",
@@ -1154,6 +1258,7 @@ const user = [
     JobTitle: "Chef / Nhân Viên Nấu Ăn",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004492065",
@@ -1165,6 +1270,7 @@ const user = [
     JobTitle: "Software Development Supervisor / Giám Sát Phát Triển Phần Mềm",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004577016",
@@ -1176,6 +1282,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004578225",
@@ -1187,6 +1294,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004892381",
@@ -1198,6 +1306,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0009271461",
@@ -1209,6 +1318,7 @@ const user = [
     JobTitle: "Training Staff / Nhân Viên Huấn Luyện",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003192335",
@@ -1220,6 +1330,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004360739",
@@ -1231,6 +1342,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0010755951",
@@ -1242,6 +1354,7 @@ const user = [
     JobTitle: "Accountant / Nhân viên Kế toán",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0002201158",
@@ -1253,6 +1366,7 @@ const user = [
     JobTitle: "Accountant / Nhân viên Kế toán",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004360787",
@@ -1264,6 +1378,7 @@ const user = [
     JobTitle: "Trade Union Officer / Cán Bộ Công Đoàn Chuyên Trách",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004564290",
@@ -1275,6 +1390,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003738879",
@@ -1286,6 +1402,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0006515238",
@@ -1297,6 +1414,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0006591851",
@@ -1308,6 +1426,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0006395337",
@@ -1319,6 +1438,7 @@ const user = [
     JobTitle: "Software Development Engineer  / Nhân Viên Phát Triển Phần Mềm",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004577884",
@@ -1330,6 +1450,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0012826404",
@@ -1341,6 +1462,7 @@ const user = [
     JobTitle: "Fire Fighting & Prevention Staff / Nhân Viên PCCC",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0012791221",
@@ -1352,6 +1474,7 @@ const user = [
     JobTitle: "Electrician / Thợ điện",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0012828507",
@@ -1363,6 +1486,7 @@ const user = [
     JobTitle: "Recorder / Nhân Viên Thống Kê",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0012805006",
@@ -1374,6 +1498,7 @@ const user = [
     JobTitle: "Development Staff / Nhân Viên Phát Triển",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0013554289",
@@ -1385,6 +1510,7 @@ const user = [
     JobTitle: "GA Staff / Nhân Viên Tổng Vụ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0012961204",
@@ -1396,6 +1522,7 @@ const user = [
     JobTitle: "Software Maintenance Engineer / Nhân Viên Bảo Trì Phần Mềm",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0006579993",
@@ -1407,6 +1534,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0011078784",
@@ -1418,6 +1546,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0000241257",
@@ -1429,6 +1558,7 @@ const user = [
     JobTitle: "Software Development Engineer  / Nhân Viên Phát Triển Phần Mềm",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0000193058",
@@ -1440,6 +1570,7 @@ const user = [
     JobTitle: "GA Staff / Nhân Viên Tổng Vụ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004065297",
@@ -1451,6 +1582,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0000791725",
@@ -1462,6 +1594,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0000762172",
@@ -1473,6 +1606,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0000954014",
@@ -1484,6 +1618,7 @@ const user = [
     JobTitle: "Wastewater Treatment Staff/ Nhân Viên Xử Lý Nước Thải",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0000201762",
@@ -1495,6 +1630,7 @@ const user = [
     JobTitle: "Electrician / Thợ điện",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0005107350",
@@ -1506,6 +1642,7 @@ const user = [
     JobTitle: "CR Coordinator/ Nhân Viên Điều Phối CR",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003225250",
@@ -1517,6 +1654,7 @@ const user = [
     JobTitle: "Security Staff / Nhân Viên Bảo Vệ",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0005153331",
@@ -1529,6 +1667,7 @@ const user = [
       "Foreigner Profile Management Staff / Nhân Viên Quản Lý Hồ Sơ NNN",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0005111799",
@@ -1540,6 +1679,7 @@ const user = [
     JobTitle: "Repairer / Thợ Sửa Chữa",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0003186556",
@@ -1551,6 +1691,7 @@ const user = [
     JobTitle: "Shipping Staff / Nhân viên XNK",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0007817894",
@@ -1562,6 +1703,7 @@ const user = [
     JobTitle: "Cleaner / Lao Công",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "",
@@ -1573,6 +1715,7 @@ const user = [
     JobTitle: "IT Project Vice Chief/ Phó Phòng Dự Án IT",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0001462221",
@@ -1584,6 +1727,7 @@ const user = [
     JobTitle: "IT Vice Manager / Phó Giám Đốc IT",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
   {
     AttendanceCard: "0004515942",
@@ -1595,5 +1739,6 @@ const user = [
     JobTitle: "Management Division Manager / GĐ Đơn Vị Quản Lý",
     isJoin: "0",
     IsReward: "0",
+    AttendanceDate: "",
   },
 ];

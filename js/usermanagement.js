@@ -267,6 +267,7 @@ form.addEventListener("submit", async function (e) {
         JobTitle: document.getElementById("inpJobTitle").value,
         isJoin: "1",
         IsReward: "0",
+        AttendanceDate: "",
     };
 
     if (currentMode === 'add') {

@@ -126,16 +126,24 @@ function renderGachaRows(slotCount) {
   const container = document.getElementById("gachaRows");
   console.log("Slot count:", slotCount);
   container.innerHTML = "";
-  // row 5
-  if (slotCount == undefined) {
-    slotCount = 5;
+  // row 1
+  div = document.createElement("div");
+  div.className = "numbers-row";
+  html = "";
+  for (let i = 1; i <= 6; i++) {
+    html += `<div class="number" id="num_${0}_${i}">0</div>`;
   }
-  if (slotCount == 5) {
-    let div = document.createElement("div");
+  div.innerHTML = html;
+  container.appendChild(div);
+
+
+  // row 2
+  if (slotCount >= 2) {
+    div = document.createElement("div");
     div.className = "numbers-row";
-    let html = "";
+    html = "";
     for (let i = 1; i <= 6; i++) {
-      html += `<div class="number" id="num_${4}_${i}">0</div>`;
+      html += `<div class="number" id="num_${1}_${i}">0</div>`;
     }
     div.innerHTML = html;
     container.appendChild(div);
@@ -151,27 +159,6 @@ function renderGachaRows(slotCount) {
     div.innerHTML = html;
     container.appendChild(div);
   }
-  // row 1
-  div = document.createElement("div");
-  div.className = "numbers-row";
-  html = "";
-  for (let i = 1; i <= 6; i++) {
-    html += `<div class="number" id="num_${0}_${i}">0</div>`;
-  }
-  div.innerHTML = html;
-  container.appendChild(div);
-
-  // row 2
-  if (slotCount >= 2) {
-    div = document.createElement("div");
-    div.className = "numbers-row";
-    html = "";
-    for (let i = 1; i <= 6; i++) {
-      html += `<div class="number" id="num_${1}_${i}">0</div>`;
-    }
-    div.innerHTML = html;
-    container.appendChild(div);
-  }
   // row 4
   if (slotCount == 5) {
     div = document.createElement("div");
@@ -180,9 +167,21 @@ function renderGachaRows(slotCount) {
     for (let i = 1; i <= 6; i++) {
       html += `<div class="number" id="num_${3}_${i}">0</div>`;
     }
+    div.innerHTML = html;
+    container.appendChild(div);
   }
-  div.innerHTML = html;
-  container.appendChild(div);
+  // row 5
+
+  if (slotCount == 5) {
+    let div = document.createElement("div");
+    div.className = "numbers-row";
+    let html = "";
+    for (let i = 1; i <= 6; i++) {
+      html += `<div class="number" id="num_${4}_${i}">0</div>`;
+    }
+    div.innerHTML = html;
+    container.appendChild(div);
+  }
 
   const elements = document.querySelectorAll(".number");
   if (slotCount <= 3) {

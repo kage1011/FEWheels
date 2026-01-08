@@ -1,5 +1,6 @@
 const envelope = document.getElementById('envelope');
 const halo = document.getElementById('halo');
+const scene = document.getElementById('scene');
 let isOpened = false;
 let isAnimating = false;
 let spotlightInterval;
@@ -9,6 +10,7 @@ function startReveal() {
     if (isAnimating) return;
     isAnimating = true;
     resetEffect();
+    scene.style.zIndex = 99999;
     envelope.classList.add('entrance');
     envelope.addEventListener('animationend', onEntranceComplete, { once: true });
 }
@@ -17,7 +19,6 @@ function onEntranceComplete() {
     setTimeout(() => {
         envelope.classList.add('open');
         halo.classList.add('active');
-
         isOpened = true;
         isAnimating = false;
     }, 100);
@@ -41,10 +42,10 @@ function closeAndExit() {
     }, 800);
     stageSpotlight.classList.remove('active', 'searching');
     closeLantern();
-
 }
 
 function resetEffect() {
+    scene.style.zIndex = 14;
     envelope.classList.remove('entrance', 'exit', 'open');
     halo.classList.remove('active');
     void envelope.offsetWidth;

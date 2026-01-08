@@ -84,11 +84,7 @@
   font-style: italic;
 }
 
-.list-container {
-  flex: 1;
-  overflow-y: auto;
-  padding: 15px;
-}
+
 
 .winner-item {
   display: flex;
@@ -170,6 +166,13 @@
   font-size: 0.75rem;
   margin-right: 5px;
 }
+
+.list-container {
+  height: 100%;
+  overflow-y: auto;
+  padding: 15px;
+}
+
 
 .list-container::-webkit-scrollbar {
   display: none;
