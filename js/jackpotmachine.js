@@ -162,7 +162,7 @@ function renderGachaRows(slotCount) {
   container.appendChild(div);
 
   // row 2
-  if (slotCount == 5 || slotCount == 6 || slotCount == 2) {
+  if (slotCount >= 2) {
     div = document.createElement("div");
     div.className = "numbers-row";
     html = "";
