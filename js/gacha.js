@@ -154,7 +154,7 @@ async function spinGacha() {
 
   // Gọi animation
   playJackpotAnimationMulti(winners, slotCount);
-  if (selectedPrize.id == 1 || selectedPrize.id == 2 || selectedPrize.id == 3) {
+  if (selectedPrize.id == 1 || selectedPrize.id == 2) {
     const lixi = document.getElementById("lixi-w");
     let cardHtml = "";
     winners.forEach((winner, row) => {
@@ -322,7 +322,7 @@ function startQuestionRain(duration = 6000) {
   const interval = setInterval(() => {
     const q = document.createElement("div");
     q.className = "question";
-    q.innerHTML = `<img src="./assets/basics/question.png" style="width:120px;height:120px;">`;
+    q.innerHTML = `<img src="./assets/basics/question-yellow.png" style="width:120px;height:120px;">`;
     q.style.left = Math.random() * 100 + "vw";
     q.style.animationDuration = 2 + Math.random() * 2 + "s";
     q.style.transform = `rotate(${Math.random() * 360}deg)`;
