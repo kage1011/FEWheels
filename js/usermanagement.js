@@ -9,14 +9,21 @@ function startSmartAutoFocus() {
         const userModal = document.getElementById('userModal');
 
         let isModalOpen = false;
-
         if (userModal) {
             const style = window.getComputedStyle(userModal);
             if (userModal.classList.contains('show') || style.display === 'flex' || style.display !== 'none') {
                 isModalOpen = true;
             }
         }
-        if (quickInput && !isModalOpen) {
+
+        const activeEl = document.activeElement;
+        const isUserTypingElsewhere =
+            activeEl &&
+            (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA') &&
+            activeEl !== quickInput;
+
+
+        if (quickInput && !isModalOpen && !isUserTypingElsewhere) {
             if (document.activeElement !== quickInput) {
                 quickInput.focus();
             }
