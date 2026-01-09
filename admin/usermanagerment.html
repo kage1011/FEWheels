@@ -47,10 +47,16 @@
         </div>
     </main>
 
-    <button class="fab-btn" onclick="openModal('add')">
+    <!-- <button class="fab-btn" onclick="openModal('add')">
         ➕
-    </button>
-
+    </button> -->
+    <div class="fab-container">
+      <div class="fab-menu" id="fabMenu">
+          <div class="fab-item" onclick="openModal('add')">➕ Thêm Người Dùng</div>
+          <div class="fab-item" onclick="exportExcel()">📊 Xuất Excel</div>
+      </div>
+      <button class="fab-btn" onclick="toggleFabMenu()">🎁</button>
+    </div>
     <div id="userModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -114,6 +120,7 @@
         <div class="admin-trigger">
             <span class="arrow-icon"></span>
         </div>
+        <script src="../js/xlsx.full.min.js"></script>
         <script src="../data/user.js"></script>
         <script src="../data/gift.js"></script>
         <script src="../js/usermanagement.js"></script>

@@ -65,7 +65,13 @@ function renderPrizeMenu(prizes) {
         img.classList.remove("prize-bounce");
         void img.offsetWidth;
         img.src = `./assets/gift/${selectedPrize.image}`;
-        nameBanner.textContent = selectedPrize.nameBanner;
+        nameBanner.textContent =
+          selectedPrize.name +
+          " ( " +
+          selectedPrize.slot +
+          " giải ) " +
+          "\n" +
+          selectedPrize.nameBanner;
         img.classList.add("prize-bounce");
       }
     };
@@ -374,8 +380,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
-
 // Biến cờ để ngăn spam phím Enter khi đang quay
 let isSpinning = false;
 
@@ -396,7 +400,9 @@ async function spinGacha() {
   // 2. Phân loại User
   // - Người ĐÃ trúng giải này rồi (để hiển thị các dòng bên trên)
   // Sửa lỗi logic cũ: Đã trúng thì IsReward phải bằng ID giải, không check IsReward == 0 nữa
-  let existingWinners = users.filter((u) => u.IsReward == selectedPrize.id).sort((a, b) => new Date(a.AttendanceDate) - new Date(b.AttendanceDate));
+  let existingWinners = users
+    .filter((u) => u.IsReward == selectedPrize.id)
+    .sort((a, b) => new Date(a.AttendanceDate) - new Date(b.AttendanceDate));
 
   // - Người CHƯA trúng giải nào (để quay dòng hiện tại)
   let candidates = users.filter((u) => u.IsReward == 0 && u.isJoin == 1);
@@ -543,7 +549,6 @@ function playSingleRowAnimation(winner, rowIndex) {
   renderSingleRowStatic(winner, rowIndex); // Hiển thị số
 }
 
-
 // 1. Hàm hiệu ứng số nhảy trên từng ô (Giữ nguyên)
 function animateDigit1(element, targetDigit, duration) {
   let speed = 60; // Tốc độ ban đầu
@@ -583,7 +588,7 @@ function animateRow1(rowIndex, digits) {
 }
 
 // 3. HÀM MỚI: Chỉ gọi quay cho 1 dòng cụ thể
-// Input: 
+// Input:
 // - rowIndex: Số thứ tự dòng (0, 1, 2...)
 // - winner: Object chứa thông tin người trúng (lấy UserCode)
 function playJackpotRow1(rowIndex, winner) {

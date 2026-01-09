@@ -18,9 +18,11 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: var(--red-main);
-  background-image: radial-gradient(circle,
-      rgba(255, 255, 255, 0.1) 1px,
-      transparent 1px);
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
   background-size: 5px 5px;
   overflow: hidden;
 }
@@ -287,7 +289,7 @@ body {
 .scroll-text {
   font-family: "Times New Roman", serif;
   color: #ffffff;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -835,4 +837,9 @@ body {
   100% {
     transform: rotate(0deg) translate(0, 0);
   }
+}
+
+#prizeNamea {
+  white-space: pre-line;
+  text-align: center;
 }
