@@ -5,6 +5,21 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+function initAudio() {
+  const musicbg = document.getElementById('bgall');
+  const playAudio = () => {
+    if (musicbg.paused) {
+      musicbg.play().catch(e => console.log("Chưa thể phát nhạc: " + e));
+    }
+    document.removeEventListener('click', playAudio);
+    document.removeEventListener('keydown', playAudio);
+  };
+  document.addEventListener('click', playAudio);
+  document.addEventListener('keydown', playAudio);
+}
+
+window.addEventListener('load', initAudio);
+
 document.querySelectorAll(".fade-letters .line").forEach((line) => {
   let letters = line.textContent.split("");
 

@@ -3,6 +3,28 @@ let selectedPrize = null;
 // =========================
 // INDEX BD -------------------------------
 // =========================
+const music = document.getElementById('bgClap');
+const musicLoud = document.getElementById('bgLoud');
+function initAudio() {
+  const musicbg = document.getElementById('bgall');
+
+  // Hàm này sẽ chạy khi người dùng tương tác lần đầu
+  const playAudio = () => {
+    if (musicbg.paused) {
+      musicbg.play().catch(e => console.log("Chưa thể phát nhạc: " + e));
+    }
+    // Sau khi phát được rồi thì gỡ bỏ sự kiện để không gọi lại nữa
+    document.removeEventListener('click', playAudio);
+    document.removeEventListener('keydown', playAudio);
+  };
+
+  // Lắng nghe sự kiện click hoặc gõ phím bất kỳ
+  document.addEventListener('click', playAudio);
+  document.addEventListener('keydown', playAudio);
+}
+
+// Gọi hàm này khi load trang
+window.addEventListener('load', initAudio);
 initPrizeSelect();
 renderGachaRows();
 
@@ -513,10 +535,27 @@ async function spinGacha() {
   if (selectedPrize.id == 1 || selectedPrize.id == 2) {
     setTimeout(async function () {
       await renderWinnerList(selectedPrize);
+      if (music.paused && musicLoud.paused) {
+        music.play().catch(error => {
+          console.log("Trình duyệt chặn phát tự động: ", error);
+        });
+        // musicLoud.play().catch(error => {
+        //   console.log("Trình duyệt chặn phát tự động: ", error);
+        // });
+      }
     }, 10000);
+
   } else {
     setTimeout(async function () {
       await renderWinnerList(selectedPrize);
+      if (music.paused && musicLoud.paused) {
+        music.play().catch(error => {
+          console.log("Trình duyệt chặn phát tự động: ", error);
+        });
+        // musicLoud.play().catch(error => {
+        //   console.log("Trình duyệt chặn phát tự động: ", error);
+        // });
+      }
     }, 5000);
   }
   isSpinning = false; // Mở khóa để cho phép nhấn Enter lần tiếp theo
