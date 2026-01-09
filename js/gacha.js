@@ -5,6 +5,8 @@ let selectedPrize = null;
 // =========================
 const music = document.getElementById('bgClap');
 const musicLoud = document.getElementById('bgLoud');
+const music1st = document.getElementById('bg1st');
+
 function initAudio() {
   const musicbg = document.getElementById('bgall');
 
@@ -533,6 +535,11 @@ async function spinGacha() {
     }, 5000);
   }
   if (selectedPrize.id == 1 || selectedPrize.id == 2) {
+    // if (music1st.paused) {
+    //   music1st.play().catch(error => {
+    //     console.log("Trình duyệt chặn phát tự động: ", error);
+    //   });
+    // }
     setTimeout(async function () {
       await renderWinnerList(selectedPrize);
       if (music.paused && musicLoud.paused) {
