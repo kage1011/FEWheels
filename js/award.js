@@ -132,12 +132,10 @@ function renderPrizes(winners, config) {
         (winner) => `
                     <li class="winner-item">
                         <div class="w-info">
-                            <span class="w-name"><span class="icon-gold">${iconDecor}</span>${
-          winner.UserName
-        }</span>
-                            <span class="w-dept">${
-                              winner.Department || "Phòng ban"
-                            }</span>
+                            <span class="w-name"><span class="icon-gold">${iconDecor}</span>${winner.UserName
+          }</span>
+                            <span class="w-dept">${winner.Department || "Phòng ban"
+          }</span>
                         </div>
                         <span class="w-code">${winner.UserCode}</span>
                     </li>
@@ -151,7 +149,7 @@ function renderPrizes(winners, config) {
                             <div class="prize-name">${prize.name}</div>
                         </div>
                         <div class="card-body">
-                            <img src="../assets/gift/${prize.image}" alt="${prize.name}" class="product-img">
+                            <img src="./assets/gift/${prize.image}" alt="${prize.name}" class="product-img">
                             <ul class="winner-list">
                                 ${listHtml}
                             </ul>

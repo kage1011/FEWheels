@@ -160,7 +160,7 @@ function renderGachaRows(slotCount) {
     container.appendChild(div);
   }
   // row 4
-  if (slotCount == 5) {
+  if (slotCount == 5 || slotCount == 6) {
     div = document.createElement("div");
     div.className = "numbers-row";
     html = "";
@@ -172,7 +172,7 @@ function renderGachaRows(slotCount) {
   }
   // row 5
 
-  if (slotCount == 5) {
+  if (slotCount == 5 || slotCount == 6) {
     let div = document.createElement("div");
     div.className = "numbers-row";
     let html = "";
@@ -183,11 +183,28 @@ function renderGachaRows(slotCount) {
     container.appendChild(div);
   }
 
+  if (slotCount == 6) {
+    let div = document.createElement("div");
+    div.className = "numbers-row";
+    let html = "";
+    for (let i = 1; i <= 6; i++) {
+      html += `<div class="number" id="num_${5}_${i}">0</div>`;
+    }
+    div.innerHTML = html;
+    container.appendChild(div);
+  }
+
+
   const elements = document.querySelectorAll(".number");
   if (slotCount <= 3) {
     elements.forEach((el) => {
       el.style.width = "70px";
       el.style.height = "80px";
+    });
+  } else if (slotCount == 6) {
+    elements.forEach((el) => {
+      el.style.width = "55px";
+      el.style.height = "65px";
     });
   } else {
     elements.forEach((el) => {

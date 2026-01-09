@@ -36,6 +36,7 @@ function closeAndExit() {
         envelope.addEventListener('animationend', () => {
             isAnimating = false;
             isOpened = false;
+            scene.style.zIndex = 14;
             console.log("Đã bay đi xong, sẵn sàng lượt mới");
         }, { once: true });
 
@@ -50,13 +51,13 @@ function resetEffect() {
     halo.classList.remove('active');
     void envelope.offsetWidth;
 }
-document.addEventListener('keydown', (e) => {
-    // Nhấn Enter để quay số
-    if (e.code === 'Space') {
-        // startReveal();
-        startShow();
-    }
-});
+// document.addEventListener('keydown', (e) => {
+//     // Nhấn Enter để quay số
+//     if (e.code === 'Space') {
+//         // startReveal();
+//         startShow();
+//     }
+// });
 
 
 

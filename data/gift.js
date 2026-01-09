@@ -27,4 +27,18 @@ const prizesFENV = [
     image: "prize4.1.png",
     slot: 5,
   },
+  {
+    id: 5,
+    name: "Giải 4",
+    nameBanner: "Lì xì may mắn",
+    image: "prize5.1.png",
+    slot: 6,
+  },
+  {
+    id: 6,
+    name: "Giải bí mật",
+    nameBanner: "Phần quà bí mật",
+    image: "prize10.png",
+    slot: 6,
+  },
 ];

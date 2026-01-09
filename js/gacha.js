@@ -348,7 +348,13 @@ function startQuestionRain(duration = 6000) {
 document.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
-    spinGacha();
+    const scene = document.getElementById('scene');
+
+    if (scene.style.zIndex == 14) {
+      resetEffect();
+      spinGacha();
+    }
+
   }
 });
 
@@ -504,10 +510,15 @@ async function spinGacha() {
       fireConfetti();
     }, 5000);
   }
-
-  setTimeout(async function () {
-    await renderWinnerList(selectedPrize);
-  }, 5000);
+  if (selectedPrize.id == 1 || selectedPrize.id == 2) {
+    setTimeout(async function () {
+      await renderWinnerList(selectedPrize);
+    }, 10000);
+  } else {
+    setTimeout(async function () {
+      await renderWinnerList(selectedPrize);
+    }, 5000);
+  }
   isSpinning = false; // Mở khóa để cho phép nhấn Enter lần tiếp theo
 }
 
