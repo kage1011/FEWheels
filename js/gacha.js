@@ -3,30 +3,30 @@ let selectedPrize = null;
 // =========================
 // INDEX BD -------------------------------
 // =========================
-const music = document.getElementById('bgClap');
-const musicLoud = document.getElementById('bgLoud');
-const music1st = document.getElementById('bg1st');
+const music = document.getElementById("bgClap");
+const musicLoud = document.getElementById("bgLoud");
+const music1st = document.getElementById("bg1st");
 
 function initAudio() {
-  const musicbg = document.getElementById('bgall');
+  const musicbg = document.getElementById("bgall");
 
   // Hàm này sẽ chạy khi người dùng tương tác lần đầu
   const playAudio = () => {
     if (musicbg.paused) {
-      musicbg.play().catch(e => console.log("Chưa thể phát nhạc: " + e));
+      musicbg.play().catch((e) => console.log("Chưa thể phát nhạc: " + e));
     }
     // Sau khi phát được rồi thì gỡ bỏ sự kiện để không gọi lại nữa
-    document.removeEventListener('click', playAudio);
-    document.removeEventListener('keydown', playAudio);
+    document.removeEventListener("click", playAudio);
+    document.removeEventListener("keydown", playAudio);
   };
 
   // Lắng nghe sự kiện click hoặc gõ phím bất kỳ
-  document.addEventListener('click', playAudio);
-  document.addEventListener('keydown', playAudio);
+  document.addEventListener("click", playAudio);
+  document.addEventListener("keydown", playAudio);
 }
 
 // Gọi hàm này khi load trang
-window.addEventListener('load', initAudio);
+window.addEventListener("load", initAudio);
 initPrizeSelect();
 renderGachaRows();
 
@@ -74,7 +74,11 @@ function renderPrizeMenu(prizes) {
   prizes.forEach((p) => {
     const div = document.createElement("div");
     div.className = "fab-item";
-    div.textContent = `${p.name} (${p.slot} slot)`;
+    if (p.id == 6) {
+      div.textContent = `${p.name}`;
+    } else {
+      div.textContent = `${p.name} (${p.slot} slot)`;
+    }
     div.onclick = () => {
       selectedPrize = p;
       toggleFabMenu();
@@ -89,13 +93,19 @@ function renderPrizeMenu(prizes) {
         img.classList.remove("prize-bounce");
         void img.offsetWidth;
         img.src = `./assets/gift/${selectedPrize.image}`;
-        nameBanner.textContent =
-          selectedPrize.name +
-          " ( " +
-          selectedPrize.slot +
-          " giải ) " +
-          "\n" +
-          selectedPrize.nameBanner;
+        if (selectedPrize.id == 6) {
+          nameBanner.textContent =
+            selectedPrize.name + "\n" + selectedPrize.nameBanner;
+        } else {
+          nameBanner.textContent =
+            selectedPrize.name +
+            " ( " +
+            selectedPrize.slot +
+            " giải ) " +
+            "\n" +
+            selectedPrize.nameBanner;
+        }
+
         img.classList.add("prize-bounce");
       }
     };
@@ -236,9 +246,9 @@ async function renderWinnerList(selectedPrize) {
   // Xóa danh sách cũ trước khi render mới (nếu cần)
   container.innerHTML = "";
   const users = await getUsersFromDB();
-  let winners = users.filter(
-    (u) => u.IsReward == selectedPrize.id && u.isJoin == 1
-  );
+  let winners = users
+    .filter((u) => u.IsReward == selectedPrize.id && u.isJoin == 1)
+    .sort((a, b) => new Date(a.AttendanceDate) - new Date(b.AttendanceDate));
   winners.forEach((winner, index) => {
     let rankImageSrc = "";
     rankImageSrc = "./assets/users/" + winner.UserCode + ".jpg";
@@ -372,13 +382,12 @@ function startQuestionRain(duration = 6000) {
 document.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
-    const scene = document.getElementById('scene');
+    const scene = document.getElementById("scene");
 
     if (scene.style.zIndex == 14) {
       resetEffect();
       spinGacha();
     }
-
   }
 });
 
@@ -468,7 +477,11 @@ async function spinGacha() {
 
   console.log("existingWinners", existingWinners);
   existingWinners.forEach((winner, row) => {
-    renderSingleRowStatic(winner, row);
+    if (selectedPrize.id == 6) {
+      renderSingleRowStatic(winner, 0);
+    } else {
+      renderSingleRowStatic(winner, row);
+    }
   });
 
   const activeRowIndex = currentWinnerCount;
@@ -484,7 +497,11 @@ async function spinGacha() {
   // Lưu ý: Bạn cần sửa hàm playJackpotAnimationMulti để nó hỗ trợ quay 1 dòng cụ thể
   // Ở đây tôi giả định hàm playSingleRowAnimation(winner, rowIndex)
   // playSingleRowAnimation(newWinner, activeRowIndex);
-  playJackpotRow1(activeRowIndex, newWinner);
+  if (selectedPrize.id == 6) {
+    playJackpotRow1(0, newWinner);
+  } else {
+    playJackpotRow1(activeRowIndex, newWinner);
+  }
   // 8. Cập nhật Database sau khi quay xong dòng này
   newWinner.IsReward = selectedPrize.id;
   newWinner.AttendanceDate = new Date().toISOString();
@@ -543,7 +560,7 @@ async function spinGacha() {
     setTimeout(async function () {
       await renderWinnerList(selectedPrize);
       if (music.paused && musicLoud.paused) {
-        music.play().catch(error => {
+        music.play().catch((error) => {
           console.log("Trình duyệt chặn phát tự động: ", error);
         });
         // musicLoud.play().catch(error => {
@@ -551,12 +568,11 @@ async function spinGacha() {
         // });
       }
     }, 10000);
-
   } else {
     setTimeout(async function () {
       await renderWinnerList(selectedPrize);
       if (music.paused && musicLoud.paused) {
-        music.play().catch(error => {
+        music.play().catch((error) => {
           console.log("Trình duyệt chặn phát tự động: ", error);
         });
         // musicLoud.play().catch(error => {

@@ -39,6 +39,6 @@ const prizesFENV = [
     name: "Giải bí mật",
     nameBanner: "Phần quà bí mật",
     image: "prize10.png",
-    slot: 6,
+    slot: 100,
   },
 ];

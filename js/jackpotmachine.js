@@ -122,7 +122,7 @@ window.onload = () => {
   createLights("lights-middle", 100);
 };
 
-function renderGachaRows(slotCount) {
+async function renderGachaRows(slotCount) {
   const container = document.getElementById("gachaRows");
   console.log("Slot count:", slotCount);
   container.innerHTML = "";
@@ -136,9 +136,8 @@ function renderGachaRows(slotCount) {
   div.innerHTML = html;
   container.appendChild(div);
 
-
   // row 2
-  if (slotCount >= 2) {
+  if (slotCount >= 2 && selectedPrize.id != 6) {
     div = document.createElement("div");
     div.className = "numbers-row";
     html = "";
@@ -149,7 +148,7 @@ function renderGachaRows(slotCount) {
     container.appendChild(div);
   }
   // row 3
-  if (slotCount == 5 || slotCount == 6) {
+  if ((slotCount == 5 || slotCount == 6) && selectedPrize.id != 6) {
     div = document.createElement("div");
     div.className = "numbers-row";
     html = "";
@@ -160,7 +159,7 @@ function renderGachaRows(slotCount) {
     container.appendChild(div);
   }
   // row 4
-  if (slotCount == 5 || slotCount == 6) {
+  if ((slotCount == 5 || slotCount == 6) && selectedPrize.id != 6) {
     div = document.createElement("div");
     div.className = "numbers-row";
     html = "";
@@ -172,7 +171,7 @@ function renderGachaRows(slotCount) {
   }
   // row 5
 
-  if (slotCount == 5 || slotCount == 6) {
+  if ((slotCount == 5 || slotCount == 6) && selectedPrize.id != 6) {
     let div = document.createElement("div");
     div.className = "numbers-row";
     let html = "";
@@ -183,7 +182,7 @@ function renderGachaRows(slotCount) {
     container.appendChild(div);
   }
 
-  if (slotCount == 6) {
+  if (slotCount == 6 && selectedPrize.id != 6) {
     let div = document.createElement("div");
     div.className = "numbers-row";
     let html = "";
@@ -193,7 +192,6 @@ function renderGachaRows(slotCount) {
     div.innerHTML = html;
     container.appendChild(div);
   }
-
 
   const elements = document.querySelectorAll(".number");
   if (slotCount <= 3) {
@@ -210,6 +208,19 @@ function renderGachaRows(slotCount) {
     elements.forEach((el) => {
       el.style.width = "60px";
       el.style.height = "70px";
+    });
+  }
+  if (selectedPrize != null) {
+    const users = await getUsersFromDB();
+    let existingWinners = users
+      .filter((u) => u.IsReward == selectedPrize.id)
+      .sort((a, b) => new Date(a.AttendanceDate) - new Date(b.AttendanceDate));
+    existingWinners.forEach((winner, row) => {
+      if (selectedPrize.id == 6) {
+        renderSingleRowStatic(winner, 0);
+      } else {
+        renderSingleRowStatic(winner, row);
+      }
     });
   }
 }

@@ -484,7 +484,7 @@ async function exportExcel() {
   jsonPrizeEX = prizes;
   jsonUserAllDataEX = users;
   jsonUserDataEX = users
-    .filter((u) => u.isJoin == 1 && u.IsReward != 0)
+    .filter((u) => u.isJoin == 1)
     .sort((a, b) => new Date(a.AttendanceDate) - new Date(b.AttendanceDate));
   jsonDataEX = mapUserWithPrizeToExcel(jsonUserDataEX, jsonPrizeEX);
   // 1. Map dữ liệu theo cột cần export
