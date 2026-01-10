@@ -120,6 +120,7 @@
 
 .winner-rank-img {
   width: 50px;
+  height: 60px;
   object-fit: contain;
   margin-right: 15px;
   flex-shrink: 0;
